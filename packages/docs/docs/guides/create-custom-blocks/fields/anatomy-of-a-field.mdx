@@ -4,7 +4,7 @@ title: Anatomy of a field
 image: images/blockly_banner.png
 ---
 
-import ClassBlock from '@site/src/components/ClassBlock';
+import TableHeader from '@site/src/components/TableHeader';
 
 # Anatomy of a field
 
@@ -89,7 +89,7 @@ complex, depending on its needs.
 These are some examples of different on-block displays, in order of increasing
 complexity.
 
-| <ClassBlock className="displayTableHeader"> Field type </ClassBlock> | <ClassBlock className="displayTableHeader"> Description </ClassBlock> |
+| <TableHeader> Field type </TableHeader> | <TableHeader> Description </TableHeader> |
 | --------------- | ----------------------------------------------------------------------------------------------------- |
 | Label           | Contains only a text element.                                                                         |
 | Angle           | Contains a background rect, text element, and a degree symbol.                                        |
@@ -103,7 +103,7 @@ arbitrarily complex editor.
 These are some examples of different editors, in order of increasing
 complexity.
 
-| <ClassBlock className="displayTableHeader"> Field type </ClassBlock> | <ClassBlock className="displayTableHeader"> Description </ClassBlock> |
+| <TableHeader> Field type </TableHeader> | <TableHeader> Description </TableHeader> |
 | --------------- | -------------------------------------------------------------------------------------------------------------------- |
 | Checkbox        | No editor when clicked. The on-block display updates.                                                                |
 | Number input    | Text editor overlaid above the on-block display. Users can type; the editor may change color to indicate bad values. |

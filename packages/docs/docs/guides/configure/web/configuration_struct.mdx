@@ -4,7 +4,7 @@ description: Simple configuration options that Blockly surfaces during injection
 image: images/blockly_banner.png
 ---
 
-import ClassBlock from '@site/src/components/ClassBlock';
+import TableHeader from '@site/src/components/TableHeader';
 
 # Create a workspace
 
@@ -42,7 +42,7 @@ The configuration object implements
 and has the following options. Note that several of these options change their
 default value based on whether the provided toolbox has categories or not.
 
-| <ClassBlock className="displayTableHeader"> Name </ClassBlock> | <ClassBlock className="displayTableHeader"> Type </ClassBlock> | <ClassBlock className="displayTableHeader"> Description </ClassBlock> |
+| <TableHeader> Name </TableHeader> | <TableHeader> Type </TableHeader> | <TableHeader> Description </TableHeader> |
 |-----------------------|-----------|-------------------------------------------------------------|
 | `collapse`            | boolean   | Whether block context menus include an item to collapse or expand blocks.  Defaults to `true` if the toolbox has categories, `false` otherwise.
 | `comments`            | boolean   | Whether block context menus include an item to add or remove comments. Defaults to `true` if the toolbox has categories,`false` otherwise.

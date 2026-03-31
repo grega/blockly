@@ -5,7 +5,7 @@ image: images/blockly_banner.png
 ---
 
 import Head from '@docusaurus/Head';
-import ClassBlock from '@site/src/components/ClassBlock';
+import CompareBlock from '@site/src/components/CompareBlock';
 
 <Head>
   <link
@@ -43,7 +43,7 @@ versatile and useful as possible, we've developed these guidelines.
         installed.
 -   Use the JSON field registry instead of instantiating new fields directly.
  
-    - <ClassBlock className="compare-worse">
+    - <CompareBlock variant="worse">
         Not Recommended - Instantiating a new field directly:
 
           ```js
@@ -54,9 +54,9 @@ versatile and useful as possible, we've developed these guidelines.
             }
           }
           ```
-      </ClassBlock>  
+      </CompareBlock>  
 
-    - <ClassBlock className="compare-better">   
+    - <CompareBlock variant="better">   
         Recommended - JSON field registry:
 
           ```js
@@ -70,7 +70,7 @@ versatile and useful as possible, we've developed these guidelines.
             }
           }
           ```
-      </ClassBlock> 
+      </CompareBlock> 
 
     -   Using the field registry makes it easier for a user to replace the
         implementation of the field used in your block without having to change
