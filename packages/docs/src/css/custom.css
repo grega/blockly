@@ -8,7 +8,7 @@
 
 /* You can override the default Infima variables here. */
 :root {
-  --ifm-color-primary: #4285F4;
+  --ifm-color-primary: #4285f4;
   --ifm-color-primary-dark: #2b77f3;
   --ifm-color-primary-darker: #1d6df2;
   --ifm-color-primary-darkest: #0b56d4;
@@ -24,7 +24,7 @@
   /*--ifm-font-family-heading: 'Google Sans', sans-serif;*/
   --ifm-heading-font-family: 'Google Sans', sans-serif;
 
-  --background-color-footer: #E8F0FE;
+  --background-color-footer: #e8f0fe;
   --font-color-footer: #202124;
   --font-color-hover-footer: #1a73e8;
   --border-divider-footer: #dadce0;
@@ -69,7 +69,7 @@
   --ifm-h3-font-size: 20px;
 }
 
-.screenshotImg{
+.screenshotImg {
   width: 200px;
 }
 
@@ -82,14 +82,14 @@ table th p {
 }
 
 [data-theme]:not([data-theme='dark']) .alert--secondary {
-  --ifm-alert-background-color: #E8F0FE;
+  --ifm-alert-background-color: #e8f0fe;
   --ifm-alert-background-color-highlight: #54c7ec26;
   --ifm-alert-foreground-color: var(--ifm-color-info-contrast-foreground);
-  --ifm-alert-border-color: #4285F4;
+  --ifm-alert-border-color: #4285f4;
 }
 
-.DocSearch-Button-Keys{
-  min-width: 0px !important;
+.DocSearch-Button-Keys {
+  min-width: 0 !important;
 }
 
 /* Navbar title styling */
@@ -100,12 +100,13 @@ table th p {
 }
 
 /* footer CSS */
-.footer{
+.footer {
   background-color: var(--background-color-footer);
 }
 
-.footer__links{
+.footer__links {
   border-block-end: 1px solid var(--border-divider-footer);
+  padding-block-end: 16px;
 }
 
 .footer__title {
@@ -115,17 +116,17 @@ table th p {
   text-align: center;
 }
 
-.footer__link-item{
+.footer__link-item {
   font-size: 14px;
   color: var(--font-color-footer);
 }
 
-.footer__link-item:hover{
+.footer__link-item:hover {
   text-decoration: none;
   color: var(--font-color-hover-footer);
 }
 
-.footer__copyright{
+.footer__copyright {
   font-size: 16px;
 }
 
@@ -249,7 +250,7 @@ table th p {
   display: none;
 }
 
-.downloadAsset{
+.downloadAsset {
   border: 1px solid #4285f4;
   background-color: #4285f4;
   color: #fff;
@@ -261,7 +262,7 @@ table th p {
   transition: background-color .2s cubic-bezier(.55, .085, .68, .53), border-color .2s cubic-bezier(.55, .055, .675, .19), color .2s cubic-bezier(.55, .085, .68, .53), transform .3s;
 }
 
-.downloadAsset:hover{
+.downloadAsset:hover {
   border-color: #1a73e8;
   background-color: #1a73e8;
   transform: scale(1.05);
@@ -291,44 +292,44 @@ table th p {
   width: 24px;
 }
 
-.compare-better, .compare-worse{
+.compare-better, .compare-worse {
  font-weight: 700;
 }
 
-.compare-better p, .compare-worse p{
-  margin-top:0px;
+.compare-better p, .compare-worse p {
+  margin-top: 0;
 }
 
-.appendInputImg{
+.appendInputImg {
   width: 145px !important;
 }
 
-h2{
+h2 {
   font-size: 24px;
 }
 
-h3{
+h3 {
   font-size: 20px;
 }
 
-.codelabImages{
+.codelabImages {
   text-align: center;
 }
 
-.tabs-container{
+.tabs-container {
   border: 1px solid var(--tabs-border);
   border-radius: 8px;
 }
 
-.tabs-container p{
-  padding: 0px 0px 16px 16px;
+.tabs-container p {
+  padding: 0 0 16px 16px;
 }
 
-.tabs{
+.tabs {
   border-bottom: 1px solid var(--tabs-border);
 }
 
-.prism-code{
+.prism-code {
   background-color: var(--codeblock-background-color) !important;
 }
 
@@ -346,10 +347,10 @@ h3{
   display: block;
 }
 
-td{
+td {
   vertical-align: top;
 }
 
-th{
+th {
   text-align: left;
 }
