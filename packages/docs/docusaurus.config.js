@@ -7,7 +7,7 @@ import { themes as prismThemes } from 'prism-react-renderer';
 /** @type {import('@docusaurus/types').Config} */
 const config = {
   title: 'Blockly Docs',
-  favicon: 'img/logo.svg',
+  favicon: 'images/favicon.svg',
 
   future: {
     v4: true,
@@ -82,8 +82,8 @@ const config = {
         title: 'Blockly',
         logo: {
           alt: 'Blockly Logo',
-          src: 'img/logo.svg',
-          srcDark: 'img/blockly-dark-theme-logo.png',
+          src: 'images/logo.svg',
+          srcDark: 'images/blockly-dark-theme-logo.png',
         },
         items: [
           {
