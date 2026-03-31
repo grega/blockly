@@ -131,7 +131,6 @@ Blockly.Blocks['image_dropdown'] = {
 </TabItem>
 </Tabs>
 
-
 ### HTML dropdowns
 
 An option may be any HTML element, as long as it is not too large and does not
@@ -167,38 +166,38 @@ elements](/images/fields/dropdown/with_html.png)
 ```
 
 ```js
-Blockly.Extensions.register('flag_with_text_extension',
-  function() {
-    function createFlagWithTextDiv(text, src) {
-      const div = document.createElement('div');
-      div.setAttribute('style', 'width: 75px;');
-      div.setAttribute('title', text);
-      const img = document.createElement('img');
-      img.setAttribute('src', src);
-      img.setAttribute('style', 'height: 25px; display: block; margin: auto;');
-      div.appendChild(img);
-      const para = document.createElement('p');
-      para.innerText = text;
-      para.setAttribute('style', 'text-align: center; margin: 5px;');
-      div.appendChild(para);
-      return div;
-    }
+Blockly.Extensions.register('flag_with_text_extension', function () {
+  function createFlagWithTextDiv(text, src) {
+    const div = document.createElement('div');
+    div.setAttribute('style', 'width: 75px;');
+    div.setAttribute('title', text);
+    const img = document.createElement('img');
+    img.setAttribute('src', src);
+    img.setAttribute('style', 'height: 25px; display: block; margin: auto;');
+    div.appendChild(img);
+    const para = document.createElement('p');
+    para.innerText = text;
+    para.setAttribute('style', 'text-align: center; margin: 5px;');
+    div.appendChild(para);
+    return div;
+  }
 
-    const canadaDiv = createFlagWithTextDiv('Canada', 'canada.png');
-    const usaDiv = createFlagWithTextDiv('USA', 'usa.png');
-    const mexicoDiv = createFlagWithTextDiv('Mexico', 'mexico.png');
-    const options = [
-      ['none', 'NONE'],
-      [canadaDiv, 'CANADA'],
-      [usaDiv, 'USA'],
-      [mexicoDiv, 'MEXICO']
-    ];
-    this.getField('FLAG_WITH_TEXT').setOptions(options);
-  });
+  const canadaDiv = createFlagWithTextDiv('Canada', 'canada.png');
+  const usaDiv = createFlagWithTextDiv('USA', 'usa.png');
+  const mexicoDiv = createFlagWithTextDiv('Mexico', 'mexico.png');
+  const options = [
+    ['none', 'NONE'],
+    [canadaDiv, 'CANADA'],
+    [usaDiv, 'USA'],
+    [mexicoDiv, 'MEXICO'],
+  ];
+  this.getField('FLAG_WITH_TEXT').setOptions(options);
+});
 ```
 
 This is done using a JSON
 [extension](/guides/create-custom-blocks/define/extensions).
+
 </TabItem>
 <TabItem value="javascript" label="JavaScript">
 ```js
@@ -222,19 +221,20 @@ const usaDiv = createFlagWithTextDiv('USA', 'usa.png');
 const mexicoDiv = createFlagWithTextDiv('Mexico', 'mexico.png');
 
 Blockly.Blocks['flags_with_text_dropdown'] = {
-  init: function() {
-    const input = this.appendDummyInput()
-        .appendField('flag with text');
-    const options = [
-        ['none', 'NONE'],
-        [canadaDiv, 'CANADA'],
-        [usaDiv, 'USA'],
-        [mexicoDiv, 'MEXICO']
-    ];
-    input.appendField(new Blockly.FieldDropdown(options), 'FLAG_WITH_TEXT');
-  }
+init: function() {
+const input = this.appendDummyInput()
+.appendField('flag with text');
+const options = [
+['none', 'NONE'],
+[canadaDiv, 'CANADA'],
+[usaDiv, 'USA'],
+[mexicoDiv, 'MEXICO']
+];
+input.appendField(new Blockly.FieldDropdown(options), 'FLAG_WITH_TEXT');
+}
 };
-```
+
+````
 </TabItem>
 </Tabs>
 
@@ -261,27 +261,26 @@ Blockly.Blocks['flags_with_text_dropdown'] = {
   // Use an extension to set the menu function.
   "extensions": ["dynamic_menu_extension"]
 }
-```
+````
 
 ```js
-Blockly.Extensions.register('dynamic_menu_extension',
-  function() {
-    this.getField('DAY').setOptions(
-      function() {
-        var options = [];
-        var now = Date.now();
-        for(var i = 0; i < 7; i++) {
-          var dateString = String(new Date(now)).substring(0, 3);
-          options.push([dateString, dateString.toUpperCase()]);
-          now += 24 * 60 * 60 * 1000;
-        }
-        return options;
-      });
+Blockly.Extensions.register('dynamic_menu_extension', function () {
+  this.getField('DAY').setOptions(function () {
+    var options = [];
+    var now = Date.now();
+    for (var i = 0; i < 7; i++) {
+      var dateString = String(new Date(now)).substring(0, 3);
+      options.push([dateString, dateString.toUpperCase()]);
+      now += 24 * 60 * 60 * 1000;
+    }
+    return options;
   });
+});
 ```
 
 This is done using a JSON
 [extension](/guides/create-custom-blocks/define/extensions).
+
 </TabItem>
 <TabItem value="javascript" label="JavaScript">
 ```js
@@ -293,18 +292,19 @@ Blockly.Blocks['dynamic_dropdown'] = {
         this.generateOptions), 'DAY');
   },
 
-  generateOptions: function() {
-    var options = [];
-    var now = Date.now();
-    for(var i = 0; i < 7; i++) {
-      var dateString = String(new Date(now)).substring(0, 3);
-      options.push([dateString, dateString.toUpperCase()]);
-      now += 24 * 60 * 60 * 1000;
-    }
-    return options;
-  }
+generateOptions: function() {
+var options = [];
+var now = Date.now();
+for(var i = 0; i < 7; i++) {
+var dateString = String(new Date(now)).substring(0, 3);
+options.push([dateString, dateString.toUpperCase()]);
+now += 24 _ 60 _ 60 \* 1000;
+}
+return options;
+}
 };
-```
+
+````
 </TabItem>
 </Tabs>
 
@@ -346,7 +346,8 @@ options](/images/fields/dropdown/with_separator.png)
     }
   ]
 }
-```
+````
+
 </TabItem>
 <TabItem value="javascript" label="JavaScript" default>
 ```js
@@ -368,7 +369,6 @@ Blockly.Blocks["separator_dropdown"] = {
 </TabItem>
 </Tabs>
 
-
 ## Serialization
 
 <Tabs groupId="javascript-json">
@@ -386,6 +386,7 @@ The JSON for a dropdown field looks like so:
 Where `FIELDNAME` is a string referencing a dropdown field, and
 the value is the value to apply to the field. The value should be a
 language-neutral option key.
+
 </TabItem>
 <TabItem value="xml" label="XML">
 The XML for a dropdown field looks like so:
@@ -397,6 +398,7 @@ The XML for a dropdown field looks like so:
 Where the field's `name` attribute contains a string referencing a dropdown
 field, and the inner text is the value to apply to the field. The inner
 text should be a valid language-neutral option key.
+
 </TabItem>
 </Tabs>
 
@@ -464,9 +466,11 @@ Blockly.Blocks['dropdown_no_matching'] = {
     this.appendDummyInput()
         .appendField('hello')
         .appendField(new Blockly.FieldDropdown(options), 'MODE');
-  }
+
+}
 };
-```
+
+````
 </TabItem>
 </Tabs>
 
@@ -490,7 +494,8 @@ With suffix matching:
     }
   ]
 }
-```
+````
+
 </TabItem>
 <TabItem value="javascript" label="JavaScript" default>
 ```js
@@ -503,9 +508,11 @@ Blockly.Blocks['dropdown_with_matching'] = {
 
     this.appendDummyInput()
         .appendField(new Blockly.FieldDropdown(options), 'MODE');
-  }
+
+}
 };
-```
+
+````
 </TabItem>
 </Tabs>
 
@@ -575,7 +582,7 @@ init: function() {
   // Pass the field constructor the options list, the validator, and the name.
       .appendField(new Blockly.FieldDropdown(options, this.validate), 'MODE');
 }
-```
+````
 
 `validate` always returns the value it was passed, but it calls the helper
 function `updateConnection` which adds or removes inputs based on the dropdown

@@ -29,6 +29,7 @@ Unfortunately, the only thing that distinguishes this `<div>` from other categor
 To solve this problem, you'll need to add a class to the
 `blocklyToolboxCategory` `<div>` for the **Logic** category. Open the
 `toolbox.js` file and find the definition of the **Logic** category:
+
 ```js
     {
       kind: 'category',
@@ -44,6 +45,7 @@ you're not using themes to assign category colours, you don't need the
 classes to the **Logic** category's `<div>`: `logic_category` uniquely
 identifies the `<div>` and `blocklyToolboxCategory` is used by Blockly's CSS to
 define rules that apply to all categories.
+
 ```js
     {
       kind: 'category',

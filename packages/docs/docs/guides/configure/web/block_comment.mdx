@@ -20,24 +20,24 @@ Users enter block comments with the comment icon's text editor.
 
 By default, the comment icon is not displayed. There are two ways to display it:
 
-*   Call `Block.setCommentText` with a non-null string.
-*   Let the user display it by clicking "Add Comment" in the block's context
-    menu.
+- Call `Block.setCommentText` with a non-null string.
+- Let the user display it by clicking "Add Comment" in the block's context
+  menu.
 
 To remove the comment icon:
 
-*   Call `Block.setCommentText` with a `null`.
-*   Let the user remove it by clicking "Remove Comment" in the block's context
-    menu.
+- Call `Block.setCommentText` with a `null`.
+- Let the user remove it by clicking "Remove Comment" in the block's context
+  menu.
 
 Note that "Add Comment" and "Remove Comment" are displayed in the context menu
 only if:
 
-*   The block is [editable].
-*   The block is not collapsed.
-*   The [`comments` configuration option][config-option] is set to `true`. If
-    you do not explicitly set this option, it defaults to `true` if the toolbox
-    has categories, `false` otherwise.
+- The block is [editable].
+- The block is not collapsed.
+- The [`comments` configuration option][config-option] is set to `true`. If
+  you do not explicitly set this option, it defaults to `true` if the toolbox
+  has categories, `false` otherwise.
 
 ## Work with block comments programmatically
 

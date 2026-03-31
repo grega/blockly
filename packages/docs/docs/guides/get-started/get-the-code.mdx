@@ -77,8 +77,8 @@ There are several ways which you can get the code to run Blockly.
 The Blockly team recommends requiring Blockly through a package manager (like
 [NPM][npm-registry] or [Yarn][yarn-registry]) because:
 
-*   It is easier to stay up to date with changes in Blockly
-*   It encourages [using plugins][plugins] instead of monkeypatching Blockly
+- It is easier to stay up to date with changes in Blockly
+- It encourages [using plugins][plugins] instead of monkeypatching Blockly
 
 ### NPM
 
@@ -121,7 +121,6 @@ code.
 <script src="./my-lib-directory/blockly/javascript_compressed.js"></script>
 <!-- Load a message file -->
 <script src="./my-lib-directory/blockly/msg/en.js"></script>
-
 ```
 
 When using script tags, you can access imports from the global namespace:
@@ -155,7 +154,7 @@ import * as Blockly from 'blockly/core';
 // Import the default blocks.
 import * as libraryBlocks from 'blockly/blocks';
 // Import a generator.
-import {javascriptGenerator} from 'blockly/javascript';
+import { javascriptGenerator } from 'blockly/javascript';
 // Import a message file.
 import * as En from 'blockly/msg/en';
 ```
@@ -174,7 +173,7 @@ const Blockly = require('blockly/core');
 // Require the default blocks.
 const libraryBlocks = require('blockly/blocks');
 // Require a generator.
-const {javascriptGenerator} =  require('blockly/javascript');
+const { javascriptGenerator } = require('blockly/javascript');
 // Require a message file.
 const En = require('blockly/msg/en');
 ```

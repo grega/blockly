@@ -77,7 +77,7 @@ The `javascriptDefinitionGenerator` creates the code that will be included in
 the JavaScript definition for a block that includes your custom field. Usually,
 this means the block-code generator should return a line of code that looks like
 `.appendField(new YourFieldConstructor(arg1, arg2), 'userSpecifiedName')`. Note
-that this line of code does *not* include a semicolon, because an input that
+that this line of code does _not_ include a semicolon, because an input that
 contains multiple fields will have several calls to `appendField` chained
 together. The arguments in the constructor are pulled from the values the user
 set on the field block. Here's an example of this block-code generator for
@@ -97,8 +97,8 @@ javascriptDefinitionGenerator.forBlock['field_angle'] = function (
 The angle block that the user dragged from the "Fields" category of the Block
 Factory toolbox has two fields on it:
 
--   `FIELDNAME`: user can set the name of the field on their custom block
--   `ANGLE`: user can set the default angle value
+- `FIELDNAME`: user can set the name of the field on their custom block
+- `ANGLE`: user can set the default angle value
 
 In this block-code generator, we get the default angle value and pass it as the
 only argument to the `FieldAngle` constructor. The field name is always passed
@@ -116,10 +116,10 @@ The `jsonDefinitionGenerator` is similar, but this outputs the part of the JSON
 block definition that corresponds to your field. Typically, this code is a JSON
 object that includes:
 
--   `type`: corresponds to the name of your field in the Blockly field registry
--   `name`: user can set the name of the field on their custom block
--   any other custom properties needed by your field's json initialization
-    method.
+- `type`: corresponds to the name of your field in the Blockly field registry
+- `name`: user can set the name of the field on their custom block
+- any other custom properties needed by your field's json initialization
+  method.
 
 Here's an example from the `FieldAngle` again:
 

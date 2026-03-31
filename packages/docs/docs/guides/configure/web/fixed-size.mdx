@@ -28,44 +28,44 @@ Add an empty `div` somewhere in the page's body and set its size:
 
 ```js
 const toolbox = {
-  "kind": "flyoutToolbox",
-  "contents": [
+  kind: 'flyoutToolbox',
+  contents: [
     {
-      "kind": "block",
-      "type": "controls_if"
+      kind: 'block',
+      type: 'controls_if',
     },
     {
-      "kind": "block",
-      "type": "controls_repeat_ext"
+      kind: 'block',
+      type: 'controls_repeat_ext',
     },
     {
-      "kind": "block",
-      "type": "logic_compare"
+      kind: 'block',
+      type: 'logic_compare',
     },
     {
-      "kind": "block",
-      "type": "math_number"
+      kind: 'block',
+      type: 'math_number',
     },
     {
-      "kind": "block",
-      "type": "math_arithmetic"
+      kind: 'block',
+      type: 'math_arithmetic',
     },
     {
-      "kind": "block",
-      "type": "text"
+      kind: 'block',
+      type: 'text',
     },
     {
-      "kind": "block",
-      "type": "text_print"
+      kind: 'block',
+      type: 'text_print',
     },
-  ]
-}
+  ],
+};
 ```
 
 And finally, call the following to inject Blockly into your defined `div`.
 
 ```js
-const workspace = Blockly.inject('blocklyDiv', {toolbox: toolbox});
+const workspace = Blockly.inject('blocklyDiv', { toolbox: toolbox });
 ```
 
 The `workspace` variable is not currently used, but it will become

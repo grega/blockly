@@ -17,7 +17,7 @@ The `scope` argument is an object that is passed to `preconditionFn`. You'll use
 
 The return value of `preconditionFn` is `'enabled'`, `'disabled'`, or `'hidden'`. An **enabled** option is shown with black text and is selectable. A **disabled** option is shown with grey text and is not selectable. A **hidden** option is not included in the context menu at all.
 
-### Write the function 
+### Write the function
 
 You can now test `scope.focusedNode` to display the "Hello World" option in workspace and block context menus, but not on any others. Change `preconditionFn` to:
 

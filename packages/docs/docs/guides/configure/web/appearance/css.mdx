@@ -13,9 +13,9 @@ are labeled with CSS classes that identify what they represent (e.g.
 
 You can use CSS to style your application:
 
-*   Override Blockly's CSS rules with your own rules.
-*   Add your own CSS classes to Blockly components for additional specificity.
-*   Use CSS classes and rules to style custom components.
+- Override Blockly's CSS rules with your own rules.
+- Add your own CSS classes to Blockly components for additional specificity.
+- Use CSS classes and rules to style custom components.
 
 For a practical introduction to using CSS in blockly, see the [Use CSS in Blockly](/codelabs/css/codelab-overview/index.html)
 
@@ -33,22 +33,22 @@ provides finer-grained control than type (element) selectors.
 Blockly uses CSS classes to provide the following kinds of information about the
 HTML and SVG elements it uses.
 
-*   **Type.** Most Blockly CSS classes identify what an element represents. For
-    example, the root element of a block is labeled `blocklyBlock`. Some
-    elements are labeled with multiple classes, each more specific than the
-    last. For example, the root element of a text input field is labeled
-    `blocklyField`, `blocklyInputField`, and `blocklyTextInputField`. Type
-    classes remain the same for the life of a component.
+- **Type.** Most Blockly CSS classes identify what an element represents. For
+  example, the root element of a block is labeled `blocklyBlock`. Some
+  elements are labeled with multiple classes, each more specific than the
+  last. For example, the root element of a text input field is labeled
+  `blocklyField`, `blocklyInputField`, and `blocklyTextInputField`. Type
+  classes remain the same for the life of a component.
 
-*   **State.** Blockly also uses CSS classes to specify the state of a
-    component. For example, when the cursor is on a text input field, its root
-    element is labeled with the `blocklyEditing` class. When the cursor is moved
-    away, this class is removed.
+- **State.** Blockly also uses CSS classes to specify the state of a
+  component. For example, when the cursor is on a text input field, its root
+  element is labeled with the `blocklyEditing` class. When the cursor is moved
+  away, this class is removed.
 
-*   **Additional information.** Blockly uses a few CSS classes to provide
-    additional information. For example, the injection `<div>` has classes that
-    provide the name of the workspace's current renderer and theme. These
-    classes generally remain the same for the life of the application.
+- **Additional information.** Blockly uses a few CSS classes to provide
+  additional information. For example, the injection `<div>` has classes that
+  provide the name of the workspace's current renderer and theme. These
+  classes generally remain the same for the life of the application.
 
 The easiest way to discover what CSS classes Blockly uses is to open your
 browser's developer tools and inspect the elements used by your application.
@@ -80,20 +80,22 @@ To add CSS classes to a custom block, pass a string or array of strings to the
 `classes` key.
 
 ```js
-Blockly.common.defineBlocksWithJsonArray([{
-  "type": "string_length",
-  "message0": 'length of %1',
-  "args0": [
-    {
-      "type": "input_value",
-      "name": "VALUE",
-      "check": "String",
-    }
-  ],
-  "classes": "myStringLengthBlock",
-  "output": "Number",
-  "colour": 160,
-}]);
+Blockly.common.defineBlocksWithJsonArray([
+  {
+    type: 'string_length',
+    message0: 'length of %1',
+    args0: [
+      {
+        type: 'input_value',
+        name: 'VALUE',
+        check: 'String',
+      },
+    ],
+    classes: 'myStringLengthBlock',
+    output: 'Number',
+    colour: 160,
+  },
+]);
 ```
 
 You can also add or remove a CSS class from a block's `<g>` element by calling
@@ -110,42 +112,44 @@ name to the label's constructor.
 When constructing a custom component, use one of the following methods to add
 custom CSS classes:
 
-*   If your component is a subclass of `Field` or `Icon`, override the
-    `initView` method. For example:
+- If your component is a subclass of `Field` or `Icon`, override the
+  `initView` method. For example:
 
-    ```js
-    class MyCustomField extends Blockly.FieldTextInput {
-      ...
+  ```js
+  class MyCustomField extends Blockly.FieldTextInput {
+    ...
 
-      initView() {
-        super.initView();
+    initView() {
+      super.initView();
 
-        // Add custom CSS class so we can style the field.
-        if (this.fieldGroup_) {
-          Blockly.utils.dom.addClass(this.fieldGroup_, 'myCustomField');
-        }
+      // Add custom CSS class so we can style the field.
+      if (this.fieldGroup_) {
+        Blockly.utils.dom.addClass(this.fieldGroup_, 'myCustomField');
       }
     }
-    ```
+  }
+  ```
 
-    For more information, see [Customizing fields with
-    CSS](/guides/create-custom-blocks/fields/customizing-fields/creating#customizing-with-css)
-    or [Create the icon's
-    view](/guides/create-custom-blocks/icons/creating-custom-icons/basic-implementation#create-the-icons-view).
+  For more information, see [Customizing fields with
+  CSS](/guides/create-custom-blocks/fields/customizing-fields/creating#customizing-with-css)
+  or [Create the icon's
+  view](/guides/create-custom-blocks/icons/creating-custom-icons/basic-implementation#create-the-icons-view).
 
-*   When constructing an SVG element, pass your class to
-    `Blockly.utils.dom.createSvgElement`:
+- When constructing an SVG element, pass your class to
+  `Blockly.utils.dom.createSvgElement`:
 
-    ```js
-    this.svgRoot = Blockly.utils.dom.createSvgElement(Svg.G, {'class': 'myCustomComponent'});
-    ```
+  ```js
+  this.svgRoot = Blockly.utils.dom.createSvgElement(Svg.G, {
+    class: 'myCustomComponent',
+  });
+  ```
 
-*   When constructing an HTML element, use `Blockly.utils.dom.addClass`:
+- When constructing an HTML element, use `Blockly.utils.dom.addClass`:
 
-    ```js
-    const myDiv = document.createElement('div');
-    Blockly.utils.dom.addClass(myDiv, 'myInformation');
-    ```
+  ```js
+  const myDiv = document.createElement('div');
+  Blockly.utils.dom.addClass(myDiv, 'myInformation');
+  ```
 
 To add or remove classes after construction, use `Blockly.utils.dom.addClass` or
 `Blockly.utils.dom.removeClass`.
@@ -193,7 +197,9 @@ attributes**) or in CSS rules. Thus, all of the following do the same thing.
 
 ```css
 /* External CSS file.*/
-circle {fill:red;}
+circle {
+  fill: red;
+}
 ```
 
 ```svg
@@ -204,14 +210,14 @@ circle {fill:red;}
 The list of SVG styling properties is related to but different from the list of
 CSS properties:
 
-*   **Same concept, same name.** For example, both SVG and CSS use `direction`
-    to specify whether text is LTR or RTL.
-*   **Same concept, different name.** For example, SVG uses `fill` to specify
-    fill color; CSS uses `background-color`.
-*   **CSS only.** CSS has many properties that are not in SVG, such as `margin`
-    and `padding`.
-*   **SVG only.** SVG has a few properties that are not in CSS, such as `x` and
-    `y`.
+- **Same concept, same name.** For example, both SVG and CSS use `direction`
+  to specify whether text is LTR or RTL.
+- **Same concept, different name.** For example, SVG uses `fill` to specify
+  fill color; CSS uses `background-color`.
+- **CSS only.** CSS has many properties that are not in SVG, such as `margin`
+  and `padding`.
+- **SVG only.** SVG has a few properties that are not in CSS, such as `x` and
+  `y`.
 
 Thus, if you're styling an SVG element, use [SVG styling
 properties](https://developer.mozilla.org/en-US/docs/Web/SVG/Reference/Attribute#presentation_attributes).
@@ -237,25 +243,24 @@ these steps and stop when only one rule remains:
     have an `!important` annotation.
 1.  Choose the rules with the highest
     [specificity](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_cascade/Specificity).
-
-    *   [SVG presentation attributes](#svg-style) have a specificity of zero.
-    *   Rules in a `<style>` tag or external stylesheet have their specificity
-        calculated normally.
-    *   Inline styles (styles set by a `style` attribute) have a specificity
-        higher than any selector.
+    - [SVG presentation attributes](#svg-style) have a specificity of zero.
+    - Rules in a `<style>` tag or external stylesheet have their specificity
+      calculated normally.
+    - Inline styles (styles set by a `style` attribute) have a specificity
+      higher than any selector.
 
 1.  Choose the rule that appears last in the document.
 1.  If no rule applies, inherit the property's value from the element's parent.
 
 This algorithm does not consider the following parts of the cascade:
 
-*   The [`transition`](https://developer.mozilla.org/en-US/docs/Web/CSS/transition)
-    property, which has the highest priority. Blockly uses a few of these.
-*   The [`@media`](https://developer.mozilla.org/en-US/docs/Web/CSS/@media)
-    at-rule. Blockly uses one of these.
-*   Rules specified by the browser or user.
-*   The `@scope` and `@layer` at-rules and the `animation` property, which are
-    not used by Blockly.
+- The [`transition`](https://developer.mozilla.org/en-US/docs/Web/CSS/transition)
+  property, which has the highest priority. Blockly uses a few of these.
+- The [`@media`](https://developer.mozilla.org/en-US/docs/Web/CSS/@media)
+  at-rule. Blockly uses one of these.
+- Rules specified by the browser or user.
+- The `@scope` and `@layer` at-rules and the `animation` property, which are
+  not used by Blockly.
 
 ## CSS rules
 
@@ -278,15 +283,15 @@ than rules with the same specificity that occur later in the page.
 When Blockly is injected, it adds a `<style>` tag as a child of the `<head>`
 tag. The rules in this tag come from:
 
-*   The `Blockly.css` namespace. To see these rules, open
-    [core/css.ts](https://github.com/RaspberryPiFoundation/blockly/blob/main/core/css.ts) and
-    search for `let content`.
-*   Individual components, which call `Blockly.css.register` to add
-    component-specific CSS rules. Because `css.register` adds these rules to the
-    end of the `content` string, they have higher priority than rules with the
-    same specificity that were added earlier. To see these rules, see the [calls
-    to
-    `Blockly.css.register`](https://github.com/search?q=repo%3ARaspberryPiFoundation%2Fblockly+css.register+path%3Acore&type=code).
+- The `Blockly.css` namespace. To see these rules, open
+  [core/css.ts](https://github.com/RaspberryPiFoundation/blockly/blob/main/core/css.ts) and
+  search for `let content`.
+- Individual components, which call `Blockly.css.register` to add
+  component-specific CSS rules. Because `css.register` adds these rules to the
+  end of the `content` string, they have higher priority than rules with the
+  same specificity that were added earlier. To see these rules, see the [calls
+  to
+  `Blockly.css.register`](https://github.com/search?q=repo%3ARaspberryPiFoundation%2Fblockly+css.register+path%3Acore&type=code).
 
 If you do not want to use these rules, set the [`css` configuration
 option](/guides/configure/web/configuration_struct#the-options-dictionary)
@@ -323,41 +328,41 @@ rules. Blockly generally creates them in [calls to
 
 You can add your own CSS rules using the same methods as Blockly:
 
-*   Call `Blockly.css.register` before injecting Blockly. Your rules will be
-    added after Blockly's and have a higher priority than Blockly rules with the
-    same specificity.
-*   Add a `<style>` tag or link to an external style sheet as a later child of
-    the `<head>` tag. Because Blockly adds its rules as the first two children
-    of the `<head>` tag, your rules will have a higher priority than Blockly
-    rules with the same specificity.
-*   Use inline styles to add styles to elements in a custom component. These
-    rules will have a higher specificity than any rules with a selector.
-*   Use presentation attributes on SVG elements in a custom component. These
-    rules will have a lower specificity than any rules with a selector.
+- Call `Blockly.css.register` before injecting Blockly. Your rules will be
+  added after Blockly's and have a higher priority than Blockly rules with the
+  same specificity.
+- Add a `<style>` tag or link to an external style sheet as a later child of
+  the `<head>` tag. Because Blockly adds its rules as the first two children
+  of the `<head>` tag, your rules will have a higher priority than Blockly
+  rules with the same specificity.
+- Use inline styles to add styles to elements in a custom component. These
+  rules will have a higher specificity than any rules with a selector.
+- Use presentation attributes on SVG elements in a custom component. These
+  rules will have a lower specificity than any rules with a selector.
 
 ### Troubleshooting
 
 If your CSS is not working, here are some possible causes:
 
-*   You are using CSS properties on an SVG element or SVG styling properties on
-    an HTML element. See [SVG styling properties versus CSS
-    properties](#svg-style).
+- You are using CSS properties on an SVG element or SVG styling properties on
+  an HTML element. See [SVG styling properties versus CSS
+  properties](#svg-style).
 
-*   Your rule has a lower priority than another rule. This is usually due to a
-    lower [specificity](#simplified). Possible ways to fix this are:
-    *   Use a class selector instead of a type (element) selector.
-    *   Use multiple selectors.
-    *   If possible, [add a custom class](#custom-css-classes) to your target
-        element and use this class in your rule.
-    *   As a last resort, add an `!important` annotation to your rule. This is
-        your only choice if a competing rule is specified using an inline style
-        (`style` attribute).
+- Your rule has a lower priority than another rule. This is usually due to a
+  lower [specificity](#simplified). Possible ways to fix this are:
+  - Use a class selector instead of a type (element) selector.
+  - Use multiple selectors.
+  - If possible, [add a custom class](#custom-css-classes) to your target
+    element and use this class in your rule.
+  - As a last resort, add an `!important` annotation to your rule. This is
+    your only choice if a competing rule is specified using an inline style
+    (`style` attribute).
 
-*   Your rule has the same specificity as another rule, but occurs earlier in
-    the page. If you cannot increase the specificity of your rule, move it later
-    in the page.
+- Your rule has the same specificity as another rule, but occurs earlier in
+  the page. If you cannot increase the specificity of your rule, move it later
+  in the page.
 
 There are two types of CSS rules you cannot override:
 
-*   Properties that are set inside a `transition` rule.
-*   `!important` rules specified by the browser.
+- Properties that are set inside a `transition` rule.
+- `!important` rules specified by the browser.

@@ -19,7 +19,9 @@ export function CodelabCard({ href, title, description, children, level }) {
       </div>
       <div className={styles.cardFooter}>
         <h3 className={styles.cardTitle}>{title}</h3>
-        <Link href={href}><span className={styles.cardButton}>Start</span></Link>
+        <Link href={href}>
+          <span className={styles.cardButton}>Start</span>
+        </Link>
       </div>
     </div>
   );

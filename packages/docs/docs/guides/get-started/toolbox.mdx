@@ -30,18 +30,18 @@ const toolbox = {
   contents: [
     {
       kind: 'block',
-      type: 'controls_if'
+      type: 'controls_if',
     },
     {
       kind: 'block',
-      type: 'controls_whileUntil'
-    }
+      type: 'controls_whileUntil',
+    },
     // You can add more blocks to this array.
-  ]
+  ],
 };
 
 // The toolbox gets passed to the configuration options during injection.
-const workspace = Blockly.inject('blocklyDiv', {toolbox: toolbox});
+const workspace = Blockly.inject('blocklyDiv', { toolbox: toolbox });
 ```
 
 ![Toolbox with if-do and repeat-while

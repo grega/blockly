@@ -12,7 +12,11 @@ A workspace comment is a graphical element that you can enter text into. Usually
 it's used to document things about your code, just like comments in a text-based
 programming language.
 
-<Image alt="Workspace comment" src="/images/workspace-comments/workspace-comment.png" width={150} />
+<Image
+  alt="Workspace comment"
+  src="/images/workspace-comments/workspace-comment.png"
+  width={150}
+/>
 
 :::note
 workspace comments cannot be added to the [flyout][flyout].
@@ -35,7 +39,6 @@ You could also create your own context menu options, or add another way for the
 user to add workspace comments. For more information about context menu options,
 see [Context menus][context-menus].
 
-
 ## Visually customize comments
 
 There are several ways for you to customize the look of workspace comments.
@@ -56,24 +59,28 @@ the colour of the comment top bar and the border of the comment.
 }
 ```
 
-<Image alt="A workspace comment with the colours changed" src="/images/workspace-comments/coloured-comment.png" width={150} />
+<Image
+  alt="A workspace comment with the colours changed"
+  src="/images/workspace-comments/coloured-comment.png"
+  width={150}
+/>
 
 ### CSS classes
 
 There are different css classes assigned to different elements of the comment
 view, which allow you to modify the elements' styling.
 
-| CSS class(es)                                | Image                                                                                                                 |
-| -------------------------------------------- | --------------------------------------------------------------------------------------------------------------------- |
-| `blocklyComment`, `blocklyDraggable`         | <Image alt="Workspace comment" src="/images/workspace-comments/workspace-comment-outline.png" width={150} />                                                  |
-| `blocklySelected`, `blocklyCommentHighlight` | <Image alt="Selected comment" src="/images/workspace-comments/selected-comment.png" width={150} /> <Image alt="Selected collapsed comment" src="/images/workspace-comments/selected-collapsed.png" width={150} /> |                                                                                                                     :
-| `blocklyCollapsed`                           | <Image alt="Collapsed workspace comment" src="/images/workspace-comments/collapsed-outline.png" width={150} />                                                |
-| `blocklyCommentTopbar`                       | <Image alt="Workspace comment topbar" src="/images/workspace-comments/top-bar-outline.png" width={150} />                                                     |
-| `blocklyFoldoutIcon`                         | <Image alt="Foldout icon" src="/images/workspace-comments/foldout-icon-outline.png" width={150} />                                                            |
-| `blocklyCommentPreview`, `blocklyText`       | <Image alt="Comment preview" src="/images/workspace-comments/preview-text-outline.png" width={150} />                                                         |
-| `blocklyDeleteIcon`                          | <Image alt="Delete icon" src="/images/workspace-comments/delete-icon-outline.png" width={150} />                                                              |
-| `blocklyText`                                | <Image alt="Text" src="/images/workspace-comments/text-input-outline.png" width={150} />                                                                            |
-| `blocklyResizeHandle`                        | <Image alt="Resize icon" src="/images/workspace-comments/resize-handle-outline.png" width={150} />                                                            |
+| CSS class(es)                                | Image                                                                                                                                                                                                             |
+| -------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --- |
+| `blocklyComment`, `blocklyDraggable`         | <Image alt="Workspace comment" src="/images/workspace-comments/workspace-comment-outline.png" width={150} />                                                                                                      |
+| `blocklySelected`, `blocklyCommentHighlight` | <Image alt="Selected comment" src="/images/workspace-comments/selected-comment.png" width={150} /> <Image alt="Selected collapsed comment" src="/images/workspace-comments/selected-collapsed.png" width={150} /> | :   |
+| `blocklyCollapsed`                           | <Image alt="Collapsed workspace comment" src="/images/workspace-comments/collapsed-outline.png" width={150} />                                                                                                    |
+| `blocklyCommentTopbar`                       | <Image alt="Workspace comment topbar" src="/images/workspace-comments/top-bar-outline.png" width={150} />                                                                                                         |
+| `blocklyFoldoutIcon`                         | <Image alt="Foldout icon" src="/images/workspace-comments/foldout-icon-outline.png" width={150} />                                                                                                                |
+| `blocklyCommentPreview`, `blocklyText`       | <Image alt="Comment preview" src="/images/workspace-comments/preview-text-outline.png" width={150} />                                                                                                             |
+| `blocklyDeleteIcon`                          | <Image alt="Delete icon" src="/images/workspace-comments/delete-icon-outline.png" width={150} />                                                                                                                  |
+| `blocklyText`                                | <Image alt="Text" src="/images/workspace-comments/text-input-outline.png" width={150} />                                                                                                                          |
+| `blocklyResizeHandle`                        | <Image alt="Resize icon" src="/images/workspace-comments/resize-handle-outline.png" width={150} />                                                                                                                |
 
 #### Basic CSS use
 
@@ -86,7 +93,11 @@ class:
 }
 ```
 
-<Image alt="A workspace comment with a taller top bar" src="/images/workspace-comments/tall-top-bar.png" width={150} />
+<Image
+  alt="A workspace comment with a taller top bar"
+  src="/images/workspace-comments/tall-top-bar.png"
+  width={150}
+/>
 
 #### CSS for text
 
@@ -105,9 +116,17 @@ the renderer.
 }
 ```
 
-<Image alt="A workspace comment with blue preview text" src="/images/workspace-comments/blue-preview-text.png" width={150} />
+<Image
+  alt="A workspace comment with blue preview text"
+  src="/images/workspace-comments/blue-preview-text.png"
+  width={150}
+/>
 
-<Image alt="A workspace comment with blue input text" src="/images/workspace-comments/blue-text.png" width={150} />
+<Image
+  alt="A workspace comment with blue input text"
+  src="/images/workspace-comments/blue-text.png"
+  width={150}
+/>
 
 #### CSS for selected highlights
 
@@ -142,8 +161,8 @@ are all applied to [`<image>`][svg-image-element] elements. This means that if
 you want to change the colour or shape of an icon, you can include a different
 image in your [media folder][media].
 
-| Image name          | Image                                                      |
-| ------------------- | ---------------------------------------------------------- |
+| Image name          | Image                                                                                              |
+| ------------------- | -------------------------------------------------------------------------------------------------- |
 | `foldout-icon.svg`  | <Image alt="Foldout icon" src="/images/workspace-comments/foldout-icon-outline.png" width={150} /> |
 | `delete-icon.svg`   | <Image alt="Delete icon" src="/images/workspace-comments/delete-icon-outline.png" width={150} />   |
 | `resize-handle.svg` | <Image alt="Resize icon" src="/images/workspace-comments/resize-handle-outline.png" width={150} /> |
@@ -165,7 +184,10 @@ To set the default comment size, set the static property
 `Blockly.comments.CommentView.defaultCommentSize`:
 
 ```js
-Blockly.comments.CommentView.defaultCommentSize = new Blockly.utils.Size(200, 200);
+Blockly.comments.CommentView.defaultCommentSize = new Blockly.utils.Size(
+  200,
+  200,
+);
 ```
 
 [context-menus]: /guides/configure/web/context-menus

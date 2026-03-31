@@ -102,17 +102,17 @@ The variable constructor takes in an optional variable name, an optional
 [validator](#creating-a-variable-validator), an optional array of variable
 types, and an optional default type.
 
-+   The **variable name** should be a string. This will be the name of the
-    initial variable the field holds. If it is null or undefined a unique name
-    will be generated.
-+   The **variable types** should be an array of strings. This tells the field
-    what types of variables the field can hold (i.e. what types of variables to
-    add to the dropdown). If it is null or undefined, all variable types will
-    be accepted (and added to the dropdown).
-+   The **default type** should be a string. This will be used when creating the
-    field's initial variable model. If this is defined, its should be included
-    in the variable types array. If it is null or undefined this value defaults
-    to an empty string, meaning the initial variable will be flexibly typed.
+- The **variable name** should be a string. This will be the name of the
+  initial variable the field holds. If it is null or undefined a unique name
+  will be generated.
+- The **variable types** should be an array of strings. This tells the field
+  what types of variables the field can hold (i.e. what types of variables to
+  add to the dropdown). If it is null or undefined, all variable types will
+  be accepted (and added to the dropdown).
+- The **default type** should be a string. This will be used when creating the
+  field's initial variable model. If this is defined, its should be included
+  in the variable types array. If it is null or undefined this value defaults
+  to an empty string, meaning the initial variable will be flexibly typed.
 
 → For more information on strict typing, see
 [Type Checks](/guides/create-custom-blocks/inputs/connection-checks).

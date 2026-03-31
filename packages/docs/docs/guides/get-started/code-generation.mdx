@@ -10,7 +10,7 @@ Code generation is the process of turning the blocks on a workspace into a
 string of code that can be executed.
 
 Code generation is extremely important, because it is what allows your blocks to
-actually *do* things, like evaluate arithmetic expressions, move a character
+actually _do_ things, like evaluate arithmetic expressions, move a character
 through a maze, or configure an online shop!
 
 Blockly doesn't "run" blocks directly. Instead you generate code strings, and
@@ -25,7 +25,7 @@ workspace:
 
 ```js
 // javascriptGenerator is a code generator that makes JavaScript strings.
-import {javascriptGenerator} from 'blockly/javascript';
+import { javascriptGenerator } from 'blockly/javascript';
 
 const code = javascriptGenerator.workspaceToCode(myWorkspace);
 ```
@@ -43,12 +43,12 @@ This code snippets defines a JavaScript block-code generator for a "move
 forward" block:
 
 ```js
-javascriptGenerator.forBlock['my_custom_block'] = function(block, generator) {
+javascriptGenerator.forBlock['my_custom_block'] = function (block, generator) {
   const steps = block.getFieldValue('FIELD_NAME');
   // moveForward is a function you would have to define yourself and provide
   // within your execution context.
   return `moveForward(${steps});\n`;
-}
+};
 ```
 
 For more information about how to define your block-code generators, see

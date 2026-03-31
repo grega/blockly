@@ -18,38 +18,38 @@ custom code works correctly with it.
 
 The focus system has three parts:
 
-*   The `FocusManager` is a singleton that coordinates focus across all of
-    Blockly. It is used by Blockly and by custom code to find out what component
-    has Blockly focus, as well as to move Blockly focus to a different
-    component. It also listens for DOM focus events, synchronizes Blockly focus
-    and DOM focus, and manages the CSS classes that indicate which component has
-    focus.
+- The `FocusManager` is a singleton that coordinates focus across all of
+  Blockly. It is used by Blockly and by custom code to find out what component
+  has Blockly focus, as well as to move Blockly focus to a different
+  component. It also listens for DOM focus events, synchronizes Blockly focus
+  and DOM focus, and manages the CSS classes that indicate which component has
+  focus.
 
-    The focus manager is primarily used by Blockly. It is sometimes used by
-    custom code to [interact with the focus system](#use-the-focus-manager).
+  The focus manager is primarily used by Blockly. It is sometimes used by
+  custom code to [interact with the focus system](#use-the-focus-manager).
 
-*   An `IFocusableTree` is an independent area of a Blockly editor, such as a
-    workspace or toolbox. It is composed of focusable nodes, such as blocks and
-    fields. Trees can also have subtrees. For example, a mutator workspace on a
-    block in the main workspace is a subtree of the main workspace.
+- An `IFocusableTree` is an independent area of a Blockly editor, such as a
+  workspace or toolbox. It is composed of focusable nodes, such as blocks and
+  fields. Trees can also have subtrees. For example, a mutator workspace on a
+  block in the main workspace is a subtree of the main workspace.
 
-    `IFocusableTree` is primarily used by the focus manager. Unless you write a
-    custom toolbox, you probably won't need to [implement it](#custom-classes).
+  `IFocusableTree` is primarily used by the focus manager. Unless you write a
+  custom toolbox, you probably won't need to [implement it](#custom-classes).
 
-*   An `IFocusableNode` is a Blockly component that can have focus, such as a
-    block, field, or toolbox category. Focusable nodes have a DOM element that
-    displays the node and which has DOM focus when the node has Blockly focus.
-    Note that trees are also focusable nodes. For example, you can focus on the
-    workspace as a whole.
+- An `IFocusableNode` is a Blockly component that can have focus, such as a
+  block, field, or toolbox category. Focusable nodes have a DOM element that
+  displays the node and which has DOM focus when the node has Blockly focus.
+  Note that trees are also focusable nodes. For example, you can focus on the
+  workspace as a whole.
 
-    The methods in `IFocusableNode` are primarily called by the focus manager.
+  The methods in `IFocusableNode` are primarily called by the focus manager.
 
-    `IFocusableNode` itself is used to represent the component that has focus.
-    For example, when a user selects an item on a block's context menu, the
-    block is passed to the item's callback function as an `IFocusableNode`.
+  `IFocusableNode` itself is used to represent the component that has focus.
+  For example, when a user selects an item on a block's context menu, the
+  block is passed to the item's callback function as an `IFocusableNode`.
 
-    If you write custom components, you may need to [implement
-    `IFocusableNode`](#custom-classes).
+  If you write custom components, you may need to [implement
+  `IFocusableNode`](#custom-classes).
 
 ## Types of focus
 
@@ -59,19 +59,19 @@ The focus system defines a number of different types of focus.
 
 The two main types of focus are Blockly focus and DOM focus.
 
-*   **Blockly focus** specifies which Blockly component (block, field, toolbox
-    category, etc.) has focus. It is necessary for working at the level of
-    Blockly components. For example, the keyboard navigation plugin allows users
-    to use arrow keys to move from component to component, such as from a block
-    to a field. Similarly, the context menu system builds a menu that is
-    appropriate for the current component -- that is, it builds different menus
-    for workspaces, blocks, and workspace comments.
+- **Blockly focus** specifies which Blockly component (block, field, toolbox
+  category, etc.) has focus. It is necessary for working at the level of
+  Blockly components. For example, the keyboard navigation plugin allows users
+  to use arrow keys to move from component to component, such as from a block
+  to a field. Similarly, the context menu system builds a menu that is
+  appropriate for the current component -- that is, it builds different menus
+  for workspaces, blocks, and workspace comments.
 
-*   **DOM focus** specifies which DOM element has focus. It is necessary for
-    working at the level of DOM elements. For example, [screen
-    readers](https://www.afb.org/blindness-and-low-vision/using-technology/assistive-technology-products/screen-readers)
-    present information about the element that currently has DOM focus and tabs
-    move (change focus) from DOM element to DOM element.
+- **DOM focus** specifies which DOM element has focus. It is necessary for
+  working at the level of DOM elements. For example, [screen
+  readers](https://www.afb.org/blindness-and-low-vision/using-technology/assistive-technology-products/screen-readers)
+  present information about the element that currently has DOM focus and tabs
+  move (change focus) from DOM element to DOM element.
 
 The focus manager keeps Blockly focus and DOM focus in sync, so when a node
 (Blockly component) has Blockly focus, its underlying DOM element has DOM focus
@@ -122,21 +122,21 @@ arrow:
 
 1.  The [keyboard navigation
     plugin](/guides/configure/web/keyboard-nav):
-    *   Receives a key press event.
-    *   Asks the navigation system (a part of core Blockly) to move focus to the
-        "next" component.
+    - Receives a key press event.
+    - Asks the navigation system (a part of core Blockly) to move focus to the
+      "next" component.
 1.  The navigation system:
-    *   Asks the focus manager what component has Blockly focus. The focus
-        manager returns the block as an `IFocusableNode`.
-    *   Determines that the `IFocusableNode` is a `BlockSvg` and looks at its
-        rules for navigating blocks, which state that it should move Blockly
-        focus from the block as a whole to the first field on the block.
-    *   Tells the focus manager to move Blockly focus to the first field.
+    - Asks the focus manager what component has Blockly focus. The focus
+      manager returns the block as an `IFocusableNode`.
+    - Determines that the `IFocusableNode` is a `BlockSvg` and looks at its
+      rules for navigating blocks, which state that it should move Blockly
+      focus from the block as a whole to the first field on the block.
+    - Tells the focus manager to move Blockly focus to the first field.
 1.  The focus manager:
-    *   Updates its state to set Blockly focus on the first field.
-    *   Sets DOM focus on the field's DOM element.
-    *   Moves the highlight class from the block's element to the field's
-        element.
+    - Updates its state to set Blockly focus on the first field.
+    - Sets DOM focus on the field's DOM element.
+    - Moves the highlight class from the block's element to the field's
+      element.
 
 ### Move focus with the mouse
 
@@ -156,20 +156,20 @@ manager:
 
 Here are some other examples:
 
-*   When a user drags a block from the toolbox to the workspace, the mouse event
-    handler creates a new block and calls the focus manager to set Blockly focus
-    on that block.
+- When a user drags a block from the toolbox to the workspace, the mouse event
+  handler creates a new block and calls the focus manager to set Blockly focus
+  on that block.
 
-*   When a block is deleted, its `dispose` method calls the focus manager to
-    move focus to the block's parent.
+- When a block is deleted, its `dispose` method calls the focus manager to
+  move focus to the block's parent.
 
-*   [Keyboard shortcuts](/guides/configure/web/keyboard-shortcuts) use
-    `IFocusableNode` to identify the Blockly component to which the shortcut
-    applies.
+- [Keyboard shortcuts](/guides/configure/web/keyboard-shortcuts) use
+  `IFocusableNode` to identify the Blockly component to which the shortcut
+  applies.
 
-*   [Context menus](/guides/configure/web/context-menus) use
-    `IFocusableNode` to identify the Blockly component on which the menu was
-    invoked.
+- [Context menus](/guides/configure/web/context-menus) use
+  `IFocusableNode` to identify the Blockly component on which the menu was
+  invoked.
 
 ## Customizations and the focus system
 
@@ -191,57 +191,57 @@ the case.
 
 Some classes clearly need to implement focus interfaces. These include:
 
-*   A class that implements a custom toolbox. This class needs to implement
-    `IFocusableTree` and `IFocusableNode`.
+- A class that implements a custom toolbox. This class needs to implement
+  `IFocusableTree` and `IFocusableNode`.
 
-*   Classes that create a visible component (such as a field or icon) that users
-    can navigate to. These classes need to implement `IFocusableNode`.
+- Classes that create a visible component (such as a field or icon) that users
+  can navigate to. These classes need to implement `IFocusableNode`.
 
 Some classes need to implement `IFocusableNode` even though they do not create a
 visible component or they create a visible component that users cannot navigate
 to. These include:
 
-*   Classes that implement an interface that extends `IFocusableNode`.
+- Classes that implement an interface that extends `IFocusableNode`.
 
-    For example, the move icon in the keyboard navigation plugin displays a
-    four-way arrow that indicates that the block can be moved with the arrow
-    keys. The icon itself is not visible (the four-way arrow is a bubble) and
-    users cannot navigate to it. However, the icon must implement
-    `IFocusableNode` because icons implement`IIcon` and `IIcon` extends
-    `IFocusableNode`.
+  For example, the move icon in the keyboard navigation plugin displays a
+  four-way arrow that indicates that the block can be moved with the arrow
+  keys. The icon itself is not visible (the four-way arrow is a bubble) and
+  users cannot navigate to it. However, the icon must implement
+  `IFocusableNode` because icons implement`IIcon` and `IIcon` extends
+  `IFocusableNode`.
 
-*   Classes used in an API that requires an `IFocusableNode`.
+- Classes used in an API that requires an `IFocusableNode`.
 
-    For example, the `FlyoutSeparator` class creates a gap between two items in
-    a flyout. It does not create any DOM elements, so it doesn't have a visible
-    component and users can't navigate to it. However, it must implement
-    `IFocusableNode` because it is stored in a `FlyoutItem` and the `FlyoutItem`
-    constructor requires an `IFocusableNode`.
+  For example, the `FlyoutSeparator` class creates a gap between two items in
+  a flyout. It does not create any DOM elements, so it doesn't have a visible
+  component and users can't navigate to it. However, it must implement
+  `IFocusableNode` because it is stored in a `FlyoutItem` and the `FlyoutItem`
+  constructor requires an `IFocusableNode`.
 
-*   Classes that extend a class that implements `IFocusableNode`.
+- Classes that extend a class that implements `IFocusableNode`.
 
-    For example, `ToolboxSeparator` extends `ToolboxItem`, which implements
-    `IFocusableNode`. Although toolbox separators have a visible component,
-    users cannot navigate to them because they cannot be acted on and have no
-    useful content.
+  For example, `ToolboxSeparator` extends `ToolboxItem`, which implements
+  `IFocusableNode`. Although toolbox separators have a visible component,
+  users cannot navigate to them because they cannot be acted on and have no
+  useful content.
 
 Other classes create visible components that the user can navigate to, but do
 not need to implement `IFocusableNode`. These include:
 
-*   Classes that create a visible component that manages its own focus, such as
-    a field editor or a dialog. (Note that such classes do need to [take
-    ephemeral focus](#ephemeral-focus) when they start and return it when they
-    end. Using `WidgetDiv` or `DropDownDiv` will handle this for you.)
+- Classes that create a visible component that manages its own focus, such as
+  a field editor or a dialog. (Note that such classes do need to [take
+  ephemeral focus](#ephemeral-focus) when they start and return it when they
+  end. Using `WidgetDiv` or `DropDownDiv` will handle this for you.)
 
 Finally, some classes do not interact with the focus system and do not need to
 implement `IFocusableTree` or `IFocusableNode`. These include:
 
-*   Classes that create a visible component that users cannot navigate to or act
-    on and which contains no information that a screen reader might use. For
-    example, a purely decorative background in a game.
+- Classes that create a visible component that users cannot navigate to or act
+  on and which contains no information that a screen reader might use. For
+  example, a purely decorative background in a game.
 
-*   Classes entirely unrelated to the focus system, such as classes that
-    implement `IMetricsManager` or `IVariableMap`.
+- Classes entirely unrelated to the focus system, such as classes that
+  implement `IMetricsManager` or `IVariableMap`.
 
 If you are uncertain whether your class will interact with the focus system,
 test it with the keyboard navigation plugin. If this fails, you might need to

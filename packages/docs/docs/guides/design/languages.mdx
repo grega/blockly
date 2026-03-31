@@ -23,7 +23,7 @@ For more advanced uses of Blockly, zero-based lists are supported to make
 transitioning to text easier. For younger or more novice audiences one-based
 indexing is still recommended.
 
-*Recommendation: One is the first number.*
+_Recommendation: One is the first number._
 
 ## Support liberal naming rules
 
@@ -40,7 +40,7 @@ Also, Blockly does not require that variables and functions conform to the
 typical `[_A-Za-z][_A-Za-z0-9]*` scheme. If one wants to name a variable `List
 of zip codes` or `רשימת מיקודים` that is perfectly alright.
 
-*Recommendation: Ignore case, allow any names.*
+_Recommendation: Ignore case, allow any names._
 
 ## Make all variables global
 
@@ -50,7 +50,7 @@ down-side of global variables is that recursion is trickier (one has to push and
 pop variables onto a list), but that's a programming technique that's beyond the
 scope of Blockly's target users.
 
-*Recommendation: Scope is out of scope, leave it for later.*
+_Recommendation: Scope is out of scope, leave it for later._
 
 ## Consider how to handle optional return values
 
@@ -60,8 +60,8 @@ function. Pop might be called to get and remove the last element, or it might be
 called to just remove the last element with the return value being ignored.
 
 ```js
-var last = stack.pop();  // Get and remove last element.
-stack.pop();  // Just remove last element.
+var last = stack.pop(); // Get and remove last element.
+stack.pop(); // Just remove last element.
 ```
 
 Block-based languages are generally not good at ignoring a return value. A value
@@ -98,8 +98,8 @@ that users simply assign the value to a throwaway variable.
 uses a pipe block to "eat" the value and the second sets the value of a variable
 named "junk".](/images/return2.png)
 
-*Recommendation: Each strategy has pros and cons, choose what's right for your
-users.*
+_Recommendation: Each strategy has pros and cons, choose what's right for your
+users._
 
 ## Generate readable code
 
@@ -111,7 +111,7 @@ verbose code templates all get in the way of producing elegant code. Generated
 code should include comments and should conform to [Google's style
 guides](https://github.com/google/styleguide/blob/gh-pages/README.md).
 
-*Recommendation: Be proud of your generated code. Show it to the user.*
+_Recommendation: Be proud of your generated code. Show it to the user._
 
 ## Accept differences between languages
 
@@ -124,5 +124,5 @@ string is false, whereas in Lua it is true. Defining a single pattern of
 behaviour for Blockly's code to execute regardless of the target language would
 result in unmaintainable code that looks like it came out of the GWT compiler.
 
-*Recommendation: Blockly is not a language, allow the existing language to
-affect behaviour.*
+_Recommendation: Blockly is not a language, allow the existing language to
+affect behaviour._

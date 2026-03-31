@@ -35,14 +35,14 @@ variable name. To get an actual variable name, call `getVariableName` in the
 code generator. This returns a name that is both unique and legal. Among other
 things, `getVariableName`:
 
-*   Converts the non-ASCII characters to ASCII. This is necessary because users
-    can enter variable names in their own language. For example, it converts
-    "`متغير`" to "`_D9_85_D8_AA_D8_BA_D9_8A_D8_B1`".
-*   Ensures variable names follow the rules set forth by programming languages.
-    For example, it converts spaces to underscores and adds the prefix `my_` to
-    variable names that start with a digit.
-*   Resolves conflicts with reserved words or other variable or function names.
-    For example, it converts `for` to `for2`.
+- Converts the non-ASCII characters to ASCII. This is necessary because users
+  can enter variable names in their own language. For example, it converts
+  "`متغير`" to "`_D9_85_D8_AA_D8_BA_D9_8A_D8_B1`".
+- Ensures variable names follow the rules set forth by programming languages.
+  For example, it converts spaces to underscores and adds the prefix `my_` to
+  variable names that start with a digit.
+- Resolves conflicts with reserved words or other variable or function names.
+  For example, it converts `for` to `for2`.
 
 ```js
 const identifier = generator.getVariableName(block.getFieldValue('VAR'));

@@ -14,19 +14,18 @@ or inputs are added) the shape of the block gets updated to match.
 
 You need to interact with this system if you are:
 
-*   Adding methods to Blockly that modify the shape of the block.
-*   Adding methods to Blockly that rely on updated size or positioning
-    information about a block.
+- Adding methods to Blockly that modify the shape of the block.
+- Adding methods to Blockly that rely on updated size or positioning
+  information about a block.
 
 ## How it works
 
 1.  **Automatically queue.** Whenever a block gets modified, Blockly "queues" a
     render for that block. Some examples of modifications that queue a render
     are:
-
-    *   Setting a field's value
-    *   Adding or removing an input
-    *   Connecting or disconnecting a child block
+    - Setting a field's value
+    - Adding or removing an input
+    - Connecting or disconnecting a child block
 
 2.  **Create a set.** When a block gets queued, the render management system
     adds it, and all of its parent blocks, to a set of blocks that need to be
@@ -34,7 +33,7 @@ You need to interact with this system if you are:
 
 3.  **Request a callback.** Then the render management system requests a
     callback using [`requestAnimationFrame`][requestFrame]. This callback gets
-    called by the browser *right* before the current frame is drawn.
+    called by the browser _right_ before the current frame is drawn.
 
 4.  **Rerender the set (as a tree).** When the `requestAnimationFrame` callback
     gets called, the render management system renders every block in the set
@@ -44,7 +43,7 @@ You need to interact with this system if you are:
 
 :::note
 modifications that only affect the color of the block and not its shape
-(e.g. disabling the block) *don't* queue a render. The colors are updated
+(e.g. disabling the block) _don't_ queue a render. The colors are updated
 independently using `BlockSvg.prototype.applyColour`.
 :::
 
@@ -93,7 +92,7 @@ function async myNewMethod() {
 ### Trigger queued renders immediately
 
 If you are adding a new method to Blockly that requires having updated sizing or
-positioning information about a block, *and* you cannot wait until the next
+positioning information about a block, _and_ you cannot wait until the next
 frame for any renders to complete, you can call
 `renderManagement.triggerQueuedRenders` to force any queued renders to happen
 immediately.

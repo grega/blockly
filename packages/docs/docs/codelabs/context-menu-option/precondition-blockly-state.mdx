@@ -13,15 +13,14 @@ Disabling your context menu options half of the time is not useful, but you may 
 function registerHelpItem() {
   const helpItem = {
     displayText: 'Help! There are no blocks',
-    preconditionFn: function(scope) {
+    preconditionFn: function (scope) {
       if (!(scope.focusedNode instanceof Blockly.WorkspaceSvg)) return 'hidden';
       if (!scope.focusedNode.getTopBlocks().length) {
         return 'enabled';
       }
       return 'hidden';
     },
-    callback: function(scope) {
-    },
+    callback: function (scope) {},
     id: 'help_no_blocks',
     weight: 100,
   };

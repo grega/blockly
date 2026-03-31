@@ -47,91 +47,100 @@ properties can be defined in either hue or hex values.
 
 A block style is made up of four fields:
 
--   `colourPrimary` (required) - The background colour of the block.
--   `colourSecondary` (optional) - The background colour if the block is a
-    shadow block.
--   `colourTertiary` (optional) - The border or highlight colour of the block.
--   `hat` (optional) - Adds a hat to a block, if the value is set to `cap`.
-    Learn more about
-    [hats](/guides/design/applications#event-driven-program).
+- `colourPrimary` (required) - The background colour of the block.
+- `colourSecondary` (optional) - The background colour if the block is a
+  shadow block.
+- `colourTertiary` (optional) - The border or highlight colour of the block.
+- `hat` (optional) - Adds a hat to a block, if the value is set to `cap`.
+  Learn more about
+  [hats](/guides/design/applications#event-driven-program).
 
-<Image alt="Block with arrows pointing to primary, secondary and tertiary colour" src="/images/ColourExplanation.png" srcDark="/images/ColourExplanation-dark.png" width={450} />
+<Image
+  alt="Block with arrows pointing to primary, secondary and tertiary colour"
+  src="/images/ColourExplanation.png"
+  srcDark="/images/ColourExplanation-dark.png"
+  width={450}
+/>
 
 ```js
 const listBlocks = {
-   'colourPrimary': '#4a148c',
-   'colourSecondary':'#AD7BE9',
-   'colourTertiary':'#CDB6E9',
-   'hat': 'cap'
-}
+  colourPrimary: '#4a148c',
+  colourSecondary: '#AD7BE9',
+  colourTertiary: '#CDB6E9',
+  hat: 'cap',
+};
 ```
 
 A theme will include a mapping of block style name to block style object:
 
 ```js
 const blockStyles = {
-   'list_blocks': {
-      'colourPrimary': '#4a148c',
-      'colourSecondary':'#AD7BE9',
-      'colourTertiary':'#CDB6E9'
-   },
-   'logic_blocks': {
-      'colourPrimary': '#01579b',
-      'colourSecondary':'#64C7FF',
-      'colourTertiary':'#C5EAFF'
-   }
-}
+  list_blocks: {
+    colourPrimary: '#4a148c',
+    colourSecondary: '#AD7BE9',
+    colourTertiary: '#CDB6E9',
+  },
+  logic_blocks: {
+    colourPrimary: '#01579b',
+    colourSecondary: '#64C7FF',
+    colourTertiary: '#C5EAFF',
+  },
+};
 ```
 
 ### Category Style
 
 A category style only holds a colour property.
 
--   Colour (required) - The colour of the category in the toolbox. Usually these
-    colours should be the same as the `colourPrimary` on the majority of blocks
-    in the category. This makes it easy for users to tell which blocks belong in
-    a given category.
+- Colour (required) - The colour of the category in the toolbox. Usually these
+  colours should be the same as the `colourPrimary` on the majority of blocks
+  in the category. This makes it easy for users to tell which blocks belong in
+  a given category.
 
-<Image alt="Screenshot of toolbox with different category colours" src="/images/CategoryColours.png" srcDark="/images/CategoryColours-dark.png" />
+<Image
+  alt="Screenshot of toolbox with different category colours"
+  src="/images/CategoryColours.png"
+  srcDark="/images/CategoryColours-dark.png"
+/>
 
 ```js
 const mathCategory = {
-   'colour':'290'
-}
+  colour: '290',
+};
 ```
 
 A theme will include a mapping of category name to category style object:
 
 ```js
 const categoryStyles = {
-   'list_category': {
-      'colour': '#4a148c'
-   },
-   'logic_category': {
-      'colour': '#01579b',
-   }
-}
+  list_category: {
+    colour: '#4a148c',
+  },
+  logic_category: {
+    colour: '#01579b',
+  },
+};
 ```
 
 ### Component Styles
 
 A theme can set the colour or value of the below components:
 
-*   `workspaceBackgroundColour`: The workspace background colour
-*   `toolboxBackgroundColour`: Toolbox background colour
-*   `toolboxForegroundColour`: Toolbox category text colour
-*   `flyoutBackgroundColour`: Flyout background colour
-*   `flyoutForegroundColour`: Flyout label text colour
-*   `flyoutOpacity`: Flyout opacity
-*   `scrollbarColour`: Scrollbar colour
-*   `scrollbarOpacity`: Scrollbar opacity
-*   `insertionMarkerColour`: The insertion marker colour (Does not accept colour
-    names)
-*   `insertionMarkerOpacity`: The insertion marker opacity
-*   `markerColour`: The colour of the marker displayed in keyboard navigation
-    mode
-*   `cursorColour`: The colour of the cursor displayed in keyboard navigation
-    mode
+- `workspaceBackgroundColour`: The workspace background colour
+- `toolboxBackgroundColour`: Toolbox background colour
+- `toolboxForegroundColour`: Toolbox category text colour
+- `flyoutBackgroundColour`: Flyout background colour
+- `flyoutForegroundColour`: Flyout label text colour
+- `flyoutOpacity`: Flyout opacity
+- `scrollbarColour`: Scrollbar colour
+- `scrollbarOpacity`: Scrollbar opacity
+- `insertionMarkerColour`: The insertion marker colour (Does not accept colour
+  names)
+- `insertionMarkerOpacity`: The insertion marker opacity
+- `markerColour`: The colour of the marker displayed in keyboard navigation
+  mode
+- `cursorColour`: The colour of the cursor displayed in keyboard navigation
+  mode
 
 Most other components can be changed by using the theme name in your CSS.
 However, if there is a component you would like to change that is not already a
@@ -141,9 +150,9 @@ information.
 
 ```js
 const componentStyle = {
-   'workspaceBackgroundColour': '#1e1e1e',
-   'toolboxBackgroundColour': '#333'
-}
+  workspaceBackgroundColour: '#1e1e1e',
+  toolboxBackgroundColour: '#333',
+};
 ```
 
 ### Font Styles
@@ -152,10 +161,10 @@ A font style is an object that holds the family, weight and size of a font.
 
 ```js
 const fontStyle = {
-   'family': 'Georgia, serif',
-   'weight': 'bold',
-   'size': 12
-}
+  family: 'Georgia, serif',
+  weight: 'bold',
+  size: 12,
+};
 ```
 
 ### Start Hats
@@ -242,14 +251,10 @@ your block definition:
 
 <Tabs groupId="javascript-json">
   <TabItem value="json" label="JSON" default>
-  ```js
-  "style":"logic_blocks"
-  ```
+    ```js "style":"logic_blocks" ```
   </TabItem>
   <TabItem value="javascript" label="JavaScript">
-  ```js
-  this.setStyle('logic_blocks');
-  ```
+    ```js this.setStyle('logic_blocks'); ```
   </TabItem>
 </Tabs>
 ### Set your Theme
@@ -326,12 +331,12 @@ folder.
 Blockly provides a number of themes for accessibility, specifically certain
 types of colour vision deficiency:
 
--   [High contrast](https://raspberrypifoundation.github.io/blockly-samples/plugins/theme-highcontrast/test/)
--   [Deuteranopia/Protanopia](https://raspberrypifoundation.github.io/blockly-samples/plugins/theme-deuteranopia/test/)
--   [Tritanopia](https://raspberrypifoundation.github.io/blockly-samples/plugins/theme-tritanopia/test/)
+- [High contrast](https://raspberrypifoundation.github.io/blockly-samples/plugins/theme-highcontrast/test/)
+- [Deuteranopia/Protanopia](https://raspberrypifoundation.github.io/blockly-samples/plugins/theme-deuteranopia/test/)
+- [Tritanopia](https://raspberrypifoundation.github.io/blockly-samples/plugins/theme-tritanopia/test/)
 
 We also have:
 
--   Classic theme
--   [Modern](https://raspberrypifoundation.github.io/blockly-samples/plugins/theme-modern/test/)
--   [Dark mode](https://raspberrypifoundation.github.io/blockly-samples/plugins/theme-dark/test/)
+- Classic theme
+- [Modern](https://raspberrypifoundation.github.io/blockly-samples/plugins/theme-modern/test/)
+- [Dark mode](https://raspberrypifoundation.github.io/blockly-samples/plugins/theme-dark/test/)

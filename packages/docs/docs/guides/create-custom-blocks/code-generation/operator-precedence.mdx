@@ -12,7 +12,11 @@ Blocks imply parentheses. For example, when you see the following blocks, you
 assume it means `-(5 + 2)` not `-5 + 2` because the `5` and the `2` are part of
 one block, and the `-` is part of another block.
 
-<Image alt="blocks representing -(5 + 2)" src="/images/code-generation/parentheses/negation-and-addition.png" width={200} />
+<Image
+  alt="blocks representing -(5 + 2)"
+  src="/images/code-generation/parentheses/negation-and-addition.png"
+  width={200}
+/>
 
 But if you put parentheses around every block, it makes the code much less
 readable. Compare `(((5) * (2)) + (3))` with `5 * 2 + 3`. Both of these
@@ -47,7 +51,11 @@ For example, in the following blocks there is a unary negation operator and an
 addition operator. The unary negation has a stronger precedence than the
 addition operator.
 
-<Image alt="negate-and-addition" src="/images/code-generation/parentheses/negation-and-addition.png" width={200} />
+<Image
+  alt="negate-and-addition"
+  src="/images/code-generation/parentheses/negation-and-addition.png"
+  width={200}
+/>
 
 So if you don't add parentheses you get `-5 + 2`, and the `-` is evaluated
 before the `+`, which is doesn't match the blocks.
@@ -61,31 +69,39 @@ tuple specifies the precedence of the inner operator.
 
 Here is an example for a block that includes two operators:
 
-<Image alt="A block with a unary negation operator, and an addition operator, and a child block." src="/images/code-generation/parentheses/negate-plus-two-with-child.png" width={150} />
+<Image
+  alt="A block with a unary negation operator, and an addition operator, and a child block."
+  src="/images/code-generation/parentheses/negate-plus-two-with-child.png"
+  width={150}
+/>
 
 ```js
-import {javascriptGenerator, Order} from 'blockly/javascript';
+import { javascriptGenerator, Order } from 'blockly/javascript';
 
-javascriptGenerator.forBlock['negate_plus_two'] = function(block, generator) {
+javascriptGenerator.forBlock['negate_plus_two'] = function (block, generator) {
   // valueToCode takes in the precedence of the outer operator.
   const innerCode = generator.valueToCode(block, 'INNER', Order.UNARY_NEGATION);
   const code = `-${innerCode} + 2`;
   // The return tuple specifies the precedence of the inner operator.
   return [code, Order.ADDITION];
-}
+};
 ```
 
 ### valueToCode precedence
 
 When you call `valueToCode` to generate the code of an inner block, you pass it
-the precedence of the *strongest operator* acting on the code of the inner
+the precedence of the _strongest operator_ acting on the code of the inner
 block. This is the operator the inner block's code needs to be protected from.
 
 For example, in the following blocks both the unary negation operator and the
 addition operator are acting on the code of the inner block. The unary negation
 is stronger, so that is the precedence you should pass to `valueToCode`.
 
-<Image alt="A block with a unary negation operator, and an addition operator, and a child block." src="/images/code-generation/parentheses/negate-plus-two-with-child.png" width={150} />
+<Image
+  alt="A block with a unary negation operator, and an addition operator, and a child block."
+  src="/images/code-generation/parentheses/negate-plus-two-with-child.png"
+  width={150}
+/>
 
 ```js
 // The - is the strongest operator acting on the inner code.
@@ -96,14 +112,18 @@ const code = `-${innerCode} + 2`;
 ### Return precedence
 
 When you return a precedence from your block-code generator, return the
-precedence of the *weakest operator* within the code of the block. This is the
+precedence of the _weakest operator_ within the code of the block. This is the
 operator that needs protecting.
 
 For example, the following block contains both a unary negation operator and an
 addition operator. The addition is weaker, so that is the precedence you should
 return from the block-code generator.
 
-<Image alt="A block with a unary negation operator, and an addition operator, and no child block" src="/images/code-generation/parentheses/negate-plus-two.png" width={150} />
+<Image
+  alt="A block with a unary negation operator, and an addition operator, and no child block"
+  src="/images/code-generation/parentheses/negate-plus-two.png"
+  width={150}
+/>
 
 ```js
 const code = `-${innerCode} + 2`;
@@ -123,11 +143,11 @@ were competitive fighters.
 
 Here is where you can find the `Order` enums for all of the built-in languages:
 
-*   [Dart order][dart-order]
-*   [JavaScript order][javascript-order]
-*   [Lua order][lua-order]
-*   [PHP order][php-order]
-*   [Python order][python-order]
+- [Dart order][dart-order]
+- [JavaScript order][javascript-order]
+- [Lua order][lua-order]
+- [PHP order][php-order]
+- [Python order][python-order]
 
 ### Special precedences
 
@@ -137,17 +157,17 @@ precedences, `Order.ATOMIC` and `Order.NONE`.
 
 `Order.ATOMIC` is the strongest precedence. It is used when:
 
-*   You want to [ensure code is always parenthesized](#generate-correct-output),
-    so you pass it to `valueToCode`.
-*   Your block doesn't include any operators, so you return it from your
-    block-code generator.
+- You want to [ensure code is always parenthesized](#generate-correct-output),
+  so you pass it to `valueToCode`.
+- Your block doesn't include any operators, so you return it from your
+  block-code generator.
 
 `Order.NONE` is the weakest precedence. It is used when:
 
-*   You want to [ensure code is always parenthesized](#generate-correct-output),
-    so you return it from your block-code generator.
-*   There are no operators acting on an inner block, so you pass it to
-    `valueToCode`.
+- You want to [ensure code is always parenthesized](#generate-correct-output),
+  so you return it from your block-code generator.
+- There are no operators acting on an inner block, so you pass it to
+  `valueToCode`.
 
 [negate-and-addition]: /images/code-generation/parentheses/negation-and-addition.png
 [negate-plus-two-with-child]: /images/code-generation/parentheses/negate-plus-two-with-child.png

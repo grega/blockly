@@ -22,7 +22,9 @@ Next, you need to generate the code out of that workspace, which you can do with
 The user's code will consist of many `MusicMaker.queueSound` calls. At the end of our generated script, add a call to `MusicMaker.play` to play all the sounds added to the queue:
 
 ```js
-let code = javascript.javascriptGenerator.workspaceToCode(Blockly.getMainWorkspace());
+let code = javascript.javascriptGenerator.workspaceToCode(
+  Blockly.getMainWorkspace(),
+);
 code += 'MusicMaker.play();';
 ```
 
@@ -43,7 +45,9 @@ The end result should look like this:
 ```js
 function handlePlay(event) {
   loadWorkspace(event.target);
-  let code = javascript.javascriptGenerator.workspaceToCode(Blockly.getMainWorkspace());
+  let code = javascript.javascriptGenerator.workspaceToCode(
+    Blockly.getMainWorkspace(),
+  );
   code += 'MusicMaker.play();';
   try {
     eval(code);
@@ -54,12 +58,16 @@ function handlePlay(event) {
 ```
 
 ### A note on eval
+
 Executing scripts with eval is not always the safest option - we use it here for simplicity. If you intend to run the user's blocks in production, check out the <a href="https://github.com/NeilFraser/JS-Interpreter">JS Interpreter project</a>. This project is separate from Blockly, but was specifically written for Blockly.
 
 ### Test it
 
 Run the app and try it out! Edit one of the buttons to play a D4 sound 3 times:
 
-<CodelabImage> ![image](../../../static/images/codelabs/getting-started/d4_three_times.png) </CodelabImage>
+<CodelabImage>
+  {' '}
+  ![image](../../../static/images/codelabs/getting-started/d4_three_times.png){' '}
+</CodelabImage>
 
 Save and exit the edit mode. Now if you tap this button, you should hear the D4 sound played 3 times.

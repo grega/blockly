@@ -7,9 +7,10 @@ description: How to define and call a language generator.
 
 ## 3. The basics
 
-A *language generator* defines the basic properties of a language, such as how indentation works. *Block generators* define how individual blocks are turned into code, and must be defined for every block used.
+A _language generator_ defines the basic properties of a language, such as how indentation works. _Block generators_ define how individual blocks are turned into code, and must be defined for every block used.
 
 A language generator has a single entry point: `workspaceToCode`. This function takes in a workspace and:
+
 - Initializes the generator and any necessary state by calling `init`.
 - Walks the list of top blocks on the workspace and calls `blockToCode` on each top block.
 - Cleans up any leftover state by calling `finish`.
@@ -33,8 +34,8 @@ Next, hook up the new generator with the sample app. First, remove the old code 
 
 ```js
 // Remove these lines!
-import {forBlock} from './generators/javascript';
-import {javascriptGenerator} from 'blockly/javascript';
+import { forBlock } from './generators/javascript';
+import { javascriptGenerator } from 'blockly/javascript';
 
 // Also remove this line! (further down)
 Object.assign(javascriptGenerator.forBlock, forBlock);
@@ -43,7 +44,7 @@ Object.assign(javascriptGenerator.forBlock, forBlock);
 Now import the new generator:
 
 ```js
-import {jsonGenerator} from './generators/json';
+import { jsonGenerator } from './generators/json';
 ```
 
 Currently, there are two panels in the app next to the workspace. One shows the generated JavaScript code, and one executes it. The one panel showing the generated Javascript code will be changed to show the generated JSON code instead. Since JSON can't be directly executed, the panel that shows the execution will be left blank. Change the `runCode` function to the following:

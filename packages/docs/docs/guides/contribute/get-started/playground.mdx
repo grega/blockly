@@ -17,9 +17,9 @@ In blockly-samples, typically only the advanced playground is used.
 
 ## Prerequisites
 
-Blockly now uses the Closure module system.  Because of the way they are loaded,
+Blockly now uses the Closure module system. Because of the way they are loaded,
 uncompiled Closure modules must be fetched from an `http:` or `https:` URL and
-cannot be fetched directly from `file:` URLs.  Consequently, to load the
+cannot be fetched directly from `file:` URLs. Consequently, to load the
 playground in uncompiled mode, you must load it from a local web server.
 
 We have created a script that starts up a local server and loads all of the code
@@ -50,22 +50,21 @@ To open the playground, run
 npm run start
 ```
 
-from the root of Blockly. Make sure there is nothing else listening on port
-8080. This command will start a server hosting the Blockly modules and
+from the root of Blockly. Make sure there is nothing else listening on port 8080. This command will start a server hosting the Blockly modules and
 automatically open your browser to the playground page. When you're ready to
 shut the playground down, end the process (ctrl-c in Mac and Linux
 environments).
 
 The playground features:
 
-*   All code is uncompressed for rapid development.
-*   All the default blocks (except for some deprecated ones).
-*   All the language generators (JavaScript, Python, PHP, Lua, and Dart).
-*   Serialize and deserialize workspace state (JSON or XML).
-*   Switch between LTR and RTL layout.
-*   Switch between toolbox layouts.
-*   Stress tests for the renderer.
-*   Log all events in the console.
+- All code is uncompressed for rapid development.
+- All the default blocks (except for some deprecated ones).
+- All the language generators (JavaScript, Python, PHP, Lua, and Dart).
+- Serialize and deserialize workspace state (JSON or XML).
+- Switch between LTR and RTL layout.
+- Switch between toolbox layouts.
+- Stress tests for the renderer.
+- Log all events in the console.
 
 ## Advanced playground
 
@@ -75,11 +74,11 @@ plugins.
 
 This playground features all of the simple playground features plus:
 
-*   Additional settings can be configured, such as grid size, zoom/move
-    controls, renderer, theme, and more.
-*   Settings and blocks used are cached and used automatically next time the
-    playground is loaded.
-*   See the output of each generator in the same window.
+- Additional settings can be configured, such as grid size, zoom/move
+  controls, renderer, theme, and more.
+- Settings and blocks used are cached and used automatically next time the
+  playground is loaded.
+- See the output of each generator in the same window.
 
 To start the advanced playground for any plugin in blockly-samples, run `npm run
 start` from the plugin's root directory. Currently, only one plugin can run at a

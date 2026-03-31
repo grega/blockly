@@ -14,8 +14,8 @@ replicate the behavior of Blockly's legacy built-in procedure blocks.
 This includes some behavior that you may not want for your custom procedure
 blocks, including:
 
-*   Return types are not supported
-*   All parameters are associated with a global variable
+- Return types are not supported
+- All parameters are associated with a global variable
 
 If you want different behavior, you can create your own custom procedure data
 models.
@@ -69,7 +69,7 @@ Any of the methods that trigger changes to the procedure model should also call
 call `doProcedureUpdate` on any procedure blocks, causing them to rerender.
 
 ```js
-import {triggerProceduresUpdate} from '@blockly/block-shareable-procedures';
+import { triggerProceduresUpdate } from '@blockly/block-shareable-procedures';
 
 class MyProcedureModel {
   setName(name) {

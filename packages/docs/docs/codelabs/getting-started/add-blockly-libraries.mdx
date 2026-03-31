@@ -9,7 +9,7 @@ description: How to add Blockly libraries to an app.
 
 Now that you know what you'll be building, you need to add Blockly dependencies to your app.
 
-Blockly releases are [published on npm](https://www.npmjs.com/package/blockly) on a quarterly basis. For this codelab you will import blockly using [unpkg](https://unpkg.com), which lets you import all of the files you need with a single script tag. 
+Blockly releases are [published on npm](https://www.npmjs.com/package/blockly) on a quarterly basis. For this codelab you will import blockly using [unpkg](https://unpkg.com), which lets you import all of the files you need with a single script tag.
 
 ### Add the script tag
 
@@ -20,7 +20,7 @@ Open `starter-code/index.html` in a text editor and scroll to the end. You can s
 <script src="scripts/main.js"></script>
 ```
 
-Add Blockly just before these two scripts. The order is important, because you will use Blockly objects later in `main.js`.  Your imports should now look like this:
+Add Blockly just before these two scripts. The order is important, because you will use Blockly objects later in `main.js`. Your imports should now look like this:
 
 ```html
 <script src="https://unpkg.com/blockly/blockly_compressed.js"></script>
@@ -34,6 +34,7 @@ Add Blockly just before these two scripts. The order is important, because you w
 ### Default imports
 
 Importing Blockly this way loads four default modules.
+
 - Blockly core: The main Blockly library, which defines the basic Blockly UI and logic.
 - Built-in block definitions: Common blocks such as loops, logic, math, and string manipulation.
 - The JavaScript generator: Converts blocks into JavaScript, and contains block generators for all built-in blocks.

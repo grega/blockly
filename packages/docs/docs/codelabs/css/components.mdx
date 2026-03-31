@@ -13,9 +13,9 @@ In this section, you will create CSS rules to assign the colours used by the [co
 To start, create a file named `halloween.css` and add it to your `index.html` file:
 
 ```html
-    ...
-    <script src="./index.js"></script>
-    <link rel="stylesheet" href="halloween.css" />
+...
+<script src="./index.js"></script>
+<link rel="stylesheet" href="halloween.css" />
 ```
 
 ### Main workspace colour
@@ -142,6 +142,7 @@ apply to HTML elements, like the `<div>` used by the toolbox, and `fill` and
 `stroke` apply to most SVG elements, like the `<path>` used by the flyout
 background. (An exception to this is the top-level `<svg>` element that contains
 Blockly, which uses `background-color` and `color`.)
+
 ### The !important declaration
 
 You might have also noticed that some rules use an `!important` declaration while others don't. This is because Blockly sets colours in several different ways, some of which are easily overridden and some of which aren't.

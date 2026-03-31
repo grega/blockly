@@ -70,16 +70,12 @@ with an `init` function. It stores these objects in `Blockly.Blocks`.
 ```js
 Blockly.Blocks['string_length'] = {
   init: function () {
-    this.appendValueInput('VALUE')
-      .setCheck('String')
-      .appendField('length of');
+    this.appendValueInput('VALUE').setCheck('String').appendField('length of');
     this.setOutput(true, 'Number');
     this.setColour(160);
     this.setTooltip('Returns number of letters in the provided text.');
-    this.setHelpUrl(
-      'http://www.w3schools.com/jsref/jsref_length_string.asp'
-    );
-  }
+    this.setHelpUrl('http://www.w3schools.com/jsref/jsref_length_string.asp');
+  },
 };
 ```
 
@@ -114,23 +110,23 @@ tooltip.
 ```js
 // Define the block structure in JSON.
 var mathChangeJson = {
-  "message0": "change %1 by %2",
-  "args0": [
+  message0: 'change %1 by %2',
+  args0: [
     {
-      "type": "field_variable",
-      "name": "VAR",
-      "variable": "item",
-      "variableTypes": [""]
+      type: 'field_variable',
+      name: 'VAR',
+      variable: 'item',
+      variableTypes: [''],
     },
     {
-      "type": "input_value",
-      "name": "DELTA",
-      "check": "Number"
-    }
+      type: 'input_value',
+      name: 'DELTA',
+      check: 'Number',
+    },
   ],
-  "previousStatement": null,
-  "nextStatement": null,
-  "colour": 230
+  previousStatement: null,
+  nextStatement: null,
+  colour: 230,
 };
 
 Blockly.Blocks['math_change'] = {
@@ -143,10 +139,10 @@ Blockly.Blocks['math_change'] = {
     this.setTooltip(function () {
       return 'Add a number to variable "%1".'.replace(
         '%1',
-        thisBlock.getFieldValue('VAR')
+        thisBlock.getFieldValue('VAR'),
       );
     });
-  }
+  },
 };
 ```
 
@@ -172,7 +168,7 @@ Blockly.Blocks['my_block'] = {
   },
   onchange: function () {
     /* ... */
-  }
+  },
   // ...
 };
 ```
@@ -195,17 +191,17 @@ them to `Blockly.Blocks`.
 ```js
 Blockly.common.defineBlocksWithJsonArray([
   {
-    type: 'my_block1'
+    type: 'my_block1',
     // ...
   },
   {
-    type: 'my_block3'
+    type: 'my_block3',
     // ...
   },
   {
-    type: 'my_block2'
+    type: 'my_block2',
     // ...
-  }
+  },
 ]);
 ```
 
@@ -217,21 +213,20 @@ names to block definitions. This is generally used with `defineBlocks`, which
 adds the block definitions to `Blockly.Blocks`.
 
 ```js
-const myBlockDefinitions =
-  Blockly.common.createBlockDefinitionsFromJsonArray([
-    {
-      type: 'my_block1'
-      // ...
-    },
-    {
-      type: 'my_block3'
-      // ...
-    },
-    {
-      type: 'my_block2'
-      // ...
-    }
-  ]);
+const myBlockDefinitions = Blockly.common.createBlockDefinitionsFromJsonArray([
+  {
+    type: 'my_block1',
+    // ...
+  },
+  {
+    type: 'my_block3',
+    // ...
+  },
+  {
+    type: 'my_block2',
+    // ...
+  },
+]);
 
 Blockly.common.defineBlocks(myBlockDefinitions);
 ```
@@ -253,7 +248,6 @@ Blockly.Blocks['my_block'] = {
   init: function () {
     this.jsonInit(myJson);
     // The rest of the init function.
-  }
+  },
 };
 ```
-

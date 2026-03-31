@@ -91,7 +91,11 @@ are created from them.
 This creates a single value input with three fields: a label (`"set"`), a
 variable field, and another label (`"to"`).
 
-<Image alt="Map the message to a value input with three fields." src="/images/structure-json/set-one-to-two.png" srcDark="/images/structure-json/set-one-to-two-dark.png"/>
+<Image
+  alt="Map the message to a value input with three fields."
+  src="/images/structure-json/set-one-to-two.png"
+  srcDark="/images/structure-json/set-one-to-two-dark.png"
+/>
 
 ### Example 2
 
@@ -111,7 +115,11 @@ variable field, and another label (`"to"`).
 This creates two value inputs. The first has no fields and the second has one
 field (`"+"`).
 
-<Image alt="Map the message to two value inputs." src="/images/structure-json/one-plus-two.png" srcDark="/images/structure-json/one-plus-two-dark.png"/>
+<Image
+  alt="Map the message to two value inputs."
+  src="/images/structure-json/one-plus-two.png"
+  srcDark="/images/structure-json/one-plus-two-dark.png"
+/>
 
 ### Example 3
 
@@ -131,13 +139,17 @@ field (`"+"`).
 </Tabs>
 This creates:
 
-*   A value input with no fields,
-*   An [end-of-row input](/guides/create-custom-blocks/define/block-anatomy#end-of-row-inputs)
-        with a label field (`"+"`), which causes the following value input to be
-    rendered on a new row, and
-*   A value input with no fields.
+- A value input with no fields,
+- An [end-of-row input](/guides/create-custom-blocks/define/block-anatomy#end-of-row-inputs)
+  with a label field (`"+"`), which causes the following value input to be
+  rendered on a new row, and
+- A value input with no fields.
 
-<Image alt="Map the message to two value inputs and an end-of-row input." src="/images/structure-json/one-plus-two-three.png" srcDark="/images/structure-json/one-plus-two-three-dark.png"/>
+<Image
+  alt="Map the message to two value inputs and an end-of-row input."
+  src="/images/structure-json/one-plus-two-three.png"
+  srcDark="/images/structure-json/one-plus-two-three-dark.png"
+/>
 
 ## Dummy input at end of message
 
@@ -159,7 +171,11 @@ for you. For example, instead of defining a `lists_isEmpty` block like this:
   </TabItem>
 </Tabs>
 
-<Image alt="Map the message to a value input and an automatically created dummy input." src="/images/structure-json/is-empty-dummy.png" srcDark="/images/structure-json/is-empty-dummy-dark.png"/>
+<Image
+  alt="Map the message to a value input and an automatically created dummy input."
+  src="/images/structure-json/is-empty-dummy.png"
+  srcDark="/images/structure-json/is-empty-dummy-dark.png"
+/>
 
 you can let Blockly add the dummy input and define it like this:
 
@@ -176,7 +192,11 @@ you can let Blockly add the dummy input and define it like this:
   </TabItem>
 </Tabs>
 
-<Image alt="Map the message to a value input and an automatically created dummy input." src="/images/structure-json/is-empty.png" srcDark="/images/structure-json/is-empty-dark.png"/>
+<Image
+  alt="Map the message to a value input and an automatically created dummy input."
+  src="/images/structure-json/is-empty.png"
+  srcDark="/images/structure-json/is-empty-dark.png"
+/>
 
 The automatic addition of a tailing dummy input allows translators to change
 `message` without needing to modify the arguments that describe the
@@ -186,7 +206,7 @@ order](#interpolation-token-order).
 ### implicitAlign
 
 In rare cases the automatically created trailing dummy input needs to be aligned
-to the `"RIGHT"` or `"CENTRE"`.  The default if not specified is `"LEFT"`.
+to the `"RIGHT"` or `"CENTRE"`. The default if not specified is `"LEFT"`.
 
 In the example below `message0` is `"send email to %1 subject %2 secure %3"`
 and Blockly automatically adds a dummy input for the third row. Setting
@@ -219,8 +239,8 @@ If this block were described with a single message, the `message0` property
 would be `"repeat %1 times %2 do %3"`, where `%2` represents an end-of-row
 input. This string is awkward for a translator because
 it is difficult to explain what the `%2` substitution means. The `%2` end-of-row
-input may also not even be desired in some languages.  And there may be multiple
-blocks that wish to share the text of the second row.  A better approach
+input may also not even be desired in some languages. And there may be multiple
+blocks that wish to share the text of the second row. A better approach
 is to use more than one `message` and `args` properties:
 
 <Tabs groupId="json">
@@ -240,8 +260,12 @@ is to use more than one `message` and `args` properties:
   </TabItem>
 </Tabs>
 
-<Image alt="Map the message to a value input and an automatically created dummy input and the message to a statement
-input." src="/images/structure-json/controls-repeat-ext.png" srcDark="/images/structure-json/controls-repeat-ext-dark.png"/>
+<Image
+  alt="Map the message to a value input and an automatically created dummy input and the message to a statement
+input."
+  src="/images/structure-json/controls-repeat-ext.png"
+  srcDark="/images/structure-json/controls-repeat-ext-dark.png"
+/>
 
 Any number of `message`, `args`, and `implicitAlign` properties may be defined
 in the JSON format, starting with 0 and incrementing sequentially. Note that the
@@ -298,12 +322,16 @@ string with an end-of-row input.
   </TabItem>
 </Tabs>
 
-<Image alt="Map the newline character to an end-of-row input." src="/images/structure-json/newline-character.png" srcDark="/images/structure-json/newline-character-dark.png"/>
+<Image
+  alt="Map the newline character to an end-of-row input."
+  src="/images/structure-json/newline-character.png"
+  srcDark="/images/structure-json/newline-character-dark.png"
+/>
 
 ## Arguments arrays
 
-Each message string is paired with an `args` array of the same number.  For
-example, `message0` goes with `args0`.  The interpolation tokens
+Each message string is paired with an `args` array of the same number. For
+example, `message0` goes with `args0`. The interpolation tokens
 (`%1`, `%2`, ...) refer to the items of the `args` array and must match the
 `args0` array completely: no duplicates, no omissions. **Token numbers refer to
 the order of the items in the arguments array; they are not required to occur
@@ -312,30 +340,29 @@ in order in a message string.**
 Every object in the arguments array has a
 `type` string. The rest of the parameters vary depending on the type:
 
-
- * [**Fields**](/guides/create-custom-blocks/fields/overview):
-   * [`field_input`](/guides/create-custom-blocks/fields/built-in-fields/text-input)
-   * [`field_dropdown`](/guides/create-custom-blocks/fields/built-in-fields/dropdown)
-   * [`field_checkbox`](/guides/create-custom-blocks/fields/built-in-fields/checkbox)
-   * [`field_colour`](https://www.npmjs.com/package/@blockly/field-colour)
-   * [`field_number`](/guides/create-custom-blocks/fields/built-in-fields/number)
-   * [`field_angle`](https://www.npmjs.com/package/@blockly/field-angle)
-   * [`field_variable`](/guides/create-custom-blocks/fields/built-in-fields/variable)
-   * [`field_label`](/guides/create-custom-blocks/fields/built-in-fields/label)
-   * [`field_image`](/guides/create-custom-blocks/fields/built-in-fields/image).
- * [**Inputs**](/guides/create-custom-blocks/define/block-anatomy#inputs):
-   * `input_value`
-   * `input_statement`
-   * `input_dummy`
-   * `input_end_row`
+- [**Fields**](/guides/create-custom-blocks/fields/overview):
+  - [`field_input`](/guides/create-custom-blocks/fields/built-in-fields/text-input)
+  - [`field_dropdown`](/guides/create-custom-blocks/fields/built-in-fields/dropdown)
+  - [`field_checkbox`](/guides/create-custom-blocks/fields/built-in-fields/checkbox)
+  - [`field_colour`](https://www.npmjs.com/package/@blockly/field-colour)
+  - [`field_number`](/guides/create-custom-blocks/fields/built-in-fields/number)
+  - [`field_angle`](https://www.npmjs.com/package/@blockly/field-angle)
+  - [`field_variable`](/guides/create-custom-blocks/fields/built-in-fields/variable)
+  - [`field_label`](/guides/create-custom-blocks/fields/built-in-fields/label)
+  - [`field_image`](/guides/create-custom-blocks/fields/built-in-fields/image).
+- [**Inputs**](/guides/create-custom-blocks/define/block-anatomy#inputs):
+  - `input_value`
+  - `input_statement`
+  - `input_dummy`
+  - `input_end_row`
 
 You can also define your own [custom fields][custom-fields] and
 [custom inputs][custom-inputs] and pass them as args.
 
 ### alt fields
 
-Every object may also have an `alt` field.  In the case that Blockly does not
-recognize the object's `type`, then the `alt` object is used in its place.  For
+Every object may also have an `alt` field. In the case that Blockly does not
+recognize the object's `type`, then the `alt` object is used in its place. For
 example, if a new field named `field_time` is added to Blockly, blocks using
 this field could use `alt` to define a `field_input` fallback for older versions
 of Blockly:

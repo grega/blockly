@@ -17,7 +17,7 @@ inputs.](/images/lists-mutated.png)
 
 ![Two mutations of an if/do block: if-do and if-do-else-if-do-else.](/images/if-mutated.png)
 
-Note that changing the shape of your block *does not necessarily* mean you need
+Note that changing the shape of your block _does not necessarily_ mean you need
 extra serialization. For example, the `math_number_property` block changes
 shape, but it does that based on a dropdown field, whose value already gets
 serialized. As such, it can just use a [field
@@ -93,11 +93,11 @@ true when an individual block is serialized, or when a block is copy-pasted.
 
 Two common use cases for this are:
 
-*   When an individual block is loaded into a workspace where the backing data
-    model doesn't exist, it has enough information in its own state to
-    create a new data model.
-*   When a block is copy-pasted, it always creates a new backing
-    data model instead of referencing an existing one.
+- When an individual block is loaded into a workspace where the backing data
+  model doesn't exist, it has enough information in its own state to
+  create a new data model.
+- When a block is copy-pasted, it always creates a new backing
+  data model instead of referencing an existing one.
 
 Some blocks that use this are the
 [@blockly/block-shareable-procedures][shareable-procedures] blocks. Normally
@@ -277,20 +277,23 @@ Blockly.Extensions.registerMutator(name, mixinObj, opt_helperFn, opt_blockList);
 
 // Example call.
 Blockly.Extensions.registerMutator(
-    'controls_if_mutator',
-    { /* mutator methods */ },
-    undefined,
-    ['controls_if_elseif', 'controls_if_else']);
+  'controls_if_mutator',
+  {
+    /* mutator methods */
+  },
+  undefined,
+  ['controls_if_elseif', 'controls_if_else'],
+);
 ```
 
-*   `name`: A string to associate with the mutator so you can use it in JSON.
-*   `mixinObj`: An object containing the various mutation methods. E.g.
-    `saveExtraState` and `loadExtraState`.
-*   `opt_helperFn`: An optional [helper function](#helper-function) that will
-    run on the block after the mixin is mixed in.
-*   `opt_blockList`: An optional array of block types (as strings) that will be
-    added to the flyout in the default mutator UI, if the UI methods are also
-    defined.
+- `name`: A string to associate with the mutator so you can use it in JSON.
+- `mixinObj`: An object containing the various mutation methods. E.g.
+  `saveExtraState` and `loadExtraState`.
+- `opt_helperFn`: An optional [helper function](#helper-function) that will
+  run on the block after the mixin is mixed in.
+- `opt_blockList`: An optional array of block types (as strings) that will be
+  added to the flyout in the default mutator UI, if the UI methods are also
+  defined.
 
 Note that unlike extensions, each block type may only have one mutator.
 
@@ -311,10 +314,10 @@ For example, you could add a helper to your list-like block that sets the
 initial number of items:
 
 ```js
-var helper = function() {
+var helper = function () {
   this.itemCount_ = 5;
   this.updateShape();
-}
+};
 ```
 
 [shareable-procedures]: https://www.npmjs.com/package/@blockly/block-shareable-procedures

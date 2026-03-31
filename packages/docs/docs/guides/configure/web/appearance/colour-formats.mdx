@@ -24,8 +24,8 @@ The saturation and values can be adapted for each application by calling the
 following functions:
 
 ```js
-Blockly.utils.colour.setHsvSaturation(0.45) // 0 (inclusive) to 1 (exclusive), defaulting to 0.45
-Blockly.utils.colour.setHsvValue(0.65) // 0 (inclusive) to 1 (exclusive), defaulting to 0.65
+Blockly.utils.colour.setHsvSaturation(0.45); // 0 (inclusive) to 1 (exclusive), defaulting to 0.45
+Blockly.utils.colour.setHsvValue(0.65); // 0 (inclusive) to 1 (exclusive), defaulting to 0.65
 ```
 
 Several colour pickers offer the HSV colour space, such as [HSV
@@ -65,15 +65,15 @@ Blockly includes nine colour constants in the string table, corresponding to the
 toolbox categories, plus a distinct colour for dynamic variables:
 
 ```js
-'%{BKY_LOGIC_HUE}'
-'%{BKY_LOOPS_HUE}'
-'%{BKY_MATH_HUE}'
-'%{BKY_TEXTS_HUE}'
-'%{BKY_LISTS_HUE}'
-'%{BKY_COLOUR_HUE}'
-'%{BKY_VARIABLES_HUE}'
-'%{BKY_VARIABLES_DYNAMIC_HUE}'
-'%{BKY_PROCEDURES_HUE}'
+'%{BKY_LOGIC_HUE}';
+'%{BKY_LOOPS_HUE}';
+'%{BKY_MATH_HUE}';
+'%{BKY_TEXTS_HUE}';
+'%{BKY_LISTS_HUE}';
+'%{BKY_COLOUR_HUE}';
+'%{BKY_VARIABLES_HUE}';
+'%{BKY_VARIABLES_DYNAMIC_HUE}';
+'%{BKY_PROCEDURES_HUE}';
 ```
 
 These string values can be used in both the JSON definitions and

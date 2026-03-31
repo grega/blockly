@@ -5,10 +5,10 @@
  */
 
 import * as Blockly from 'blockly';
-import {blocks} from './blocks/json';
-import {jsonGenerator} from './generators/json';
-import {save, load} from './serialization';
-import {toolbox} from './toolbox';
+import { blocks } from './blocks/json';
+import { jsonGenerator } from './generators/json';
+import { save, load } from './serialization';
+import { toolbox } from './toolbox';
 import './index.css';
 
 // Register the blocks with Blockly
@@ -17,7 +17,7 @@ Blockly.common.defineBlocks(blocks);
 // Set up UI elements and inject Blockly
 const codeDiv = document.getElementById('generatedCode').firstChild;
 const blocklyDiv = document.getElementById('blocklyDiv');
-const ws = Blockly.inject(blocklyDiv, {toolbox});
+const ws = Blockly.inject(blocklyDiv, { toolbox });
 
 // This function resets the code div and shows the
 // generated code from the workspace.

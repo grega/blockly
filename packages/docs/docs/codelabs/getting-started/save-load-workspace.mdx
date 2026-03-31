@@ -17,7 +17,8 @@ Open `scripts/main.js`. Add the following code to the `save()` method:
 
 ```js
 button.blocklySave = Blockly.serialization.workspaces.save(
-    Blockly.getMainWorkspace());
+  Blockly.getMainWorkspace(),
+);
 ```
 
 `workspaces.save` takes the Blockly workspace, exports its state to a JavaScript object and stores it in a `blocklySave` property on the button. This way the exported state for the block sequence gets associated with a particular button.

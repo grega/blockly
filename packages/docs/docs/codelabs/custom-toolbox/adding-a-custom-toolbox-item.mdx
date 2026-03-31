@@ -8,15 +8,18 @@ import CodelabImage from '@site/src/components/CodelabImage';
 # Customizing a Blockly toolbox
 
 ## 7. Adding a custom toolbox item
+
 In the previous sections we modified the toolbox by extending the base category class.
 In this section we will make a completely new toolbox item and add it to our toolbox.
 
 For this example, we are going to create a toolbox label.
 
 ### Setup
+
 In the same directory as `index.html` create a new file named `toolbox_label.js`.
 
 Include this file in `index.html`:
+
 ```html
 <script src="toolbox_label.js"></script>
 ```
@@ -32,20 +35,24 @@ class ToolboxLabel extends Blockly.ToolboxItem {
 }
 
 Blockly.registry.register(
-    Blockly.registry.Type.TOOLBOX_ITEM,
-    'toolboxlabel',
-    ToolboxLabel);
+  Blockly.registry.Type.TOOLBOX_ITEM,
+  'toolboxlabel',
+  ToolboxLabel,
+);
 ```
+
 By registering this toolbox item with the name "toolboxlabel" we can now use this
 name in our toolbox definition to add our custom item to the toolbox.
 
 Navigate to `index.html`, and scroll down to the toolbox definition. Add a
 `<toolboxlabel>` element as the first item in your toolbox definition:
+
 ```xml
 <toolboxlabel></toolboxlabel>
 ```
 
 Your toolbox definition should now look something like:
+
 ```xml
 <xml xmlns="https://developers.google.com/blockly/xml" id="toolbox-categories" style="display: none">
 <toolboxlabel></toolboxlabel>
@@ -55,6 +62,7 @@ Your toolbox definition should now look something like:
 ```
 
 ### Initialize the toolbox item
+
 In order to create a toolbox item we must implement one of the toolbox item interfaces.
 
 For this example, we will be implementing the basic `IToolboxItem` interface.
@@ -64,6 +72,7 @@ Since we do not need our label to be selectable or collapsible, we can implement
 the basic `IToolboxItem` interface.
 
 First, we are going to add an init method that will create the dom for our toolbox label:
+
 ```js
   /** @override */
   init() {
@@ -85,9 +94,14 @@ Next, we are going to return this element:
 
 If you open the `index.html` file you should see a label above your first category.
 
-<CodelabImage>  ![The toolbox with a label at the top.](../../../static/images/codelabs/custom-toolbox/toolbox_label.png) </CodelabImage>
+<CodelabImage>
+  {' '}
+  ![The toolbox with a label at the
+  top.](../../../static/images/codelabs/custom-toolbox/toolbox_label.png){' '}
+</CodelabImage>
 
 ### Add attributes to the toolbox definition
+
 The above code is rather limiting since it only allows us to create a toolbox
 label with the text "Label".
 To make it possible to create different labels with different text and colour we
@@ -95,6 +109,7 @@ are going to add `name` and `colour` attributes to our toolbox definition.
 
 Open `index.html` and navigate to the toolbox definition. Change your
 `toolboxlabel` element to look like the below line:
+
 ```xml
 <toolboxlabel name="Custom Toolbox" colour="darkslategrey"></toolboxlabel>
 ```
@@ -110,6 +125,7 @@ this.label.style.color = this.toolboxItemDef_['colour'];
 ```
 
 Remove the following line from your init method:
+
 ```js
 this.label.textContent = 'Label';
 ```
@@ -119,9 +135,14 @@ All attributes on our toolbox definition get added to the `toolboxItemDef_`.
 
 Open your `index.html` in a browser to see the updated label.
 
-<CodelabImage>  ![The toolbox with a label that now says "Custom Toolbox".](../../../static/images/codelabs/custom-toolbox/custom_label.png) </CodelabImage>
+<CodelabImage>
+  {' '}
+  ![The toolbox with a label that now says "Custom
+  Toolbox".](../../../static/images/codelabs/custom-toolbox/custom_label.png){' '}
+</CodelabImage>
 
 ### Add some CSS
+
 Similar to how we added `colour` and `name` above, we are going to add a custom
 class to our label.
 
@@ -149,14 +170,20 @@ if (cssConfig) {
 
 The above code will add the class to the label. Now, in `toolbox_style.css` add
 the below CSS to make the label bold.
+
 ```css
 .customLabel {
-   font-weight: bold;
+  font-weight: bold;
 }
 ```
 
 ### The result
+
 If you open `index.html` you should now see a bold dark gray label at the
 top of your toolbox.
 
-<CodelabImage>  ![A toolbox with colored background and the blockly label above the category text.](../../../static/images/codelabs/custom-toolbox/final_toolbox.png) </CodelabImage>
+<CodelabImage>
+  {' '}
+  ![A toolbox with colored background and the blockly label above the category
+  text.](../../../static/images/codelabs/custom-toolbox/final_toolbox.png){' '}
+</CodelabImage>

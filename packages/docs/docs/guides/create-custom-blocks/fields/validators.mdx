@@ -13,10 +13,10 @@ are acceptable.
 
 Some common examples:
 
-+   Restricting a text field to only accept letters.
-+   Requiring that a text field be non-empty.
-+   Requiring that a date be in the future.
-+   Modifying a block's shape based on a dropdown.
+- Restricting a text field to only accept letters.
+- Requiring that a text field be non-empty.
+- Requiring that a date be in the future.
+- Modifying a block's shape based on a dropdown.
 
 :::note
 Validators modify a field's
@@ -41,10 +41,10 @@ section in Creating a Custom Field.
 validators run on all values passed to the field _except the value passed to the
 constructor_. This means they run on:
 
-+   Values contained in XML.
-+   Values passed to `setValue`.
-+   Values passed to `setFieldValue`.
-+   Values changed by the user.
+- Values contained in XML.
+- Values passed to `setValue`.
+- Values passed to `setFieldValue`.
+- Values changed by the user.
 
 Class validators are run before local validators because they act like
 gatekeepers. They make sure that the value is of the correct type before passing
@@ -57,7 +57,7 @@ general see Values.
 
 Local validators can be registered in two ways:
 
-+ Directly added in a field's constructor.
+- Directly added in a field's constructor.
 
 :::note
 The signature of the field
@@ -66,26 +66,27 @@ constructor may be different depending on the field type.
 
 ```js
 Blockly.Blocks['validator_example'] = {
-  init: function() {
+  init: function () {
     // Remove all 'a' characters from the text input's value.
-    var validator = function(newValue) {
+    var validator = function (newValue) {
       return newValue.replace(/\a/g, '');
     };
 
-    this.appendDummyInput()
-        .appendField(new Blockly.FieldTextInput('default', validator));
-  }
+    this.appendDummyInput().appendField(
+      new Blockly.FieldTextInput('default', validator),
+    );
+  },
 };
 ```
 
-+ With
-[`setValidator`](/reference/blockly.field_class.setvalidator_1_method).
+- With
+  [`setValidator`](/reference/blockly.field_class.setvalidator_1_method).
 
 ```js
 Blockly.Blocks['validator_example'] = {
-  init: function() {
+  init: function () {
     // Remove all 'a' characters from the text input's value.
-    var validator = function(newValue) {
+    var validator = function (newValue) {
       return newValue.replace(/\a/g, '');
     };
 
@@ -93,7 +94,7 @@ Blockly.Blocks['validator_example'] = {
     field.setValidator(validator);
 
     this.appendDummyInput().appendField(field);
-  }
+  },
 };
 ```
 
@@ -113,7 +114,7 @@ field's documentation.
 
 ## Return values
 
-The return value of the validator determines what the field does next.  There
+The return value of the validator determines what the field does next. There
 are three possibilities:
 
 **Modified Return Value**
@@ -126,7 +127,7 @@ Example of a Modifying Validator:
 
 ```js
 // Remove all 'a' characters from the text input's value.
-var validator = function(newValue) {
+var validator = function (newValue) {
   return newValue.replace(/\a/g, '');
 };
 ```
@@ -136,7 +137,7 @@ var validator = function(newValue) {
 **Null Return Value**
 
 Null, which means the given value is invalid. In most cases the field will
-ignore the input value.  The exact behaviour is specified by the field's
+ignore the input value. The exact behaviour is specified by the field's
 `doValueInvalid_`
 [function](/guides/create-custom-blocks/fields/customizing-fields/creating#handling-invalid-values).
 
@@ -144,7 +145,7 @@ Example of a Nulling Validator:
 
 ```js
 // Any value containing a 'b' character is invalid.  Other values are valid.
-var validator = function(newValue) {
+var validator = function (newValue) {
   if (newValue.indexOf('b') != -1) {
     return null;
   }
@@ -164,7 +165,7 @@ Example of a Listener Validator:
 
 ```js
 // Log the new value to console.
-var validator = function(newValue) {
+var validator = function (newValue) {
   console.log(newValue);
 };
 ```
@@ -184,17 +185,17 @@ Sample code using `getSourceBlock`:
 
 ```js
 Blockly.Blocks['colour_match'] = {
-  init: function() {
-    this.appendDummyInput()
-        .appendField(new Blockly.FieldColour(
-            null, this.validate
-        ), 'COLOUR');
+  init: function () {
+    this.appendDummyInput().appendField(
+      new Blockly.FieldColour(null, this.validate),
+      'COLOUR',
+    );
     this.setColour(this.getFieldValue('COLOUR'));
   },
 
-  validate: function(colourHex) {
+  validate: function (colourHex) {
     this.getSourceBlock().setColour(colourHex);
-  }
+  },
 };
 ```
 
@@ -203,16 +204,16 @@ Sample code using
 
 ```js
 Blockly.Blocks['colour_match'] = {
-  init: function() {
-    this.appendDummyInput()
-      .appendField(new Blockly.FieldColour(
-          null, this.validate.bind(this)
-      ), 'COLOUR');
+  init: function () {
+    this.appendDummyInput().appendField(
+      new Blockly.FieldColour(null, this.validate.bind(this)),
+      'COLOUR',
+    );
     this.validate(this.getFieldValue('COLOUR'));
   },
 
-  validate: function(colourHex) {
+  validate: function (colourHex) {
     this.setColour(colourHex);
-  }
+  },
 };
 ```

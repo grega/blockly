@@ -16,7 +16,7 @@ As an example, add this registry item. The display text depends on the block typ
 ```js
 function registerDisplayItem() {
   const displayItem = {
-    displayText: function(scope) {
+    displayText: function (scope) {
       if (scope.focusedNode.type.startsWith('text')) {
         return 'Text block';
       } else if (scope.focusedNode.type.startsWith('controls')) {
@@ -25,13 +25,12 @@ function registerDisplayItem() {
         return 'Some other block';
       }
     },
-    preconditionFn: function(scope) {
+    preconditionFn: function (scope) {
       return scope.focusedNode instanceof Blockly.BlockSvg
         ? 'enabled'
         : 'hidden';
     },
-    callback: function(scope) {
-    },
+    callback: function (scope) {},
     id: 'display_text_example',
     weight: 100,
   };

@@ -10,10 +10,8 @@ image: images/blockly_banner.png
 Unless you are modifying the Blockly source code directly, you probably
 don't need to build Blockly run any of the scripts documented below yourself.
 Instead, follow the instructions in [the "Get the Code"
-section](/guides/get-started/get-the-code#get-the-code-1) of the [Get Started](/guides/get-started/get-the-code) page to install [the `blockly` NPM package](
-https://www.npmjs.com/package/blockly) or download the `.tgz` file attached to
-[the latest release on GitHub](
-https://github.com/RaspberryPiFoundation/blockly/releases/latest).
+section](/guides/get-started/get-the-code#get-the-code-1) of the [Get Started](/guides/get-started/get-the-code) page to install [the `blockly` NPM package](https://www.npmjs.com/package/blockly) or download the `.tgz` file attached to
+[the latest release on GitHub](https://github.com/RaspberryPiFoundation/blockly/releases/latest).
 :::
 
 Blockly is made up of over a hundred TypeScript files. These must be compiled
@@ -34,8 +32,7 @@ The [RaspberryPiFoundation/blockly repository](https://github.com/RaspberryPiFou
 only the source code. It previously also contained the build products,
 but since 2019 the minified bundles have been published as [the
 `blockly` NPM package](https://www.npmjs.com/package/blockly) and since
-2022 also attached as a `.tgz` file to [each GitHub release](
-https://github.com/RaspberryPiFoundation/blockly/releases), so there is no need
+2022 also attached as a `.tgz` file to [each GitHub release](https://github.com/RaspberryPiFoundation/blockly/releases), so there is no need
 to build Blockly unless you are hacking on Blockly itself—in particular on
 files in the `core`, `blocks`, `generators`, or `msg` directories.
 
@@ -71,48 +68,51 @@ this alternative terminology is potentially confusing and discouraged.
 Unless you are modifying the Blockly source code directly, you probably
 don't need to build Blockly run any of the scripts documented below yourself.
 Instead, follow the instructions in [the "Get the Code"
-section](/guides/get-started/get-the-code#get-the-code-1) of the [Get Started](/guides/get-started/get-the-code) page to install [the `blockly` NPM package](
-https://www.npmjs.com/package/blockly) or download the `.tgz` file attached to
-[the latest release on GitHub](
-https://github.com/RaspberryPiFoundation/blockly/releases/latest).
+section](/guides/get-started/get-the-code#get-the-code-1) of the [Get Started](/guides/get-started/get-the-code) page to install [the `blockly` NPM package](https://www.npmjs.com/package/blockly) or download the `.tgz` file attached to
+[the latest release on GitHub](https://github.com/RaspberryPiFoundation/blockly/releases/latest).
 :::
 
-* If you've made local changes and want to make sure they've not broken the
+- If you've made local changes and want to make sure they've not broken the
   build or any tests, run
 
   ```shell
   npm test
   ```
+
   to build Blockly and run its test suite.
 
-* If you want to test local changes in the browser, run
+- If you want to test local changes in the browser, run
 
   ```shell
   npm start
   ```
+
   This compiles Blockly and opens a web browser pointing at the Blockly
   playground running Blockly in uncompressed mode.
 
   Any files in `core/`, `blocks/` and `generators/` that are modified are
   automatically recompiled; reload the browser tab to see the changes.
 
-* To build your locally-modified version of Blockly and test it, in compressed
+- To build your locally-modified version of Blockly and test it, in compressed
   mode, as a dependency of another npm package, run
 
   ```shell
   npm run package
   ```
+
   to build Blockly package, then
 
   ```shell
   cd dist && npm link
   ```
+
   to tell npm where to find the compiled files, and then `cd` to your project's
   directory before running
 
   ```shell
   npm link blockly
   ```
+
   to have your package use the freshly-compiled version of Blockly in
   place of the published `blockly` package.
 
@@ -123,9 +123,9 @@ with an explanation of what they do.
 
 These scripts generate files in two places:
 
-* Files in the `build/` subdirectory are intermediary files used for local
+- Files in the `build/` subdirectory are intermediary files used for local
   testing or ingested by later parts of the build pipeline.
-* Files in the `dist/` subdirectory form the contents of the published npm
+- Files in the `dist/` subdirectory form the contents of the published npm
   package.
 
 Neither directory is tracked in the blockly git repository.
@@ -160,11 +160,11 @@ to determine how to divide up the compiled `.js` files into chunks (minified
 bundles), after which it runs `closure-compiler` to create the chunks as
 follows:
 
-* The contents of `build/src/core/` become `dist/blockly_compressed.js`.
-* The contents of `build/src/blocks/` become `dist/blocs_compressed.js`.
-* The contents of `build/src/generators/javascript/` (plus
+- The contents of `build/src/core/` become `dist/blockly_compressed.js`.
+- The contents of `build/src/blocks/` become `dist/blocs_compressed.js`.
+- The contents of `build/src/generators/javascript/` (plus
   `build/src/generators/javascript.js`) become `dist/javascript_compressed.js`.
-* And likewise for `dart`, `lua`, `php`, and `python`.
+- And likewise for `dart`, `lua`, `php`, and `python`.
 
 The generated chuks use a wrapper to ensure compatibility with the [Universal
 Module Definition](https://github.com/umdjs/umd) so no extra processing is
@@ -180,9 +180,9 @@ or uncompressed mode.
 
 `npm run package` runs the `clean` and `build` tasks and then:
 
-* Applies a [UMD](https://github.com/umdjs/umd) wrapper the files in
+- Applies a [UMD](https://github.com/umdjs/umd) wrapper the files in
   `build/msg/`, placing the wrapped versions in `dist/msg/`.
-* Adds various additional support files to `dist/`, with UMD wrappers where
+- Adds various additional support files to `dist/`, with UMD wrappers where
   applicable.
 
 ### `publish`

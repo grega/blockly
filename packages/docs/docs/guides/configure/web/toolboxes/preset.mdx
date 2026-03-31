@@ -187,14 +187,13 @@ the following code in the console.
 
 <Tabs groupId="code-format">
   <TabItem value="json" label="JSON" default>
-  ```js
-  console.log(Blockly.serialization.workspaces.save(Blockly.getMainWorkspace()));
-  ```
+    ```js
+    console.log(Blockly.serialization.workspaces.save(Blockly.getMainWorkspace()));
+    ```
   </TabItem>
   <TabItem value="xml" label="XML">
-  ```xml
-  console.log(Blockly.Xml.workspaceToDom(Blockly.getMainWorkspace()));
-  ```
+    ```xml console.log(Blockly.Xml.workspaceToDom(Blockly.getMainWorkspace()));
+    ```
   </TabItem>
 </Tabs>
 You can then copy the configuration code and paste it into your toolbox. Be sure
@@ -232,10 +231,10 @@ information, so it needs to be included in the variable field directly.
 
 Shadow blocks are placeholder blocks that perform several functions:
 
-  * They indicate the default values for their parent block.
-  * They allow users to type values directly without needing to fetch a number or string block.
-  * Unlike a regular block, they get replaced if the user drops a block on top of them.
-  * They inform the user of the type of value expected.
+- They indicate the default values for their parent block.
+- They allow users to type values directly without needing to fetch a number or string block.
+- Unlike a regular block, they get replaced if the user drops a block on top of them.
+- They inform the user of the type of value expected.
 
 :::note
 Shadow blocks may not include a variable field or have children that are

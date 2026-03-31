@@ -20,9 +20,9 @@ blocks, building your toolbox, and configuring your Blockly workspace.
 
 The Blockly developer process using the tool consists of three parts:
 
-* Create custom blocks using Block Factory and Block Exporter.
-* Build a toolbox and default workspace using Workspace Factory.
-* Configure your workspace using Workspace Factory (currently a web-only
+- Create custom blocks using Block Factory and Block Exporter.
+- Build a toolbox and default workspace using Workspace Factory.
+- Configure your workspace using Workspace Factory (currently a web-only
   feature).
 
 ## Block Factory Tab
@@ -60,8 +60,8 @@ three previously created blocks.](/images/blocklib_button.png)
 
 ### Exporting and importing a library
 
-Blocks are saved to the browser's local storage.  Clearing the browser's local
-storage will delete your blocks.  To save your blocks indefinitely, you must
+Blocks are saved to the browser's local storage. Clearing the browser's local
+storage will delete your blocks. To save your blocks indefinitely, you must
 download your library. Your Block Library is downloaded as an XML
 file that can be imported to set your Block Library to the state it was when
 you downloaded the file. Note that importing a Block Library replaces your
@@ -115,7 +115,7 @@ starting workspace with the "Toolbox" and "Workspace" buttons.
 
 ### Building a toolbox
 
-This tab helps build the XML for a Toolbox.  The material assumes
+This tab helps build the XML for a Toolbox. The material assumes
 familiarity with features of a [Toolbox](/guides/configure/web/toolboxes/toolbox).
 If you already have XML for a toolbox that you want to edit here, you can
 load it by clicking "Load to Edit".
@@ -206,8 +206,8 @@ from.](/images/configure_workspace.png)
 This is optional but may be necessary if you want to display a set of blocks in
 the workspace:
 
-* When the application loads.
-* When an event (advancing a level, clicking a help button, etc.) is triggered.
+- When the application loads.
+- When an event (advancing a level, clicking a help button, etc.) is triggered.
 
 Drag blocks into the editing space to see them in your workspace in the preview.
 You can create block groups, disable blocks, and make certain blocks shadow
@@ -222,8 +222,9 @@ You can export these blocks as XML (see below). Add them to your workspace with
 `Blockly.Xml.domToWorkspace`, immediately after you create your workspace:
 
 ```js
-var xmlText = '<xml xmlns="https://developers.google.com/blockly/xml">' +
-    '<block type="math_number"></block></xml>';
+var xmlText =
+  '<xml xmlns="https://developers.google.com/blockly/xml">' +
+  '<block type="math_number"></block></xml>';
 Blockly.Xml.domToWorkspace(Blockly.utils.xml.textToDom(xmlText), workspace);
 ```
 
@@ -237,10 +238,10 @@ Workspace Factory gives you the following export options:
 export starter code, the toolbox, the pre-loaded workspace blocks, or all of
 these.](/images/workspace_export_opt.png)
 
-* Starter Code: Produces starter html and javascript to inject your customized
+- Starter Code: Produces starter html and javascript to inject your customized
   Blockly workspace.
-* Toolbox: Produces XML to specify your toolbox.
-* Workspace Blocks: Produces XML which can be loaded into a workspace.
+- Toolbox: Produces XML to specify your toolbox.
+- Workspace Blocks: Produces XML which can be loaded into a workspace.
 
 [block-code-generator]: /guides/create-custom-blocks/code-generation/overview#block-code-generators
 [block-factory-import]: /guides/create-custom-blocks/blockly-developer-tools#import-from-legacy-block-factory

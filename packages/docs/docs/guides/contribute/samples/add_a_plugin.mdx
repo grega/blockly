@@ -38,17 +38,17 @@ schema is better as a third-party plugin.
 
 First party plugins **must** meet these requirements:
 
--   Work on all major platforms, unless granted an exemption by the Blockly
-    team.
-    -   Chrome, Firefox, Safari, Edge
--   Have an author who is willing to handle bugs for the first year.
--   Do not monkeypatch Blockly.
--   Have a clearly defined and documented API.
--   Do not call private or package functions from Blockly core, unless granted
-    an exemption by the Blockly team.
-    -   Overriding package functions on a subclass that you define is allowed.
-    -   If you want an exemption, ask us in an issue on blockly-samples.
--   Have tests.
+- Work on all major platforms, unless granted an exemption by the Blockly
+  team.
+  - Chrome, Firefox, Safari, Edge
+- Have an author who is willing to handle bugs for the first year.
+- Do not monkeypatch Blockly.
+- Have a clearly defined and documented API.
+- Do not call private or package functions from Blockly core, unless granted
+  an exemption by the Blockly team.
+  - Overriding package functions on a subclass that you define is allowed.
+  - If you want an exemption, ask us in an issue on blockly-samples.
+- Have tests.
 
 ## The process
 
@@ -67,11 +67,11 @@ request](/guides/contribute/get-started/write_a_good_issue#feature-request).
 In addition to the basic feature request information, a plugin suggestion should
 include:
 
--   The API the plugin would expose.
--   APIs that need to be added or changed in core Blockly to support the plugin.
--   Screenshots, GIFs, or mock-ups if the plugin includes UI features.
--   An explanation of why it should be a first-party plugin rather than a
-    third-party plugin.
+- The API the plugin would expose.
+- APIs that need to be added or changed in core Blockly to support the plugin.
+- Screenshots, GIFs, or mock-ups if the plugin includes UI features.
+- An explanation of why it should be a first-party plugin rather than a
+  third-party plugin.
 
 The Blockly team reviews suggestions as they come in and either closes the issue
 or agrees that it would be a good first-party plugin.
@@ -80,15 +80,15 @@ or agrees that it would be a good first-party plugin.
 
 Next, a plugin goes into the **discussion** phase. This phase includes:
 
--   Clarification of the desired functionality.
--   Clarification of the plugin's API.
--   Planning for implementation.
--   Planning for tests.
--   Discussion of API changes in core Blockly.
--   Breaking large plugins into implementation steps.
--   Plugin naming, based on our [naming
-    conventions](/guides/contribute/samples/naming).
--   Confirming all [first party criteria](#first-party-criteria) will be met.
+- Clarification of the desired functionality.
+- Clarification of the plugin's API.
+- Planning for implementation.
+- Planning for tests.
+- Discussion of API changes in core Blockly.
+- Breaking large plugins into implementation steps.
+- Plugin naming, based on our [naming
+  conventions](/guides/contribute/samples/naming).
+- Confirming all [first party criteria](#first-party-criteria) will be met.
 
 This discussion generally happens on the GitHub issue. The smaller the scope of
 the plugin, the faster the discussion phase can be. Larger plugins may attract
@@ -111,13 +111,13 @@ implemented.
 
 **Implementation** steps include:
 
--   Running `npx @blockly/create-package` to set up the plugin and its directory
-    from a template. [Learn
-    more...](https://github.com/RaspberryPiFoundation/blockly-samples/tree/main/plugins/dev-create)
--   Implementing core logic for the plugin.
--   Implementing a UI, if needed.
--   Testing the plugin, using Mocha.
--   Documenting the plugin, including the `README`.
+- Running `npx @blockly/create-package` to set up the plugin and its directory
+  from a template. [Learn
+  more...](https://github.com/RaspberryPiFoundation/blockly-samples/tree/main/plugins/dev-create)
+- Implementing core logic for the plugin.
+- Implementing a UI, if needed.
+- Testing the plugin, using Mocha.
+- Documenting the plugin, including the `README`.
 
 If a suggested plugin has been approved for implementation and you would like to
 work on it, comment on the issue and ask if it's still open for contributions.

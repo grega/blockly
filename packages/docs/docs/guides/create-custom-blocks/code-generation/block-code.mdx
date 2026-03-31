@@ -12,11 +12,11 @@ import TabItem from '@theme/TabItem';
 A block-code generator is a function that generates the code for a block and
 returns it as a string. What code a block generates depend on its type:
 
-*   Value blocks have an output connection. These blocks act like expressions in
-    a text-based language and generate strings that contain expressions.
-*   Statement blocks are blocks without an output connection. These blocks act
-    like statements in a text-based language and generate strings that contain
-    statements.
+- Value blocks have an output connection. These blocks act like expressions in
+  a text-based language and generate strings that contain expressions.
+- Statement blocks are blocks without an output connection. These blocks act
+  like statements in a text-based language and generate strings that contain
+  statements.
 
 ## How to write a block-code generator
 
@@ -36,19 +36,19 @@ All block-code generators perform the following steps:
 
 As examples, we will write JavaScript code generators for the following blocks.
 
-*   `custom_compare` is a value block that has a value input named `LEFT`, a
-    dropdown field named `OPERATOR`, and a numeric field named `RIGHT`. It
-    generates an expression string of the form `'0 = 0'`.
+- `custom_compare` is a value block that has a value input named `LEFT`, a
+  dropdown field named `OPERATOR`, and a numeric field named `RIGHT`. It
+  generates an expression string of the form `'0 = 0'`.
 
-    ![Custom value block for
-    comparisons.](/images/code-generation/custom-compare.png)
+  ![Custom value block for
+comparisons.](/images/code-generation/custom-compare.png)
 
-*   `custom_if` is a statement block that has a checkbox field named `NOT`, a
-    value input named `CONDITION`, and a statement input named `THEN`. It
-    generates a statement string of the form `'if (...) {\n...\n};\n'`.
+- `custom_if` is a statement block that has a checkbox field named `NOT`, a
+  value input named `CONDITION`, and a statement input named `THEN`. It
+  generates a statement string of the form `'if (...) {\n...\n};\n'`.
 
-    ![Custom statement block for an if statement. Users can use a checkbox to
-    negate the if condition.](/images/code-generation/custom-if.png)
+  ![Custom statement block for an if statement. Users can use a checkbox to
+negate the if condition.](/images/code-generation/custom-if.png)
 
 This document builds the generators step by step. You can find the completed
 generators at the [end of this document](#complete-code-generators).
@@ -71,12 +71,13 @@ import {luaGenerator} from 'blockly/lua';
 import {dartGenerator} from 'blockly/dart';
 
 // Add block-code generators for the custom_if block.
-javascriptGenerator.forBlock['custom_if'] = function (block, generator) { /* ... */ };
-pythonGenerator.forBlock['custom_if'] = function (block, generator) { /* ... */ };
-phpGenerator.forBlock['custom_if'] = function (block, generator) { /* ... */ };
-luaGenerator.forBlock['custom_if'] = function (block, generator) { /* ... */ };
-dartGenerator.forBlock['custom_if'] = function (block, generator) { /* ... */ };
-```
+javascriptGenerator.forBlock['custom_if'] = function (block, generator) {/* ... */};
+pythonGenerator.forBlock['custom_if'] = function (block, generator) {/* ... */};
+phpGenerator.forBlock['custom_if'] = function (block, generator) {/* ... */};
+luaGenerator.forBlock['custom_if'] = function (block, generator) {/* ... */};
+dartGenerator.forBlock['custom_if'] = function (block, generator) {/* ... */};
+
+````
 </TabItem>
 <TabItem value="unpkg" label="Unpkg">
 You must include the generator after you include Blockly.
@@ -88,16 +89,30 @@ You must include the generator after you include Blockly.
 <script src="https://unpkg.com/blockly/php_compressed"></script>
 <script src="https://unpkg.com/blockly/lua_compressed"></script>
 <script src="https://unpkg.com/blockly/dart_compressed"></script>
-```
+````
 
 ```js
 // Add block-code generators for the custom_if block.
-javascript.javascriptGenerator.forBlock['custom_if'] = function (block, generator) { /* ... */ };
-python.pythonGenerator.forBlock['custom_if'] = function (block, generator) { /* ... */ };
-php.phpGenerator.forBlock['custom_if'] = function (block, generator) { /* ... */ };
-lua.luaGenerator.forBlock['custom_if'] = function (block, generator) { /* ... */ };
-dart.dartGenerator.forBlock['custom_if'] = function (block, generator) { /* ... */ };
+javascript.javascriptGenerator.forBlock['custom_if'] = function (
+  block,
+  generator,
+) {
+  /* ... */
+};
+python.pythonGenerator.forBlock['custom_if'] = function (block, generator) {
+  /* ... */
+};
+php.phpGenerator.forBlock['custom_if'] = function (block, generator) {
+  /* ... */
+};
+lua.luaGenerator.forBlock['custom_if'] = function (block, generator) {
+  /* ... */
+};
+dart.dartGenerator.forBlock['custom_if'] = function (block, generator) {
+  /* ... */
+};
 ```
+
 </TabItem>
 <TabItem value="local_scripts" label="Local scripts">
 You must include the generator after you include Blockly.
@@ -113,16 +128,28 @@ You must include the generator after you include Blockly.
 
 ```js
 // Add block-code generators for the custom_if block.
-javascript.javascriptGenerator.forBlock['custom_if'] = function (block, generator) { /* ... */ };
-python.pythonGenerator.forBlock['custom_if'] = function (block, generator) { /* ... */ };
-php.phpGenerator.forBlock['custom_if'] = function (block, generator) { /* ... */ };
-lua.luaGenerator.forBlock['custom_if'] = function (block, generator) { /* ... */ };
-dart.dartGenerator.forBlock['custom_if'] = function (block, generator) { /* ... */ };
+javascript.javascriptGenerator.forBlock['custom_if'] = function (
+  block,
+  generator,
+) {
+  /* ... */
+};
+python.pythonGenerator.forBlock['custom_if'] = function (block, generator) {
+  /* ... */
+};
+php.phpGenerator.forBlock['custom_if'] = function (block, generator) {
+  /* ... */
+};
+lua.luaGenerator.forBlock['custom_if'] = function (block, generator) {
+  /* ... */
+};
+dart.dartGenerator.forBlock['custom_if'] = function (block, generator) {
+  /* ... */
+};
 ```
+
 </TabItem>
 </Tabs>
-
-
 
 ## Get field values
 
@@ -166,7 +193,6 @@ javascriptGenerator.forBlock['custom_if'] = function (block, generator) {
 </TabItem>
 </Tabs>
 
-
 For more information, see [Transform field
 values](/guides/create-custom-blocks/code-generation/fields).
 
@@ -197,12 +223,13 @@ This method calls the inner block's code generator.
 import {javascriptGenerator, Order} from 'blockly/javascript';
 
 javascriptGenerator.forBlock['custom_compare'] = function (block, generator) {
-  ...
-  const order = operator === '==' ? Order.EQUALITY : Order.RELATIONAL;
-  const left = generator.valueToCode(block, 'LEFT', order);
-  ...
+...
+const order = operator === '==' ? Order.EQUALITY : Order.RELATIONAL;
+const left = generator.valueToCode(block, 'LEFT', order);
+...
 }
-```
+
+````
 </TabItem>
 <TabItem value="custom_if" label="custom_if">
 ```js
@@ -214,7 +241,8 @@ javascriptGenerator.forBlock['custom_if'] = function (block, generator) {
   const condition = generator.valueToCode(block, 'CONDITION', order) || 'false';
   ...
 }
-```
+````
+
 </TabItem>
 </Tabs>
 
@@ -228,12 +256,12 @@ precedence (`Order.LOGICAL_NOT`) to `valueToCode` and `valueToCode` compares
 this to the precedence of the weakest operator in the inner block. It then wraps
 the inner block's code as needed:
 
-*   If `CONDITION` is a variable block, `valueToCode` doesn't add parentheses
-    because the not operator can be applied directly to a variable
-    (`!myBoolean`).
-*   If `CONDITION` is a comparison block, `valueToCode` adds parentheses so the
-    not operator applies to the entire comparison (`!(a < b)`) instead of the
-    left-hand value (`!a < b`).
+- If `CONDITION` is a variable block, `valueToCode` doesn't add parentheses
+  because the not operator can be applied directly to a variable
+  (`!myBoolean`).
+- If `CONDITION` is a comparison block, `valueToCode` adds parentheses so the
+  not operator applies to the entire comparison (`!(a < b)`) instead of the
+  left-hand value (`!a < b`).
 
 You don't actually need to know whether `valueToCode` added parentheses. All you
 need to do is pass the precedence to `valueToCode` and add the returned code to
@@ -261,7 +289,6 @@ javascriptGenerator.forBlock['custom_if'] = function (block, generator) {
 </TabItem>
 </Tabs>
 
-
 You only need to call `statementToCode` for the inner block directly connected
 to a statement input. `statementToCode` handles any additional blocks attached
 to the first block.
@@ -272,13 +299,13 @@ After you have gotten the code for the fields and inner blocks, build and return
 the code string for your block. Exactly what you return depends on your block
 type:
 
-*   **Value blocks:** Return an array containing the code string and the
-    precedence of the weakest operator in your code. `valueToCode` uses this to
-    decide if your code needs to be wrapped in parentheses when your block is
-    used as an inner block. For more information, see [Return
-    precedence](/guides/create-custom-blocks/code-generation/operator-precedence#return-precedence).
+- **Value blocks:** Return an array containing the code string and the
+  precedence of the weakest operator in your code. `valueToCode` uses this to
+  decide if your code needs to be wrapped in parentheses when your block is
+  used as an inner block. For more information, see [Return
+  precedence](/guides/create-custom-blocks/code-generation/operator-precedence#return-precedence).
 
-*   **Statement blocks:** Return the code string.
+- **Statement blocks:** Return the code string.
 
 <Tabs groupId="custom_compare-custom_if">
 <TabItem value="custom_compare" label="custom_compare">
@@ -286,13 +313,14 @@ type:
 import {javascriptGenerator, Order} from 'blockly/javascript';
 
 javascriptGenerator.forBlock['custom_compare'] = function (block, generator) {
-  ...
-  const order = operator === '==' ? Order.EQUALITY : Order.RELATIONAL;
-  ...
-  const code = left + ' ' + operator + ' ' + right;
-  return [code, order];
+...
+const order = operator === '==' ? Order.EQUALITY : Order.RELATIONAL;
+...
+const code = left + ' ' + operator + ' ' + right;
+return [code, order];
 }
-```
+
+````
 </TabItem>
 <TabItem value="custom_if" label="custom_if" default>
 ```js
@@ -301,7 +329,8 @@ javascriptGenerator.forBlock['custom_if'] = function (block, generator) {
   const code = 'if (' + negate + condition + ') {\n' + statements + '}\n';
   return code;
 }
-```
+````
+
 </TabItem>
 </Tabs>
 
@@ -320,19 +349,20 @@ For reference, here are the complete code generators for each block:
 import {javascriptGenerator, Order} from 'blockly/javascript';
 
 javascriptGenerator.forBlock['custom_compare'] = function (block, generator) {
-  const OPERATORS = {
-    EQUALS: '==',
-    LESS: '<',
-    GREATER: '>',
-  };
-  const operator = OPERATORS[block.getFieldValue('OPERATOR')];
-  const order = operator === '==' ? Order.EQUALITY : Order.RELATIONAL;
-  const left = generator.valueToCode(block, 'LEFT', order);
-  const right = block.getFieldValue('RIGHT');
-  const code = left + ' ' + operator + ' ' + right;
-  return [code, order];
+const OPERATORS = {
+EQUALS: '==',
+LESS: '<',
+GREATER: '>',
+};
+const operator = OPERATORS[block.getFieldValue('OPERATOR')];
+const order = operator === '==' ? Order.EQUALITY : Order.RELATIONAL;
+const left = generator.valueToCode(block, 'LEFT', order);
+const right = block.getFieldValue('RIGHT');
+const code = left + ' ' + operator + ' ' + right;
+return [code, order];
 }
-```
+
+````
 </TabItem>
 <TabItem value="custom_if" label="custom_if" default>
 ```js
@@ -347,9 +377,7 @@ javascriptGenerator.forBlock['custom_if'] = function (block, generator) {
   const code = 'if (' + negate + condition + ') {\n' + statements + '}\n';
   return code;
 }
-```
+````
+
 </TabItem>
 </Tabs>
-
-
-

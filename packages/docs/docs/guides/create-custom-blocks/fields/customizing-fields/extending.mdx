@@ -10,13 +10,13 @@ In order to extend an existing field you must subclass a built in field (e.g
 `FieldTextInput`, `FieldColour`) and then modify part of it to fit your needs.
 Some parts of a field you can modify are:
 
-+   Its
-    [editor](/guides/create-custom-blocks/fields/anatomy-of-a-field#editor-display).
-+   Its
-    [on-block display](/guides/create-custom-blocks/fields/anatomy-of-a-field#on-block-display).
-+   The
-    [text](/guides/create-custom-blocks/fields/anatomy-of-a-field#text)
-    it displays.
+- Its
+  [editor](/guides/create-custom-blocks/fields/anatomy-of-a-field#editor-display).
+- Its
+  [on-block display](/guides/create-custom-blocks/fields/anatomy-of-a-field#on-block-display).
+- The
+  [text](/guides/create-custom-blocks/fields/anatomy-of-a-field#text)
+  it displays.
 
 If you want to [create a
 custom field](/guides/create-custom-blocks/fields/customizing-fields/creating)
@@ -27,12 +27,11 @@ that does not need behaviour from any built-in field you should subclass `Field`
 Most custom fields extend one of these three types:
 
 - [Text Input](/guides/create-custom-blocks/fields/built-in-fields/text-input): If you want your users to type into your field, you should extend
-`FieldTextInput`.
+  `FieldTextInput`.
 - [Number](/guides/create-custom-blocks/fields/built-in-fields/number): If you want to store a number, you should extend `FieldNumber`.
 - [Dropdown](/guides/create-custom-blocks/fields/built-in-fields/dropdown): If you want to create a dropdown, but you want it to store a different model
-than the default string or image model, you should extend `FieldDropdown`.
-    - Caution: Before extending `FieldDropdown`, check that the dropdown field's
-[customization options](/guides/create-custom-blocks/fields/built-in-fields/dropdown#customization) cannot fulfill your needs.
+  than the default string or image model, you should extend `FieldDropdown`. - Caution: Before extending `FieldDropdown`, check that the dropdown field's
+  [customization options](/guides/create-custom-blocks/fields/built-in-fields/dropdown#customization) cannot fulfill your needs.
 
 Under certain circumstances you may wish to extend a different field type. For
 example `FieldLabelSerializable` extends `FieldLabel`.
@@ -43,7 +42,6 @@ example `FieldLabelSerializable` extends `FieldLabel`.
 import * as Blockly from 'blockly';
 
 export class MyCustomTextField extends Blockly.FieldTextInput {
-
   constructor(value, validator, config) {
     super(value, validator, config);
   }

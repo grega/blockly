@@ -19,7 +19,7 @@ export function pushToDataLayer(eventName, eventParams = {}) {
 
   const eventData = {
     event: eventName,
-    ...eventParams
+    ...eventParams,
   };
 
   window.dataLayer.push(eventData);
@@ -30,14 +30,18 @@ export function pushToDataLayer(eventName, eventParams = {}) {
  * @param {string} searchQuery - The search query entered by the user
  */
 export function trackSiteSearch(searchQuery) {
-  if (!searchQuery || typeof searchQuery !== 'string' || searchQuery.trim() === '') {
+  if (
+    !searchQuery ||
+    typeof searchQuery !== 'string' ||
+    searchQuery.trim() === ''
+  ) {
     return;
   }
-  
+
   const trimmedQuery = searchQuery.trim();
-  
+
   pushToDataLayer('site_search', {
-    search_query: trimmedQuery
+    search_query: trimmedQuery,
   });
 }
 
@@ -53,7 +57,7 @@ export function trackCTAClick(clickUrl, clickText) {
 
   pushToDataLayer('cta_click', {
     cta_location: clickUrl,
-    cta_label: clickText
+    cta_label: clickText,
   });
 }
 
@@ -74,46 +78,93 @@ function extractFunctionName(code, language = '') {
   }
 
   // Common keywords and variable names to skip
-  const skipNames = new Set(['code', 'let', 'const', 'var', 'import', 'export', 'function', 
-                             'preamble', 'postscript', 'result', 'value', 'data', 'item', 
-                             'element', 'obj', 'arr', 'str', 'num', 'bool', 'temp', 
-                             'if', 'for', 'while', 'new', 'return', 'class', 'enum', 'def', 
-                             'try', 'catch', 'then', 'else', 'async', 'await', 'from', 'as']);
+  const skipNames = new Set([
+    'code',
+    'let',
+    'const',
+    'var',
+    'import',
+    'export',
+    'function',
+    'preamble',
+    'postscript',
+    'result',
+    'value',
+    'data',
+    'item',
+    'element',
+    'obj',
+    'arr',
+    'str',
+    'num',
+    'bool',
+    'temp',
+    'if',
+    'for',
+    'while',
+    'new',
+    'return',
+    'class',
+    'enum',
+    'def',
+    'try',
+    'catch',
+    'then',
+    'else',
+    'async',
+    'await',
+    'from',
+    'as',
+  ]);
 
   // For JSON/XML: Extract meaningful keys or identifiers
   if (language === 'json' || language === 'xml') {
     const jsonKeyPattern = /"([a-zA-Z_$][a-zA-Z0-9_$]{2,})"\s*:/;
     const jsonMatch = trimmedCode.match(jsonKeyPattern);
-    if (jsonMatch && jsonMatch[1] && !skipNames.has(jsonMatch[1].toLowerCase())) {
+    if (
+      jsonMatch &&
+      jsonMatch[1] &&
+      !skipNames.has(jsonMatch[1].toLowerCase())
+    ) {
       return jsonMatch[1];
     }
-    
+
     // XML: Extract tag name or attribute
     const xmlTagPattern = /<([a-zA-Z_$][a-zA-Z0-9_$]{2,})/;
     const xmlMatch = trimmedCode.match(xmlTagPattern);
     if (xmlMatch && xmlMatch[1] && !skipNames.has(xmlMatch[1].toLowerCase())) {
       return xmlMatch[1];
     }
-    
+
     // Fallback: Extract any meaningful identifier
     const identifierPattern = /\b([a-zA-Z_$][a-zA-Z0-9_$]{3,})\b/;
     const identifierMatch = trimmedCode.match(identifierPattern);
-    if (identifierMatch && identifierMatch[1] && !skipNames.has(identifierMatch[1].toLowerCase())) {
+    if (
+      identifierMatch &&
+      identifierMatch[1] &&
+      !skipNames.has(identifierMatch[1].toLowerCase())
+    ) {
       return identifierMatch[1];
     }
-    
+
     return 'unknown';
   }
 
   // Priority 1: Method calls with object (e.g., javascriptGenerator.workspaceToCode())
-  const methodCallPattern = /([a-zA-Z_$][a-zA-Z0-9_$]*\.)([a-zA-Z_$][a-zA-Z0-9_$]*)\s*\(/;
+  const methodCallPattern =
+    /([a-zA-Z_$][a-zA-Z0-9_$]*\.)([a-zA-Z_$][a-zA-Z0-9_$]*)\s*\(/;
   const methodMatch = trimmedCode.match(methodCallPattern);
-  if (methodMatch && methodMatch[2] && !skipNames.has(methodMatch[2].toLowerCase())) {
+  if (
+    methodMatch &&
+    methodMatch[2] &&
+    !skipNames.has(methodMatch[2].toLowerCase())
+  ) {
     return methodMatch[2];
   }
 
   // Priority 2: Function/Method/Class declarations
-  const declPattern = /(?:function|const|let|var|class|enum|def)\s+([a-zA-Z_$][a-zA-Z0-9_$]{2,})/;
+  const declPattern =
+    /(?:function|const|let|var|class|enum|def)\s+([a-zA-Z_$][a-zA-Z0-9_$]{2,})/;
   const declMatch = trimmedCode.match(declPattern);
   if (declMatch && declMatch[1] && !skipNames.has(declMatch[1].toLowerCase())) {
     return declMatch[1];
@@ -129,7 +180,11 @@ function extractFunctionName(code, language = '') {
   // Last resort: First meaningful identifier
   const identifierPattern = /\b([a-zA-Z_$][a-zA-Z0-9_$]{3,})\b/;
   const identifierMatch = trimmedCode.match(identifierPattern);
-  if (identifierMatch && identifierMatch[1] && !skipNames.has(identifierMatch[1].toLowerCase())) {
+  if (
+    identifierMatch &&
+    identifierMatch[1] &&
+    !skipNames.has(identifierMatch[1].toLowerCase())
+  ) {
     return identifierMatch[1];
   }
 
@@ -148,7 +203,7 @@ export function trackCopyCode(functionName, languageName) {
 
   pushToDataLayer('copy_code', {
     function_name: functionName,
-    language_name: languageName
+    language_name: languageName,
   });
 }
 

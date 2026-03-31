@@ -19,7 +19,7 @@ const config = {
   // GitHub pages deployment config
   organizationName: 'RaspberryPiFoundation',
   projectName: 'blockly',
-  
+
   onBrokenLinks: 'warn',
   //onBrokenMarkdownLinks: 'warn',
 
@@ -47,7 +47,7 @@ const config = {
           return undefined;
         },
       },
-    ]
+    ],
   ],
 
   presets: [
@@ -151,12 +151,12 @@ const config = {
         additionalLanguages: ['bash', 'typescript'],
       },
       algolia: {
-        appId: "JOPASJ603L",
-        apiKey: "9a6e9f24a807a1571990048ef66c9438", // safe to expose
-        indexName: "Docusaurus_Website",
+        appId: 'JOPASJ603L',
+        apiKey: '9a6e9f24a807a1571990048ef66c9438', // safe to expose
+        indexName: 'Docusaurus_Website',
         contextualSearch: true,
         searchParameters: {},
-        searchPagePath: "search",
+        searchPagePath: 'search',
         askAi: {
           indexName: 'markdown-index',
           apiKey: '9a6e9f24a807a1571990048ef66c9438',
@@ -171,7 +171,8 @@ const config = {
         },
       },
       footer: {
-        copyright: 'Blockly is an open source project of the Raspberry Pi Foundation, a UK registered charity (1129409), supported by Google.',
+        copyright:
+          'Blockly is an open source project of the Raspberry Pi Foundation, a UK registered charity (1129409), supported by Google.',
         links: [
           {
             title: 'Docs',
@@ -241,7 +242,7 @@ const config = {
               },
             ],
           },
-        ]
+        ],
       },
     }),
 };

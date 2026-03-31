@@ -48,20 +48,20 @@ section).
 
 ##### `sharedTestSetup`:
 
-*   Sets up sinon fake timers (in some tests you will need to use
-    `this.clock.runAll`).
-*   Stubs Blockly.Events.fire to fire immediately (configurable).
-*   Sets up automatic cleanup of blockTypes defined though
-    `defineBlocksWithJsonArray`.
-*   Declares a few properties on the `this` context that are meant to be
-    accessible:
-    *   `this.clock` (but should not be restored else it will cause issues in
-        `sharedTestTeardown`)
-    *   `this.eventsFireStub`
-    *   `this.sharedCleanup` (to be used with `addMessageToCleanup` and
-        `addBlockTypeToCleanup`) (NOTE: you don't need to use
-        `addBlockTypeToCleanup` if you defined the block using
-        `defineBlocksWithJsonArray`)
+- Sets up sinon fake timers (in some tests you will need to use
+  `this.clock.runAll`).
+- Stubs Blockly.Events.fire to fire immediately (configurable).
+- Sets up automatic cleanup of blockTypes defined though
+  `defineBlocksWithJsonArray`.
+- Declares a few properties on the `this` context that are meant to be
+  accessible:
+  - `this.clock` (but should not be restored else it will cause issues in
+    `sharedTestTeardown`)
+  - `this.eventsFireStub`
+  - `this.sharedCleanup` (to be used with `addMessageToCleanup` and
+    `addBlockTypeToCleanup`) (NOTE: you don't need to use
+    `addBlockTypeToCleanup` if you defined the block using
+    `defineBlocksWithJsonArray`)
 
 The function has one optional `options` parameter to configure setup. Currently,
 it's only used to determine whether to stub `Blockly.Events.fire` to fire
@@ -69,45 +69,45 @@ immediately (will stub by default).
 
 ##### `sharedTestTeardown`:
 
-*   Disposes of workspace `this.workspace` (depending on where it was defined,
-    see Test Requirements section for more information).
-*   Restores all stubs.
-*   Cleans up all block types added though `defineBlocksWithJsonArray` and
-    `addBlockTypeToCleanup`.
-*   Cleans up all messages added though `addMessageToCleanup`.
+- Disposes of workspace `this.workspace` (depending on where it was defined,
+  see Test Requirements section for more information).
+- Restores all stubs.
+- Cleans up all block types added though `defineBlocksWithJsonArray` and
+  `addBlockTypeToCleanup`.
+- Cleans up all messages added though `addMessageToCleanup`.
 
 #### Test Requirements
 
-*   Each test must call `sharedTestSetup.call(this);` as the first line in the
-    setup of the outermost suite and `sharedTestTeardown.call(this);` as the
-    last line in the teardown of the outermost suite for a file.
-*   If you need a workspace with a generic toolbox, you can use one of the
-    [preset toolboxes](https://github.com/RaspberryPiFoundation/blockly/blob/c12be77701cf34434274351f40356f5ad8e7b469/tests/mocha/index.html#L117)
-    on the test `index.html`. See below for an example.
-*   You must properly dispose of `this.workspace`. In most tests, you will
-    define `this.workspace` in the outermost suite and use it for all subsequent
-    tests, but in some cases you might define or redefine it in an inner suite
-    (for example, one of your tests requires a workspace with different options
-    than you originally set up). It must be disposed of at the end of the test.
-    *   If you define `this.workspace` in the outermost suite and never redefine
-        it, no further action is needed. It will be automatically disposed of by
-        `sharedTestTeardown`.
-    *   If you define `this.workspace` for the first time in an inner suite
-        (i.e. you did not define it in the outermost suite), you must manually
-        dispose of it by calling `workspaceTeardown.call(this, this.workspace)`
-        in the teardown of that suite.
-    *   If you define `this.workpace` in the outermost suite, but then redefine
-        it in an inner test suite, you must first call
-        `workspaceTeardown.call(this, this.workspace)` **before redefining it**
-        to tear down the original workspace defined in the top level suite. You
-        must also manually dispose the new value by calling
-        `workspaceTeardown.call(this, this.workspace)` again in the teardown of
-        this inner suite.
+- Each test must call `sharedTestSetup.call(this);` as the first line in the
+  setup of the outermost suite and `sharedTestTeardown.call(this);` as the
+  last line in the teardown of the outermost suite for a file.
+- If you need a workspace with a generic toolbox, you can use one of the
+  [preset toolboxes](https://github.com/RaspberryPiFoundation/blockly/blob/c12be77701cf34434274351f40356f5ad8e7b469/tests/mocha/index.html#L117)
+  on the test `index.html`. See below for an example.
+- You must properly dispose of `this.workspace`. In most tests, you will
+  define `this.workspace` in the outermost suite and use it for all subsequent
+  tests, but in some cases you might define or redefine it in an inner suite
+  (for example, one of your tests requires a workspace with different options
+  than you originally set up). It must be disposed of at the end of the test.
+  - If you define `this.workspace` in the outermost suite and never redefine
+    it, no further action is needed. It will be automatically disposed of by
+    `sharedTestTeardown`.
+  - If you define `this.workspace` for the first time in an inner suite
+    (i.e. you did not define it in the outermost suite), you must manually
+    dispose of it by calling `workspaceTeardown.call(this, this.workspace)`
+    in the teardown of that suite.
+  - If you define `this.workpace` in the outermost suite, but then redefine
+    it in an inner test suite, you must first call
+    `workspaceTeardown.call(this, this.workspace)` **before redefining it**
+    to tear down the original workspace defined in the top level suite. You
+    must also manually dispose the new value by calling
+    `workspaceTeardown.call(this, this.workspace)` again in the teardown of
+    this inner suite.
 
 #### Test Structure
 
 Unit tests generally follow a set structure, which can be summarized as
-*arrange, act, assert.*
+_arrange, act, assert._
 
 1.  **Arrange**: Set up the state of the world and any necessary conditions for
     the behavior under test.
@@ -123,29 +123,32 @@ to these 3 stages.
 Here is an example test file (simplified from the real thing).
 
 ```js
-suite('Flyout', function() {
-  setup(function() {
+suite('Flyout', function () {
+  setup(function () {
     sharedTestSetup.call(this);
     this.toolboxXml = document.getElementById('toolbox-simple');
-    this.workspace = Blockly.inject('blocklyDiv',
-        {
-          toolbox: this.toolboxXml
-        });
+    this.workspace = Blockly.inject('blocklyDiv', {
+      toolbox: this.toolboxXml,
+    });
   });
 
-  teardown(function() {
+  teardown(function () {
     sharedTestTeardown.call(this);
   });
 
-  suite('simple flyout', function() {
-    setup(function() {
+  suite('simple flyout', function () {
+    setup(function () {
       this.flyout = this.workspace.getFlyout();
     });
-    test('y is always 0', function() {
+    test('y is always 0', function () {
       // Act and assert stages combined for simple test case
-      chai.assert.equal(this.flyout.getY(), 0, 'y coordinate in vertical flyout is 0');
+      chai.assert.equal(
+        this.flyout.getY(),
+        0,
+        'y coordinate in vertical flyout is 0',
+      );
     });
-    test('x is right of workspace if flyout at right', function() {
+    test('x is right of workspace if flyout at right', function () {
       // Arrange
       sinon.stub(this.flyout.targetWorkspace, 'getMetrics').returns({
         viewWidth: 100,
@@ -165,80 +168,80 @@ suite('Flyout', function() {
 
 Things to note from this example:
 
-*   A suite can contain other suites that have additional `setup` and `teardown`
-    methods.
-*   Each suite and test has a descriptive name.
-*   Chai assertions are used to make assertions about the code.
-    *   You can supply an optional string argument that will be displayed if the
-        test fails. This makes it easier to debug broken tests.
-    *   The order of the parameters is `chai.assert.equal(actualValue,
-        expectedValue, optionalMessage)`. If you swap `actual` and `expected`,
-        the error messages won't make sense.
-*   Sinon is used to stub methods when you don't want to call the real code. In
-    this example, we don't want to call the real metrics function because it
-    isn't relevant to this test. We only care about how the results are used by
-    the method under test. Sinon stubs the `getMetrics` function to return a
-    canned response which we can easily check for in our test assertions.
-*   The `setup` methods for each suite should contain only generic setup that
-    applies to all tests. If a test for a particular behavior relies on a
-    certain condition, that condition should clearly be stated in the relevant
-    test.
+- A suite can contain other suites that have additional `setup` and `teardown`
+  methods.
+- Each suite and test has a descriptive name.
+- Chai assertions are used to make assertions about the code.
+  - You can supply an optional string argument that will be displayed if the
+    test fails. This makes it easier to debug broken tests.
+  - The order of the parameters is `chai.assert.equal(actualValue,
+expectedValue, optionalMessage)`. If you swap `actual` and `expected`,
+    the error messages won't make sense.
+- Sinon is used to stub methods when you don't want to call the real code. In
+  this example, we don't want to call the real metrics function because it
+  isn't relevant to this test. We only care about how the results are used by
+  the method under test. Sinon stubs the `getMetrics` function to return a
+  canned response which we can easily check for in our test assertions.
+- The `setup` methods for each suite should contain only generic setup that
+  applies to all tests. If a test for a particular behavior relies on a
+  certain condition, that condition should clearly be stated in the relevant
+  test.
 
 ### Debugging Tests
 
-*   You can open the tests in a browser and use the developer tools to set
-    breakpoints and investigate if your tests are unexpectedly failing (or
-    unexpectedly passing!).
-*   Set `.only()` or `.skip()` on a test or suite to run only that set of tests,
-    or skip a test. For example:
+- You can open the tests in a browser and use the developer tools to set
+  breakpoints and investigate if your tests are unexpectedly failing (or
+  unexpectedly passing!).
+- Set `.only()` or `.skip()` on a test or suite to run only that set of tests,
+  or skip a test. For example:
 
-    ```js
-    suite.only('Workspace', function () {
-      suite('updateToolbox', function () {
-        test('test name', function () {
-          // ...
-        });
-        test.skip('test I don’t care about', function () {
-          // ...
-        });
+  ```js
+  suite.only('Workspace', function () {
+    suite('updateToolbox', function () {
+      test('test name', function () {
+        // ...
+      });
+      test.skip('test I don’t care about', function () {
+        // ...
       });
     });
-    ```
+  });
+  ```
 
-    Remember to remove these before committing your code.
+  Remember to remove these before committing your code.
 
 ## Block Generator Tests
 
-Each block has its own unit tests.  These tests verify that blocks generate
+Each block has its own unit tests. These tests verify that blocks generate
 code than functions as intended.
 
-  1. Load `tests/generators/index.html` in Firefox or Safari. Note that Chrome and Opera
-  have security restrictions that prevent loading the tests from the local "file://"
-  system (Issues [41024](https://code.google.com/p/chromium/issues/detail?id=41024)
-  and [47416](https://code.google.com/p/chromium/issues/detail?id=47416)).
-  1. Choose the relevant part of the system to test from the drop-down menu, and
-  click "Load". Blocks should appear in the workspace.
-  1. Click on "JavaScript".<br/>
-  Copy and run the generated code in a JavaScript console. If the output ends
-  with "OK", the test has passed.
-  1. Click on "Python".<br/>
-  Copy and run the generated code in a [Python interpreter](https://repl.it/languages/python).
-  If the output ends with "OK", the test has passed.
-  1. Click on "PHP".<br/>
-  Copy and run the generated code in a [PHP interpreter](https://repl.it/languages/php).
-  If the output ends with "OK", the test has passed.
-  1. Click on "Lua".<br/>
-  Copy and run the generated code in a [Lua interpreter](https://repl.it/languages/lua).
-  If the output ends with "OK", the test has passed.
-  1. Click on "Dart".<br/>
-  Copy and run the generated code in a [Dart interpreter](https://dartpad.dev/).
-  If the output ends with "OK", the test has passed.
+1. Load `tests/generators/index.html` in Firefox or Safari. Note that Chrome and Opera
+   have security restrictions that prevent loading the tests from the local "file://"
+   system (Issues [41024](https://code.google.com/p/chromium/issues/detail?id=41024)
+   and [47416](https://code.google.com/p/chromium/issues/detail?id=47416)).
+1. Choose the relevant part of the system to test from the drop-down menu, and
+   click "Load". Blocks should appear in the workspace.
+1. Click on "JavaScript".<br/>
+   Copy and run the generated code in a JavaScript console. If the output ends
+   with "OK", the test has passed.
+1. Click on "Python".<br/>
+   Copy and run the generated code in a [Python interpreter](https://repl.it/languages/python).
+   If the output ends with "OK", the test has passed.
+1. Click on "PHP".<br/>
+   Copy and run the generated code in a [PHP interpreter](https://repl.it/languages/php).
+   If the output ends with "OK", the test has passed.
+1. Click on "Lua".<br/>
+   Copy and run the generated code in a [Lua interpreter](https://repl.it/languages/lua).
+   If the output ends with "OK", the test has passed.
+1. Click on "Dart".<br/>
+   Copy and run the generated code in a [Dart interpreter](https://dartpad.dev/).
+   If the output ends with "OK", the test has passed.
 
 ## Editing Block Generator Tests
 
-  1. Load `tests/generators/index.html` in a browser.
-  1. Choose the relevant part of the system from the drop-down menu, and click
-  "Load". Blocks should appear in the workspace.
-  1. Make any changes or additions to the blocks.
-  1. Click on "XML".
-  1. Copy the generated XML into the appropriate file in `tests/generators/`.
+1. Load `tests/generators/index.html` in a browser.
+1. Choose the relevant part of the system from the drop-down menu, and click
+   "Load". Blocks should appear in the workspace.
+1. Make any changes or additions to the blocks.
+1. Click on "XML".
+1. Copy the generated XML into the appropriate file in `tests/generators/`.

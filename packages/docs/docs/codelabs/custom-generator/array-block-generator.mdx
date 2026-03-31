@@ -16,12 +16,7 @@ The array block uses a mutator to dynamically change the number of inputs it has
 The generated code looks like:
 
 ```json
-[
-  1,
-  "two",
-  false,
-  true
-]
+[1, "two", false, true]
 ```
 
 As with member blocks, there are no restrictions on the types of blocks connected to inputs.
@@ -33,8 +28,7 @@ Each value input on the block has a name: `ADD0`, `ADD1`, etc. Use `valueToCode`
 ```js
 const values = [];
 for (let i = 0; i < block.itemCount_; i++) {
-  const valueCode = generator.valueToCode(block, 'ADD' + i,
-      Order.ATOMIC);
+  const valueCode = generator.valueToCode(block, 'ADD' + i, Order.ATOMIC);
   if (valueCode) {
     values.push(valueCode);
   }
@@ -48,8 +42,8 @@ To include empty inputs, use the string `'null'` as the value:
 ```js
 const values = [];
 for (let i = 0; i < block.itemCount_; i++) {
-  const valueCode =  generator.valueToCode(block, 'ADD' + i,
-      Order.ATOMIC) || 'null';
+  const valueCode =
+    generator.valueToCode(block, 'ADD' + i, Order.ATOMIC) || 'null';
   values.push(valueCode);
 }
 ```
@@ -67,8 +61,10 @@ const valueString = values.join(',\n');
 Next, use `prefixLines` to add indentation at the beginning of each line:
 
 ```js
-const indentedValueString =
-    generator.prefixLines(valueString, generator.INDENT);
+const indentedValueString = generator.prefixLines(
+  valueString,
+  generator.INDENT,
+);
 ```
 
 `INDENT` is a property on the generator. It defaults to two spaces, but language generators may override it to increase indent or change to tabs.
@@ -85,18 +81,19 @@ return [codeString, Order.ATOMIC];
 Here is the final array block generator:
 
 ```js
-jsonGenerator.forBlock['lists_create_with'] = function(block, generator) {
+jsonGenerator.forBlock['lists_create_with'] = function (block, generator) {
   const values = [];
   for (let i = 0; i < block.itemCount_; i++) {
-    const valueCode = generator.valueToCode(block, 'ADD' + i,
-        Order.ATOMIC);
+    const valueCode = generator.valueToCode(block, 'ADD' + i, Order.ATOMIC);
     if (valueCode) {
       values.push(valueCode);
     }
   }
   const valueString = values.join(',\n');
-  const indentedValueString =
-      generator.prefixLines(valueString, generator.INDENT);
+  const indentedValueString = generator.prefixLines(
+    valueString,
+    generator.INDENT,
+  );
   const codeString = '[\n' + indentedValueString + '\n]';
   return [codeString, Order.ATOMIC];
 };

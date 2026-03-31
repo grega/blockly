@@ -7,7 +7,7 @@ image: images/blockly_banner.png
 # Application design
 
 There are several paradigms to choose from when designing an application
-which uses Blockly.  Consideration of these choices should be made
+which uses Blockly. Consideration of these choices should be made
 early, since they affect the blocks the user will need.
 
 ## Configuration
@@ -23,23 +23,23 @@ on.](/images/configuration.png)
 
 ```js
 Blockly.Blocks['factory_base'] = {
-  init: function() {
+  init: function () {
     this.setDeletable(false);
     this.setMovable(false);
     this.setEditable(false);
     // etc...
-  }
-}
+  },
+};
 
-Blockly.serialization.blocks.append({'type': 'factory_base'}, workspace);
+Blockly.serialization.blocks.append({ type: 'factory_base' }, workspace);
 ```
 
 This creates an undeletable, unmovable block that that holds all the
-user's configuration.  The workspace may be serialized at any time
+user's configuration. The workspace may be serialized at any time
 to determine the current configuration.
 
 Such applications may wish to automatically disable any block not
-connected to the root block.  This can be accomplished on the with one line:
+connected to the root block. This can be accomplished on the with one line:
 
 ```js
 workspace.addChangeListener(Blockly.Events.disableOrphans);
@@ -48,22 +48,22 @@ workspace.addChangeListener(Blockly.Events.disableOrphans);
 ## Serial program
 
 The majority of Blockly applications are designed to create serial
-programs.  Users stack together blocks which are executed in order.
+programs. Users stack together blocks which are executed in order.
 
 ![A stack of blocks with commands to move, turn left, and move
 again.](/images/stack.png)
 
 Every (non-disabled) block on the workspace will form part of the
-program.  If there are multiple stacks of blocks, higher ones are
-executed first.  (If two stacks are approximately the same height,
+program. If there are multiple stacks of blocks, higher ones are
+executed first. (If two stacks are approximately the same height,
 stacks to the left (right in RTL mode) are given priority.)
 
-The workspace may be exported to executable code at any time.  This code
+The workspace may be exported to executable code at any time. This code
 may be executed client side in JavaScript (using `eval` or the JS
 Interpreter), or server side in any language.
 
 ```js
-import {javascriptGenerator} from 'blockly/javascript';
+import { javascriptGenerator } from 'blockly/javascript';
 
 var code = javascriptGenerator.workspaceToCode(workspace);
 ```
@@ -71,20 +71,20 @@ var code = javascriptGenerator.workspaceToCode(workspace);
 ## Parallel program
 
 Some Blockly applications choose to execute all stacks of blocks in
-parallel, rather than serially.  An example would be a music application
+parallel, rather than serially. An example would be a music application
 where a drum loop runs concurrently with a melody.
 
 One way of implementing parallel execution is to generate the code for each
 block individually:
 
 ```js
-import {javascriptGenerator} from 'blockly/javascript';
+import { javascriptGenerator } from 'blockly/javascript';
 
 var json = Blockly.serialization.workspaces.save(workspace);
 
 // Store top blocks separately, and remove them from the JSON.
 var blocks = json['blocks']['blocks'];
-var topBlocks = blocks.slice();  // Create shallow copy.
+var topBlocks = blocks.slice(); // Create shallow copy.
 blocks.length = 0;
 
 // Load each block into the workspace individually and generate code.
@@ -100,7 +100,7 @@ for (var i = 0; block < topBlocks.length; i++) {
 ```
 
 If the target language is JavaScript, the `allCode` array may then be
-used to create multiple JS Interpreters for simultaneous execution.  If
+used to create multiple JS Interpreters for simultaneous execution. If
 the target language is something like Python, then the `allCode` array
 may be assembled into a single program that uses a threading module.
 
@@ -110,7 +110,7 @@ any shared resources such as variables and functions.
 ## Event driven program
 
 Event handlers are just functions that get called by the system, rather
-than by the program.  These blocks can either enclose the stack of
+than by the program. These blocks can either enclose the stack of
 blocks to be executed, or they may be headers that sit on top of a stack
 of blocks.
 
@@ -131,7 +131,7 @@ documentation.
 block.](/images/event2.png)
 
 Within an event-driven model, it might make sense to also make a handler
-for the program start.  Under this model, any block on the workspace not
+for the program start. Under this model, any block on the workspace not
 connected to an event handler would be ignored and would not execute.
 
 When designing a system that uses events, consider whether it is
@@ -175,4 +175,4 @@ sense for the toolbox to be above or below the workspace. Blockly supports
 horizontal scrolling in the Toolbox for these cases, but it should be used with
 care.
 
-*Recommendation: Place the program visualization next to the toolbar.*
+_Recommendation: Place the program visualization next to the toolbar._

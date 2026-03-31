@@ -27,14 +27,14 @@ Recall: the name of the value being fetched is `MEMBER_NAME` because that is how
 
 ### Input value
 
-The **property value** is whatever is attached to the value input. A variety of blocks could be attached there:  `logic_null`, `text`, `math_number`, `logic_boolean`, or even an array (`lists_create_with`). Use `valueToCode` to get the correct value:
+The **property value** is whatever is attached to the value input. A variety of blocks could be attached there: `logic_null`, `text`, `math_number`, `logic_boolean`, or even an array (`lists_create_with`). Use `valueToCode` to get the correct value:
 
 ```js
-const value = generator.valueToCode(block, 'MEMBER_VALUE',
-    Order.ATOMIC);
+const value = generator.valueToCode(block, 'MEMBER_VALUE', Order.ATOMIC);
 ```
 
 `valueToCode` does three things:
+
 - Finds the blocks connected to the named value input (the second argument)
 - Generates the code for that block
 - Returns the code as a string
@@ -56,10 +56,9 @@ const code = `"${name}": ${value}`;
 All together, here is block generator for the member block:
 
 ```js
-jsonGenerator.forBlock['member'] = function(block, generator) {
+jsonGenerator.forBlock['member'] = function (block, generator) {
   const name = block.getFieldValue('MEMBER_NAME');
-  const value = generator.valueToCode(
-      block, 'MEMBER_VALUE', Order.ATOMIC);
+  const value = generator.valueToCode(block, 'MEMBER_VALUE', Order.ATOMIC);
   const code = `"${name}": ${value}`;
   return code;
 };

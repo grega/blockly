@@ -51,8 +51,8 @@
   --codeblock-background-color: #282a36;
 }
 
-[class*="docs-doc-id-guides/"] .pagination-nav,
-[class*="docs-doc-id-reference/"] .pagination-nav {
+[class*='docs-doc-id-guides/'] .pagination-nav,
+[class*='docs-doc-id-reference/'] .pagination-nav {
   display: none;
 }
 
@@ -184,7 +184,6 @@ table th p {
     padding-left: 16px;
     padding-right: 16px;
   }
-
 }
 
 @media (min-width: 769px) and (max-width: 996px) {
@@ -206,7 +205,6 @@ table th p {
   .footer__title {
     margin-bottom: 16px;
   }
-
 }
 
 /** Added changes for hide level 3 menus **/
@@ -231,13 +229,13 @@ table th p {
   color: var(--docsearch-muted-color);
   display: flex;
   height: 18px;
-  margin-right: .4em;
+  margin-right: 0.4em;
   padding: 0 0 2px;
   position: relative;
   top: -1px;
-  transition-duration: .1s;
+  transition-duration: 0.1s;
   transition-property: all;
-  transition-timing-function: cubic-bezier(.4, 0, .2, 1);
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
   width: 20px;
 }
 
@@ -246,7 +244,7 @@ table th p {
 }
 
 /* --- Hide Duplicate Breadcrumb on Reference Pages --- */
-[class*="docs-doc-id-reference/"] .theme-doc-breadcrumbs {
+[class*='docs-doc-id-reference/'] .theme-doc-breadcrumbs {
   display: none;
 }
 
@@ -256,10 +254,14 @@ table th p {
   color: #fff;
   text-align: center;
   border-radius: 4px;
-  padding: .5rem 1.25rem;
+  padding: 0.5rem 1.25rem;
   font-weight: 500;
   text-decoration: none;
-  transition: background-color .2s cubic-bezier(.55, .085, .68, .53), border-color .2s cubic-bezier(.55, .055, .675, .19), color .2s cubic-bezier(.55, .085, .68, .53), transform .3s;
+  transition:
+    background-color 0.2s cubic-bezier(0.55, 0.085, 0.68, 0.53),
+    border-color 0.2s cubic-bezier(0.55, 0.055, 0.675, 0.19),
+    color 0.2s cubic-bezier(0.55, 0.085, 0.68, 0.53),
+    transform 0.3s;
 }
 
 .downloadAsset:hover {
@@ -269,7 +271,7 @@ table th p {
 }
 
 .compare-better:before {
-  content: "thumb_up";
+  content: 'thumb_up';
   color: #1e8e3e;
   font-family: 'Material Icons' !important;
   font-weight: normal;
@@ -281,7 +283,7 @@ table th p {
 }
 
 .compare-worse:before {
-  content: "thumb_down";
+  content: 'thumb_down';
   color: #d50000;
   font-family: 'Material Icons' !important;
   font-weight: normal;
@@ -292,11 +294,13 @@ table th p {
   width: 24px;
 }
 
-.compare-better, .compare-worse {
- font-weight: 700;
+.compare-better,
+.compare-worse {
+  font-weight: 700;
 }
 
-.compare-better p, .compare-worse p {
+.compare-better p,
+.compare-worse p {
   margin-top: 0;
 }
 

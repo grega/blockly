@@ -64,11 +64,11 @@ when an individual block is serialized, or when a block is copy-pasted.
 
 Two common use cases for this are:
 
-*   When an individual block is loaded into a workspace where the backing data
-    model doesn't exist, the icon has enough information in its own state to
-    create a new data model.
-*   When a block is copy-pasted, the icon always creates a new backing
-    data model instead of referencing an existing one.
+- When an individual block is loaded into a workspace where the backing data
+  model doesn't exist, the icon has enough information in its own state to
+  create a new data model.
+- When a block is copy-pasted, the icon always creates a new backing
+  data model instead of referencing an existing one.
 
 ## Load state
 
@@ -96,8 +96,7 @@ class myIcon extends Blockly.icons.Icon {
   }
 }
 
-Blockly.icons.registry.register(
-    new Blockly.icons.IconType('my_icon'), myIcon);
+Blockly.icons.registry.register(new Blockly.icons.IconType('my_icon'), myIcon);
 ```
 
 [ISerializable]: /reference/blockly.iserializable_interface

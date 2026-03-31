@@ -15,7 +15,11 @@ response to a right-click or a long press on a touch device. If you use the
 shown with a keyboard shortcut, which defaults to `Ctrl+Enter` on Windows or
 `Command+Enter` on Mac.
 
-<Image alt="The default context menu for a block" src="/images/context-menus/block-default-menu.png" width={200} />
+<Image
+  alt="The default context menu for a block"
+  src="/images/context-menus/block-default-menu.png"
+  width={200}
+/>
 
 Context menus are a good place to add actions that the user performs
 infrequently, such as downloading a screenshot. If you think an action will be
@@ -95,9 +99,9 @@ if (scope.focusedNode instanceof Blockly.BlockSvg) {
 The `Scope` object has other optional properties that are no longer recommended
 for use, but may still be set:
 
--   `block` is set only if the component whose menu is shown is a `BlockSvg`.
--   `workspace` is set only if the component is a `WorkspaceSvg`.
--   `comment` is set only if the component is a `RenderedWorkspaceComment`.
+- `block` is set only if the component whose menu is shown is a `BlockSvg`.
+- `workspace` is set only if the component is a `WorkspaceSvg`.
+- `comment` is set only if the component is a `RenderedWorkspaceComment`.
 
 These properties don't cover all types of components that may have a context
 menu, so you should prefer to use the `focusedNode` property.
@@ -129,11 +133,11 @@ should be displayed.
 It should return one of a set of strings: `'enabled'`, `'disabled'`, or
 `'hidden'`.
 
-|  Value |  Description |  Image |
-| ------------ | ---------------------------------- | --------------------------------------------------- |
+| Value        | Description                        | Image                                                                                         |
+| ------------ | ---------------------------------- | --------------------------------------------------------------------------------------------- |
 | `'enabled'`  | Shows that the item is active.     | <Image alt="An enabled option" src="/images/context-menus/enabled-option.png" width={150} />  |
 | `'disabled'` | Shows that the item is not active. | <Image alt="A disabled option" src="/images/context-menus/disabled-option.png" width={150} /> |
-| `'hidden'`   | Hides the item.                    |                                                     |
+| `'hidden'`   | Hides the item.                    |                                                                                               |
 
 The `preconditionFn` is also passed a [`Scope`][Scope] which you can use to
 determine what type of component the menu was opened on and the state of that
@@ -159,7 +163,7 @@ const collapseTemplate = {
     return 'hidden';
   },
   // ...
-}
+};
 ```
 
 ### Display text
@@ -202,7 +206,7 @@ const collapseTemplate = {
     return '';
   },
   // ...
-}
+};
 ```
 
 ### Weight
@@ -217,7 +221,7 @@ const collapseTemplate = {
   // ...
   weight: 10,
   // ...
-}
+};
 ```
 
 Weights for the built-in context menu items go in increasing order starting at 1
@@ -228,17 +232,17 @@ and increasing by 1.
 The `callback` property is a function that performs the action of your context
 menu item. It is passed several parameters:
 
--   `scope`: A [`Scope`][Scope] object that provides a reference to the
-    component having its menu opened.
--   `menuOpenEvent`: The `Event` that triggered opening the context menu. This
-    may be a `PointerEvent` or `KeyboardEvent`, depending on how the user opened
-    the menu.
--   `menuSelectEvent`: The `Event` that selected this particular context menu
-    item from the menu. This may be a `PointerEvent` or `KeyboardEvent`,
-    depending on how the user selected the item.
--   `location`: The `Coordinate` in [pixel coordinates][coordinate-systems]
-    where the menu was opened. This lets you, for example, create a new block at
-    the click location.
+- `scope`: A [`Scope`][Scope] object that provides a reference to the
+  component having its menu opened.
+- `menuOpenEvent`: The `Event` that triggered opening the context menu. This
+  may be a `PointerEvent` or `KeyboardEvent`, depending on how the user opened
+  the menu.
+- `menuSelectEvent`: The `Event` that selected this particular context menu
+  item from the menu. This may be a `PointerEvent` or `KeyboardEvent`,
+  depending on how the user selected the item.
+- `location`: The `Coordinate` in [pixel coordinates][coordinate-systems]
+  where the menu was opened. This lets you, for example, create a new block at
+  the click location.
 
 ```js
 const collapseTemplate = {
@@ -248,7 +252,7 @@ const collapseTemplate = {
       scope.focusedNode.collapse();
     }
   },
-}
+};
 ```
 
 You can use `scope` to design templates that work differently depending on the
@@ -322,7 +326,9 @@ You can add a template to the registry by registering it. You should do this
 once on page load. It can happen before or after you inject your workspace.
 
 ```js
-const collapseTemplate = { /* properties from above */ };
+const collapseTemplate = {
+  /* properties from above */
+};
 Blockly.ContextMenuRegistry.registry.register(collapseTemplate);
 ```
 
@@ -384,11 +390,11 @@ Objects in the array passed to blocks have the type
 workspaces have the type `ContextMenuOption`. Blockly uses the following
 properties from these objects:
 
-*   `text`: The display text.
-*   `enabled`: If `false`, display the item with grey text.
-*   `callback`: The function to be called when the item is clicked.
-*   `separator`: The item is a separator. Mutually exclusive with the other
-    three properties.
+- `text`: The display text.
+- `enabled`: If `false`, display the item with grey text.
+- `callback`: The function to be called when the item is clicked.
+- `separator`: The item is a separator. Mutually exclusive with the other
+  three properties.
 
 See the reference documentation for property types and function signatures.
 
@@ -406,7 +412,7 @@ workspace.configureContextMenu = function (menuOptions, e) {
   };
   // Add the item to the end of the context menu.
   menuOptions.push(item);
-}
+};
 ```
 
 ## Show a context menu on a custom object

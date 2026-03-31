@@ -33,9 +33,10 @@ class MyBubble extends Blockly.bubbles.Bubble {
     super(workspace, anchor, ownerRect);
 
     this.text = Blockly.utils.dom.createSvgElement(
-          Blockly.utils.Svg.TEXT,
-          {'class': 'my-bubble-class'},
-          this.contentContainer);
+      Blockly.utils.Svg.TEXT,
+      { class: 'my-bubble-class' },
+      this.contentContainer,
+    );
     const node = Blockly.utils.dom.createTextNode('some text');
     this.text.appendChild(node);
   }

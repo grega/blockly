@@ -35,6 +35,15 @@ npm run serve
 
 The build folder is now served at http://localhost:3000/.
 
+## Linting
+
+```bash
+# check formatting:
+npm run format:check
+# fix formatting:
+npm run format
+```
+
 ## Generating reference docs
 
 The API reference pages are auto-generated from the Blockly TypeScript source using `@microsoft/api-extractor` and `@microsoft/api-documenter`. This is a separate step from the Docusaurus build and must be run from the `packages/blockly` directory:

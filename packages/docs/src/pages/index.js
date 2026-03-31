@@ -10,9 +10,9 @@ import Heading from '@theme/Heading';
 import styles from './index.module.css';
 
 function HomepageHeader() {
-  const {siteConfig} = useDocusaurusContext();
+  const { siteConfig } = useDocusaurusContext();
   const homePageGif = useBaseUrl('/images/HomePage/home-animation.gif');
-  
+
   return (
     <header className={clsx(styles.heroBanner)}>
       <div className={clsx('container', styles.heroContainer)}>
@@ -23,7 +23,9 @@ function HomepageHeader() {
               Build with Blockly
             </Heading>
             <p className={styles.heroDescription}>
-             An open-source, flexible library for developers to build visual programming editors with drag-and-drop blocks - powering the world’s most popular block-based coding platforms.
+              An open-source, flexible library for developers to build visual
+              programming editors with drag-and-drop blocks - powering the
+              world’s most popular block-based coding platforms.
             </p>
             <div className={styles.buttons}>
               <Link
@@ -34,9 +36,9 @@ function HomepageHeader() {
             </div>
           </div>
           <div className={styles.heroVisual}>
-            <img 
+            <img
               src={homePageGif}
-              alt="Blockly code block example" 
+              alt="Blockly code block example"
               className={styles.blocklyGif}
             />
           </div>
@@ -47,7 +49,7 @@ function HomepageHeader() {
 }
 
 export default function Home() {
-  const {siteConfig} = useDocusaurusContext();
+  const { siteConfig } = useDocusaurusContext();
   return (
     <Layout
       title={`${siteConfig.title}`}

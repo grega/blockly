@@ -84,7 +84,7 @@ const logFieldsShortcut = {
   // ...
   preconditionFn(workspace, scope) {
     // This shortcut only applies to blocks.
-    return (scope.focusedNode instanceof Blockly.BlockSvg);
+    return scope.focusedNode instanceof Blockly.BlockSvg;
   },
   // ...
 };
@@ -100,10 +100,10 @@ help menus that show applicable shortcuts.
 This function executes the action associated with the shortcut. It is called
 only if `preconditionFn` returns `true` or does not exist. Its parameters are:
 
-*   `workspace`: The current `WorkspaceSvg`.
-*   `e`: The `Event` that initiated the shortcut.
-*   `shortcut`: The `KeyboardShortcut` itself.
-*   `scope`: The `Scope` to which the shortcut applies.
+- `workspace`: The current `WorkspaceSvg`.
+- `e`: The `Event` that initiated the shortcut.
+- `shortcut`: The `KeyboardShortcut` itself.
+- `scope`: The `Scope` to which the shortcut applies.
 
 It returns `true` if it succeeds and `false` if it fails.
 
@@ -159,8 +159,8 @@ If your keyboard shortcut is activated by a combination of keys, such as holding
 
 ```js
 const ctrlC = Blockly.ShortcutRegistry.registry.createSerializedKey(
-  Blockly.utils.KeyCodes.C,       // Keycode of main key
-  [Blockly.utils.KeyCodes.CTRL],  // Array of modifier keys
+  Blockly.utils.KeyCodes.C, // Keycode of main key
+  [Blockly.utils.KeyCodes.CTRL], // Array of modifier keys
 );
 
 const copyShortcut = {
@@ -255,9 +255,11 @@ const allShortcuts = Blockly.ShortcutRegistry.registry.getRegistry();
 const modLogFieldsShortcut = allShortcuts[logFieldsShortcut.name];
 // Apply the shortcut only to math blocks,
 modLogFieldsShortcut.preconditionFn = function (workspace, scope) {
-  return (scope.focusedNode instanceof Blockly.BlockSvg &&
-          scope.focusedNode.type.startsWith('math_'));
-}
+  return (
+    scope.focusedNode instanceof Blockly.BlockSvg &&
+    scope.focusedNode.type.startsWith('math_')
+  );
+};
 // Delete the existing shortcut and add the modified shortcut.
 Blockly.ShortcutRegistry.registry.unregister(logFieldsShortcut.name);
 Blockly.ShortcutRegistry.registry.register(modLogFieldsShortcut);

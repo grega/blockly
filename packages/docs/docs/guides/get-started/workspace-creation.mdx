@@ -14,7 +14,7 @@ glossary][visual-glossary].
 
 ## Injection div
 
-A Blockly workspace must be *injected* into a `<div>`, called the "injection
+A Blockly workspace must be _injected_ into a `<div>`, called the "injection
 div".
 
 The injection `div` can be sized [statically][fixed-demo] or
@@ -39,11 +39,14 @@ injection `div` itself:
 
 ```js
 // Passes the ID.
-const workspace = Blockly.inject('blocklyDiv', { /* config */ });
+const workspace = Blockly.inject('blocklyDiv', {
+  /* config */
+});
 
 // Passes the injection div.
-const workspace = Blockly.inject(
-    document.getElementById('blocklyDiv'), { /* config */ });
+const workspace = Blockly.inject(document.getElementById('blocklyDiv'), {
+  /* config */
+});
 ```
 
 ## Configuration

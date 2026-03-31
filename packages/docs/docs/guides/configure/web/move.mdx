@@ -15,15 +15,16 @@ options](/guides/configure/web/configuration_struct#the-options-dictionary).
 Here is an example:
 
 ```js
-var workspace = Blockly.inject('blocklyDiv',
-    {move:{
-        scrollbars: {
-          horizontal: true,
-          vertical: true
-        },
-        drag: true,
-        wheel: false}
-    });
+var workspace = Blockly.inject('blocklyDiv', {
+  move: {
+    scrollbars: {
+      horizontal: true,
+      vertical: true,
+    },
+    drag: true,
+    wheel: false,
+  },
+});
 ```
 
 ## scrollbars
@@ -35,7 +36,6 @@ If a boolean is passed then it is equivalent to passing an object with both
 `horizontal` and `vertical` properties set as that value. Defaults to `true`
 (both horizontal and vertical scrolling enabled) if the workspace has
 categories.
-
 
 ## drag
 

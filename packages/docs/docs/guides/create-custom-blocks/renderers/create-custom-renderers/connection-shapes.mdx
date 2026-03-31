@@ -14,7 +14,11 @@ increasing difficulty. All of them require creating a
 
 ## Basic dimensions
 
-<Image alt="connections with different dimensions" src="/images/rendering/connection-shapes/overridden-connection-constants.png" width={300} />
+<Image
+  alt="connections with different dimensions"
+  src="/images/rendering/connection-shapes/overridden-connection-constants.png"
+  width={300}
+/>
 
 You can customize connections by changing their width or height, while
 maintaining the same basic shape. To do this, you need to create a
@@ -23,9 +27,9 @@ custom [constant provider][constants] component, and override some constants.
 Different renderers define and use different constants, so check out the
 reference documentation for your super class:
 
-  * [base constants][BaseConstants]
-  * [Geras constants][GerasConstants]
-  * [Zelos constants][ZelosConstants]
+- [base constants][BaseConstants]
+- [Geras constants][GerasConstants]
+- [Zelos constants][ZelosConstants]
 
 :::note
 Thrasos does not define its own constants. If you are using Thrasos,
@@ -50,10 +54,14 @@ class CustomConstantProvider extends Blockly.blockRendering.ConstantProvider {
 
 ## Basic shapes
 
-<Image alt="connections with different shapes" src="/images/rendering/connection-shapes/overridden-connection-shapes.png" width={100} />
+<Image
+  alt="connections with different shapes"
+  src="/images/rendering/connection-shapes/overridden-connection-shapes.png"
+  width={100}
+/>
 
 You can customize connections by overriding their basic shape. Basic shapes
-have a height, a width, and *two* paths.
+have a height, a width, and _two_ paths.
 
 Each path draws the same shape, but from opposite ends!
 
@@ -65,7 +73,11 @@ previous connections are drawn from left to right, but next connections are
 drawn from right to left. So you need to provide paths for both of
 those cases.
 
-<Image alt="the direction a block gets drawn in" src="/images/rendering/connection-shapes/drawing-direction.png" width={200} />
+<Image
+  alt="the direction a block gets drawn in"
+  src="/images/rendering/connection-shapes/drawing-direction.png"
+  width={200}
+/>
 
 :::note
 the [path object][path-object] handles flipping paths in RTL mode, so
@@ -86,11 +98,13 @@ class CustomConstantProvider extends Blockly.blockRendering.ConstantProvider {
       width,
       height,
       pathUp: Blockly.utils.svgPaths.line([
-          Blockly.utils.svgPaths.point(-width, -height / 2),
-          Blockly.utils.svgPaths.point(width, -height / 2)]),
+        Blockly.utils.svgPaths.point(-width, -height / 2),
+        Blockly.utils.svgPaths.point(width, -height / 2),
+      ]),
       pathDown: Blockly.utils.svgPaths.line([
-          Blockly.utils.svgPaths.point(-width, height / 2),
-          Blockly.utils.svgPaths.point(width, height / 2)]),
+        Blockly.utils.svgPaths.point(-width, height / 2),
+        Blockly.utils.svgPaths.point(width, height / 2),
+      ]),
     };
   }
 }
@@ -102,7 +116,11 @@ as a thin wrapper around these strings to make them more readable.
 
 ## Shapes for connection checks
 
-<Image alt="different connections with different shapes" src="/images/rendering/connection-shapes/connection-check-specific-shapes.png" width={300} />
+<Image
+  alt="different connections with different shapes"
+  src="/images/rendering/connection-shapes/connection-check-specific-shapes.png"
+  width={300}
+/>
 
 You can customize connections by changing the shape based on the connection's
 [connection check][connection-check].
@@ -119,7 +137,9 @@ See [basic shapes][basic-shapes] for information about what kinds of
 shapes are supported.
 
 ```js
-export class ConstantProvider extends Blockly.blockRendering.BaseConstantProvider {
+export class ConstantProvider
+  extends Blockly.blockRendering.BaseConstantProvider
+{
   shapeFor(connection) {
     let check = connection.getCheck();
     // For connections with no check, match any child block.
@@ -157,7 +177,9 @@ Your custom input measurable should inherit from
 whatever extra measurement data you need to draw the input's shape.
 
 ```js
-export class CustomInputMeasurable extends Blockly.blockRendering.InputConnection {
+export class CustomInputMeasurable
+  extends Blockly.blockRendering.InputConnection
+{
   constructor(constants, input) {
     super(constants, input);
 
@@ -175,7 +197,9 @@ measurable. To do this, you need to override the [`addInput_`][addInput] method.
 export class RenderInfo extends Blockly.blockRendering.RenderInfo {
   addInput_(input, activeRow) {
     if (input instanceof CustomInput) {
-      activeRow.elements.push(new CustomInputMeasurable(this.constants_, input));
+      activeRow.elements.push(
+        new CustomInputMeasurable(this.constants_, input),
+      );
     }
     super.addInput_(input, activeRow);
   }
@@ -210,13 +234,21 @@ Lastly, you need to modify your [drawer][drawer] to draw the shape.
 
 Custom inputs can either:
 
-  * Affect the outline of your block, like statement inputs
+- Affect the outline of your block, like statement inputs
 
-    <Image alt="image of outline inputs" src="/images/rendering/connection-shapes/outline-inputs.png" width={150} />
+  <Image
+    alt="image of outline inputs"
+    src="/images/rendering/connection-shapes/outline-inputs.png"
+    width={150}
+  />
 
-  * Or affect the internals of your block, like inline value inputs
+- Or affect the internals of your block, like inline value inputs
 
-    <Image alt="image of internal inputs" src="/images/rendering/connection-shapes/internal-inputs.png" width={200} />
+  <Image
+    alt="image of internal inputs"
+    src="/images/rendering/connection-shapes/internal-inputs.png"
+    width={200}
+  />
 
 If the input affects the outline of your block, override
 [`drawOutline_`][drawOutline], otherwise, override

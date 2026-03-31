@@ -55,7 +55,7 @@ function, and the [rendering functions](/guides/create-custom-blocks/fields/cust
 (depending on what exactly your `setText` function is doing).
 
 ```js
-CustomFields.UpgradeField.prototype.setText = function(newText) {
+CustomFields.UpgradeField.prototype.setText = function (newText) {
   // Do validation.
   if (typeof newText != 'string' || newText === this.text_) {
     return;
@@ -63,9 +63,15 @@ CustomFields.UpgradeField.prototype.setText = function(newText) {
 
   // Fire event.
   if (this.sourceBlock_ && Blockly.Events.isEnabled()) {
-    Blockly.events.fire(new Blockly.Events.BlockChange(
-        this.sourceBlock_, 'field', this.name, this.text_, newText
-    ));
+    Blockly.events.fire(
+      new Blockly.Events.BlockChange(
+        this.sourceBlock_,
+        'field',
+        this.name,
+        this.text_,
+        newText,
+      ),
+    );
   }
 
   // Update text value.
@@ -79,31 +85,30 @@ CustomFields.UpgradeField.prototype.setText = function(newText) {
 Becomes:
 
 ```js
-CustomFields.UpgradeField.prototype.doClassValidation_ = function(newValue) {
+CustomFields.UpgradeField.prototype.doClassValidation_ = function (newValue) {
   if (typeof newValue != 'string') {
     return null;
   }
   return newValue;
 };
 
-CustomFields.UpgradeField.prototype.getText = function() {
-  return  'prefix' + this.value_;
-}
+CustomFields.UpgradeField.prototype.getText = function () {
+  return 'prefix' + this.value_;
+};
 ```
-
 
 Blockly automatically handles:
 
-+   Checking if the new value is different than the old value.
-+   Updating the value.
-+   Firing change events.
-+   Rerendering the field.
+- Checking if the new value is different than the old value.
+- Updating the value.
+- Firing change events.
+- Rerendering the field.
 
 You will need to handle:
 
-+   [Value validation](/guides/create-custom-blocks/fields/customizing-fields/creating#value-handling) (`doClassValidation_`).
-+   [Field text](/guides/create-custom-blocks/fields/customizing-fields/creating#text) (`getText`).
-+   [Field UI](/guides/create-custom-blocks/fields/customizing-fields/creating#updating-the-on-block-display)
+- [Value validation](/guides/create-custom-blocks/fields/customizing-fields/creating#value-handling) (`doClassValidation_`).
+- [Field text](/guides/create-custom-blocks/fields/customizing-fields/creating#text) (`getText`).
+- [Field UI](/guides/create-custom-blocks/fields/customizing-fields/creating#updating-the-on-block-display)
 
 :::note
 We recommend that you change any `setText` calls to
@@ -139,7 +144,7 @@ cannot be sure until you define the `SERIALIZABLE` property. If you choose to
 leave this alone everything will function properly, and your field will be
 serialized, but you will receive console warnings.
 
-### size_.width
+### size\_.width
 
 ```js
 this.size_.width = 0;
@@ -163,7 +168,7 @@ The warning above means that Blockly has detected you are using an old method fo
 field, and would like you to use the new method.
 
 For more information about the `isDirty_` property see
-[isDirty_](/guides/create-custom-blocks/fields/customizing-fields/creating#isdirty-).
+[isDirty\_](/guides/create-custom-blocks/fields/customizing-fields/creating#isdirty-).
 
 ### init
 
@@ -172,7 +177,7 @@ function](https://en.wikipedia.org/wiki/Template_method_pattern) to reduce
 duplicate code in subclasses.
 
 ```js
-CustomFields.UpgradeField.prototype.init = function() {
+CustomFields.UpgradeField.prototype.init = function () {
   if (this.fieldGroup_) {
     // Already initialized once.
     return;
@@ -182,23 +187,31 @@ CustomFields.UpgradeField.prototype.init = function() {
   CustomFields.UpgradeField.superClass_.init.call(this);
 
   // Create DOM elements.
-  this.extraDom_ = Blockly.utils.dom.createSvgElement('image',
-      {
-        'height': '10px',
-        'width': '10px'
-      });
-  this.extraDom_.setAttributeNS('http://www.w3.org/1999/xlink',
-      'xlink:href', 'image.svg');
+  this.extraDom_ = Blockly.utils.dom.createSvgElement('image', {
+    height: '10px',
+    width: '10px',
+  });
+  this.extraDom_.setAttributeNS(
+    'http://www.w3.org/1999/xlink',
+    'xlink:href',
+    'image.svg',
+  );
   this.extraDom_.style.cursor = 'pointer';
   this.fieldGroup_.appendChild(this.extraDom_);
 
   // Bind events.
-  this.mouseOverWrapper_ =
-    Blockly.browserEvents.bind(
-        this.getClickTarget_(), 'mouseover', this, this.onMouseOver_);
-  this.mouseOutWrapper_ =
-    Blockly.browserEvents.bind(
-        this.getClickTarget_(), 'mouseout', this, this.onMouseOut_);
+  this.mouseOverWrapper_ = Blockly.browserEvents.bind(
+    this.getClickTarget_(),
+    'mouseover',
+    this,
+    this.onMouseOver_,
+  );
+  this.mouseOutWrapper_ = Blockly.browserEvents.bind(
+    this.getClickTarget_(),
+    'mouseout',
+    this,
+    this.onMouseOut_,
+  );
 
   // Render.
   this.setValue(this.getValue());
@@ -208,46 +221,54 @@ CustomFields.UpgradeField.prototype.init = function() {
 Becomes:
 
 ```js
-CustomFields.UpgradeField.prototype.initView = function() {
+CustomFields.UpgradeField.prototype.initView = function () {
   CustomFields.UpgradeField.superClass_.initView.call(this);
 
-  this.extraDom_ = Blockly.utils.dom.createSvgElement('image',
-      {
-        'height': '10px',
-        'width': '10px'
-      });
-  this.extraDom_.setAttributeNS('http://www.w3.org/1999/xlink',
-      'xlink:href', 'image.svg');
+  this.extraDom_ = Blockly.utils.dom.createSvgElement('image', {
+    height: '10px',
+    width: '10px',
+  });
+  this.extraDom_.setAttributeNS(
+    'http://www.w3.org/1999/xlink',
+    'xlink:href',
+    'image.svg',
+  );
   this.extraDom_.style.cursor = 'pointer';
   this.fieldGroup_.appendChild(this.extraDom_);
 };
 
-CustomFields.UpgradeField.prototype.bindEvents_ = function() {
+CustomFields.UpgradeField.prototype.bindEvents_ = function () {
   CustomFields.UpgradeField.superClass_.bindEvents_.call(this);
 
-  this.mouseOverWrapper_ =
-    Blockly.bindEvent_(
-        this.getClickTarget_(), 'mouseover', this, this.onMouseOver_);
-  this.mouseOutWrapper_ =
-    Blockly.bindEvent_(
-        this.getClickTarget_(), 'mouseout', this, this.onMouseOut_);
+  this.mouseOverWrapper_ = Blockly.bindEvent_(
+    this.getClickTarget_(),
+    'mouseover',
+    this,
+    this.onMouseOver_,
+  );
+  this.mouseOutWrapper_ = Blockly.bindEvent_(
+    this.getClickTarget_(),
+    'mouseout',
+    this,
+    this.onMouseOut_,
+  );
 };
 ```
 
 This means that blockly now automatically handles:
 
-+   Checking if the field is already initialized.
-+   Creating the `fieldGroup_`.
-+   Rendering the field.
-+   Binding tooltip and show editor events.
+- Checking if the field is already initialized.
+- Creating the `fieldGroup_`.
+- Rendering the field.
+- Binding tooltip and show editor events.
 
 You will need to handle:
 
-+   Adding additional
-    [DOM elements](/guides/create-custom-blocks/fields/customizing-fields/creating#on-block-display) (`initView`).
-+   Adding additional
-    [event bindings](/guides/create-custom-blocks/fields/customizing-fields/creating#input-events) (`bindEvents_`).
-+   [Disposing](/guides/create-custom-blocks/fields/customizing-fields/creating#disposing) of event bindings (`dispose`).
+- Adding additional
+  [DOM elements](/guides/create-custom-blocks/fields/customizing-fields/creating#on-block-display) (`initView`).
+- Adding additional
+  [event bindings](/guides/create-custom-blocks/fields/customizing-fields/creating#input-events) (`bindEvents_`).
+- [Disposing](/guides/create-custom-blocks/fields/customizing-fields/creating#disposing) of event bindings (`dispose`).
 
 :::info
 All DOM creation should be done inside `initView` as that is most
@@ -255,10 +276,10 @@ efficient. Consider refactoring if you have DOM creation happening inside the
 constructor, `setText`, `setValue`, or `render_`.
 :::
 
-### onMouseDown_
+### onMouseDown\_
 
 ```js
-CustomFields.UpgradeField.prototype.onMouseDown_ = function(e) {
+CustomFields.UpgradeField.prototype.onMouseDown_ = function (e) {
   // ...
 };
 ```
@@ -266,9 +287,9 @@ CustomFields.UpgradeField.prototype.onMouseDown_ = function(e) {
 Becomes:
 
 ```js
-CustomFields.UpgradeField.prototype.showEditor_ = function() {
+CustomFields.UpgradeField.prototype.showEditor_ = function () {
   // ...
-}
+};
 ```
 
 We recommend that you override the `showEditor_` function to handle mouse
@@ -285,7 +306,7 @@ duplicate code in subclasses. If your `setValue` function contains logic,
 consider refactoring it to fit the value handling paths described in [Value
 handling](/guides/create-custom-blocks/fields/customizing-fields/creating#value-handling).
 
-### text_
+### text\_
 
 We recommend that you never access or update the `text_` property of your
 field directly. Instead, use the
@@ -319,15 +340,15 @@ files should be easy for others to use.
 
 Not recommended:
 
-+   Images of code.
-+   Incomplete code.
+- Images of code.
+- Incomplete code.
 
 Recommended:
 
-+   Complete field code in a text format.
-+   Images of gifs of bad field behavior.
-+   Steps to reproduce bad field behavior.
-+   The version of blockly you are upgrading from.
+- Complete field code in a text format.
+- Images of gifs of bad field behavior.
+- Steps to reproduce bad field behavior.
+- The version of blockly you are upgrading from.
 
 ### Where to post
 

@@ -58,19 +58,18 @@ the localization tables -- Blockly's and yours -- for the chosen locale into
 Before using the localization system, you need to decide how many locales you
 want to support and whether you plan to support more locales in the future.
 
-*   If you only ever want to support a single locale, enter your text directly
-    in your code. You don't need to use localization tokens.
-
-    *   If your locale is English (`en`), you don't need to do anything else.
-        The Blockly localization table for the `en` locale is loaded by default.
-    *   If your locale is not `en`, [load the Blockly localization table](#load-blockly)
+- If you only ever want to support a single locale, enter your text directly
+  in your code. You don't need to use localization tokens.
+  - If your locale is English (`en`), you don't need to do anything else.
+    The Blockly localization table for the `en` locale is loaded by default.
+  - If your locale is not `en`, [load the Blockly localization table](#load-blockly)
     for that locale.
 
-*   If you want to support multiple locales now or in the future:
-    1.  [Define and use localization tokens](#define) for your custom text.
-    1.  Decide how users will [choose a locale](#choose).
-    1.  [Load the Blockly localization table](#load-blockly) for the locale.
-    1.  [Load your localization table](#load-custom) for the locale.
+- If you want to support multiple locales now or in the future:
+  1.  [Define and use localization tokens](#define) for your custom text.
+  1.  Decide how users will [choose a locale](#choose).
+  1.  [Load the Blockly localization table](#load-blockly) for the locale.
+  1.  [Load your localization table](#load-custom) for the locale.
 
 ## Define and use localization tokens {#define}
 
@@ -87,10 +86,10 @@ For example, if you have a single custom block and a single custom category, you
 might define the following tokens:
 
 ```js
-MY_DATE_BLOCK_TEXT
-MY_DATE_TOOLTIP
-MY_DATE_HELPURL
-MY_DATE_CATEGORY
+MY_DATE_BLOCK_TEXT;
+MY_DATE_TOOLTIP;
+MY_DATE_HELPURL;
+MY_DATE_CATEGORY;
 ```
 
 ### Define localization tables
@@ -121,21 +120,23 @@ To use localization tokens in JSON, replace the string to be localized with a
 **token reference**. A token reference has the form `%{BKY_TOKEN}`. For example:
 
 ```js
-Blockly.common.defineBlocksWithJsonArray([{
-  type: 'my_date',
-  message0: '%{BKY_MY_DATE_BLOCK_TEXT}',
-  args0: [
-    {
-      type: 'field_input',
-      name: 'DATE',
-    }
-  ],
-  output: 'Date',
-  colour: '%{BKY_MY_DATE_COLOUR}',
-  tooltip: '%{BKY_MY_DATE_TOOLTIP}',
-  helpUrl: '%{BKY_MY_DATE_HELPURL}',
-  extensions: ['validate_date'],
-}]);
+Blockly.common.defineBlocksWithJsonArray([
+  {
+    type: 'my_date',
+    message0: '%{BKY_MY_DATE_BLOCK_TEXT}',
+    args0: [
+      {
+        type: 'field_input',
+        name: 'DATE',
+      },
+    ],
+    output: 'Date',
+    colour: '%{BKY_MY_DATE_COLOUR}',
+    tooltip: '%{BKY_MY_DATE_TOOLTIP}',
+    helpUrl: '%{BKY_MY_DATE_HELPURL}',
+    extensions: ['validate_date'],
+  },
+]);
 ```
 
 When the JSON is processed -- in this case, when the block is instantiated --
@@ -168,7 +169,8 @@ message0: %{BKY_LISTS_REPEAT_TITLE},
 The value of this token in the English localization table is:
 
 ```js
-Blockly.Msg['LISTS_REPEAT_TITLE'] = 'create list with item %1 repeated %2 times';
+Blockly.Msg['LISTS_REPEAT_TITLE'] =
+  'create list with item %1 repeated %2 times';
 ```
 
 The interpolation markers (`%1` and `%2`) correspond to the block's defined
@@ -179,9 +181,10 @@ different orderings of inputs and fields:
 
 ```js
 // In Spanish: label, input, label, input, label
-Blockly.Msg['LISTS_REPEAT_TITLE'] = "crear lista con el elemento %1 repetido %2 veces";
+Blockly.Msg['LISTS_REPEAT_TITLE'] =
+  'crear lista con el elemento %1 repetido %2 veces';
 // In Korean: input, label, input, label, input (dummy)
-Blockly.Msg['LISTS_REPEAT_TITLE'] = "%1을 %2번 넣어, 리스트 생성";
+Blockly.Msg['LISTS_REPEAT_TITLE'] = '%1을 %2번 넣어, 리스트 생성';
 ```
 
 This is not possible for block definitions in JavaScript, where different
@@ -192,7 +195,7 @@ and do not include Unicode direction commands:
 
 ```js
 // In Arabic. Note how %2 is left of %1, since it reads right to left.
-Blockly.Msg['LISTS_REPEAT_TITLE'] = "إنشئ قائمة مع العنصر  %1 %2 مرات";
+Blockly.Msg['LISTS_REPEAT_TITLE'] = 'إنشئ قائمة مع العنصر  %1 %2 مرات';
 ```
 
 For more information about how Blockly converts `message` keys into inputs and
@@ -290,32 +293,32 @@ The localization table is loaded automatically.
 If you define your own localization tables, you need to load the table for your
 chosen locale.
 
-*   If you are using npm, you can do this with `Blockly.setLocale`:
+- If you are using npm, you can do this with `Blockly.setLocale`:
 
-    ```js
-    import * as Es from 'blockly/msg/es';
-    import {myEsTable} from '../my_tokens_es';
-    Blockly.setLocale(Es);
-    Blockly.setLocale(myEsTable);
-    ```
+  ```js
+  import * as Es from 'blockly/msg/es';
+  import { myEsTable } from '../my_tokens_es';
+  Blockly.setLocale(Es);
+  Blockly.setLocale(myEsTable);
+  ```
 
-    `setLocale` copies each key-value pair from the input object into
-    `Blockly.Msg`. You can call it multiple times with distinct keys, but
-    calling it a second time with a duplicate key overwrites the first.
+  `setLocale` copies each key-value pair from the input object into
+  `Blockly.Msg`. You can call it multiple times with distinct keys, but
+  calling it a second time with a duplicate key overwrites the first.
 
-*   If you are not using npm, you must copy your table into `Blockly.Msg` by
-    hand. (`setLocale` is only included in the npm release of Blockly.) The
-    easiest way to do this is to define your own version of `setLocale`.
+- If you are not using npm, you must copy your table into `Blockly.Msg` by
+  hand. (`setLocale` is only included in the npm release of Blockly.) The
+  easiest way to do this is to define your own version of `setLocale`.
 
-    ```js
-    function mySetLocale(locale) {
-      Object.keys(locale).forEach(function (k) {
-        Blockly.Msg[k] = locale[k];
-      }
+  ```js
+  function mySetLocale(locale) {
+    Object.keys(locale).forEach(function (k) {
+      Blockly.Msg[k] = locale[k];
     }
+  }
 
-    mySetLocale(myEsTable);
-    ```
+  mySetLocale(myEsTable);
+  ```
 
 ## Functions to resolve token references
 
@@ -334,57 +337,57 @@ registration](/guides/create-custom-blocks/fields/customizing-fields/creating#js
 
 ## Related topics
 
-*   Right-to-left languages: See the [RTL
-    demo](https://raspberrypifoundation.github.io/blockly-samples/examples/rtl-demo/).
-*   Help localize Blockly's text: See
-    [Translating](/guides/contribute/core/translating) in the section on
-    contributing to Blockly.
+- Right-to-left languages: See the [RTL
+  demo](https://raspberrypifoundation.github.io/blockly-samples/examples/rtl-demo/).
+- Help localize Blockly's text: See
+  [Translating](/guides/contribute/core/translating) in the section on
+  contributing to Blockly.
 
 ## Appendix: Where token references are allowed {#where}
 
 You can use [token references](#use-localization-tokens-in-json) in the
 following JSON keys:
 
-*   In category toolbox definitions:
-    *   `name`
-    *   `colour`
-*   In block definitions:
-    *   `messageN`
-    *   `tooltip`
-    *   `helpUrl`
-    *   `colour`
-*   In the options passed to all fields:
-    *   `tooltip`
-*   In the [nested arrays](/guides/create-custom-blocks/fields/built-in-fields/dropdown#creation)
-    passed to `options` in `field_dropdown`:
-    *   The first element, when the first element is a string
-    *   The value of `alt`, when the first element is an object describing an
-        image
-*   In the options passed to `field_variable`:
-    *   `variable`
-*   In the options passed to `field_label` and `field_label_serializable`:
-    *   `text`
-*   In the options passed to `field_image`:
-    *   `height`
-    *   `width`
-    *   `src`
-    *   `alt`
-*   In themes:
-    *   `colour` in category styles
-    *   `colourPrimary`, `colourSecondary`, and `colourTertiary` in block styles
+- In category toolbox definitions:
+  - `name`
+  - `colour`
+- In block definitions:
+  - `messageN`
+  - `tooltip`
+  - `helpUrl`
+  - `colour`
+- In the options passed to all fields:
+  - `tooltip`
+- In the [nested arrays](/guides/create-custom-blocks/fields/built-in-fields/dropdown#creation)
+  passed to `options` in `field_dropdown`:
+  - The first element, when the first element is a string
+  - The value of `alt`, when the first element is an object describing an
+    image
+- In the options passed to `field_variable`:
+  - `variable`
+- In the options passed to `field_label` and `field_label_serializable`:
+  - `text`
+- In the options passed to `field_image`:
+  - `height`
+  - `width`
+  - `src`
+  - `alt`
+- In themes:
+  - `colour` in category styles
+  - `colourPrimary`, `colourSecondary`, and `colourTertiary` in block styles
 
 And as argument values in the following methods:
 
-*   `Block.setColour`
-*   `Blockly.utils.extensions.buildTooltipForDropDown`
-*   `Blockly.utils.extensions.buildTooltipWithFieldText`
-*   `Blockly.utils.parsing.parseBlockColour`
+- `Block.setColour`
+- `Blockly.utils.extensions.buildTooltipForDropDown`
+- `Blockly.utils.extensions.buildTooltipWithFieldText`
+- `Blockly.utils.parsing.parseBlockColour`
 
 And in the XML definition of a toolbox in the following attributes of
 `<category>`:
 
-*   `name`
-*   `colour`
+- `name`
+- `colour`
 
 For more information about using token references as colour values, see [Colour
 references](/guides/configure/web/appearance/colour-formats#colour-references).

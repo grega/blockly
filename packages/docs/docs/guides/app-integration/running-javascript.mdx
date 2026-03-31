@@ -11,7 +11,7 @@ generally to run within a web page (possibly the same, or a embedded WebView).
 Like any generator, the first step is to include the JavaScript generator.
 
 ```js
-import {javascriptGenerator} from 'blockly/javascript';
+import { javascriptGenerator } from 'blockly/javascript';
 ```
 
 To generate JavaScript from the workspace, call:
@@ -73,7 +73,7 @@ highlighted.
 ## Infinite Loops
 
 Although the resulting code is guaranteed to be syntactically correct at all
-times, it may contain infinite loops.  Since solving the
+times, it may contain infinite loops. Since solving the
 [Halting problem](https://en.wikipedia.org/wiki/Halting_problem) is beyond
 Blockly's scope (!) the best approach for dealing with these cases is to
 maintain a counter and decrement it every time an iteration is performed.
@@ -83,7 +83,8 @@ example:
 
 ```js
 window.LoopTrap = 1000;
-javascriptGenerator.INFINITE_LOOP_TRAP = 'if(--window.LoopTrap == 0) throw "Infinite loop.";\n';
+javascriptGenerator.INFINITE_LOOP_TRAP =
+  'if(--window.LoopTrap == 0) throw "Infinite loop.";\n';
 var code = javascriptGenerator.workspaceToCode(workspace);
 ```
 
@@ -99,18 +100,18 @@ If you are serious about running the user's blocks properly, then the
 [JS-Interpreter project](https://github.com/NeilFraser/JS-Interpreter) is the way to go.
 This project is separate from Blockly, but was specifically written for Blockly.
 
-  * Execute code at any speed.
-  * Pause/resume/step-through execution.
-  * Highlight blocks as they execute.
-  * Completely isolated from browser's JavaScript.
+- Execute code at any speed.
+- Pause/resume/step-through execution.
+- Highlight blocks as they execute.
+- Completely isolated from browser's JavaScript.
 
 ### Run the Interpreter
 
 First, download the JS-Interpreter from GitHub:
 
-*   [Download zip file](https://github.com/NeilFraser/JS-Interpreter/zipball/master)
-*   [Download tar file](https://github.com/NeilFraser/JS-Interpreter/tarball/master)
-*   [View on GitHub](https://github.com/NeilFraser/JS-Interpreter)
+- [Download zip file](https://github.com/NeilFraser/JS-Interpreter/zipball/master)
+- [Download tar file](https://github.com/NeilFraser/JS-Interpreter/tarball/master)
+- [View on GitHub](https://github.com/NeilFraser/JS-Interpreter)
 
 Then add it to your page:
 
@@ -155,18 +156,24 @@ But to start with, here is the API needed to support the alert and prompt blocks
 ```js
 function initApi(interpreter, globalObject) {
   // Add an API function for the alert() block.
-  var wrapper = function(text) {
+  var wrapper = function (text) {
     return alert(arguments.length ? text : '');
   };
-  interpreter.setProperty(globalObject, 'alert',
-      interpreter.createNativeFunction(wrapper));
+  interpreter.setProperty(
+    globalObject,
+    'alert',
+    interpreter.createNativeFunction(wrapper),
+  );
 
   // Add an API function for the prompt() block.
-  wrapper = function(text) {
+  wrapper = function (text) {
     return prompt(text);
   };
-  interpreter.setProperty(globalObject, 'prompt',
-      interpreter.createNativeFunction(wrapper));
+  interpreter.setProperty(
+    globalObject,
+    'prompt',
+    interpreter.createNativeFunction(wrapper),
+  );
 }
 ```
 
@@ -189,11 +196,14 @@ argument, and register it as a native function.
 ```js
 function initApi(interpreter, globalObject) {
   // Add an API function for highlighting blocks.
-  var wrapper = function(id) {
+  var wrapper = function (id) {
     return workspace.highlightBlock(id);
   };
-  interpreter.setProperty(globalObject, 'highlightBlock',
-      interpreter.createNativeFunction(wrapper));
+  interpreter.setProperty(
+    globalObject,
+    'highlightBlock',
+    interpreter.createNativeFunction(wrapper),
+  );
 }
 ```
 

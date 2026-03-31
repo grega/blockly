@@ -17,23 +17,31 @@ When you are defining connection checks for inputs and outputs, usually you
 should think of the checks as representing types.
 
 Inputs' checks should include every "type" they accept, and outputs' checks
-should include *exactly* what they "return".
+should include _exactly_ what they "return".
 
 ### Accept a single type
 
 In the most basic case where you want create a block that "accepts" or "returns"
 one type, you need to include that type in the connection's connection check.
 
-<Image alt="a value block that accepts a single type" src="/images/connection-checks/values-single.jpg" width={300} />
+<Image
+  alt="a value block that accepts a single type"
+  src="/images/connection-checks/values-single.jpg"
+  width={300}
+/>
 
 ### Accept multiple types
 
 To create a block that "accepts" multiple types, you need to include every
 accepted type in the input's connection check.
 
-<Image alt="a value block that accepts multiple types" src="/images/connection-checks/values-multiple.jpg" width={300} />
+<Image
+  alt="a value block that accepts multiple types"
+  src="/images/connection-checks/values-multiple.jpg"
+  width={300}
+/>
 
-By convention, if an output can *sometimes* be accepted in multiple situations
+By convention, if an output can _sometimes_ be accepted in multiple situations
 (e.g. if you allow numbers to sometimes be used as strings) the output should be
 more restrictive, and the input(s) should be more permissive. This convention
 makes sure that outputs don't connect where they're not supported.
@@ -43,17 +51,25 @@ makes sure that outputs don't connect where they're not supported.
 To create a block that "accepts" any type, you need to set the input's
 connection check to `null`.
 
-<Image alt="a value block that accepts any type" src="/images/connection-checks/values-any-type.jpg" width={200} />
+<Image
+  alt="a value block that accepts any type"
+  src="/images/connection-checks/values-any-type.jpg"
+  width={200}
+/>
 
 ### Return subtypes
 
 To create a block that "returns" a subtype, you need to include both the type
 and the supertype in the output's connection check.
 
-<Image alt="a value block that returns its type and its supertype" src="/images/connection-checks/values-subtype.png" width={350} />
+<Image
+  alt="a value block that returns its type and its supertype"
+  src="/images/connection-checks/values-subtype.png"
+  width={350}
+/>
 
 In the case of subtypes, it is okay to have multiple checks in an output check,
-because the block *always* "returns" both types.
+because the block _always_ "returns" both types.
 
 ### Return parameterized types
 
@@ -64,10 +80,14 @@ connection check.
 Depending on how strict you want your block language to be, you may also want to
 include the type's [variance(s)][variance].
 
-<Image alt="a value block that returns its parameterized type and its unparameterized type" src="/images/connection-checks/values-parameterized-type.png" width={300} />
+<Image
+  alt="a value block that returns its parameterized type and its unparameterized type"
+  src="/images/connection-checks/values-parameterized-type.png"
+  width={300}
+/>
 
 Just like with subtypes, it is okay to have multiple checks in an output check
-in this case, because the block *always* "returns" both types.
+in this case, because the block _always_ "returns" both types.
 
 ## Stack or statement examples
 
@@ -89,7 +109,11 @@ To create a set of blocks that connect in a defined order, you need to include
 which blocks should follow the current one in the next connection check, and
 what the current block "is" in the previous connection check.
 
-<Image alt="statement blocks that have a forced order" src="/images/connection-checks/statements-ordered.png" width={350} />
+<Image
+  alt="statement blocks that have a forced order"
+  src="/images/connection-checks/statements-ordered.png"
+  width={350}
+/>
 
 ### Allow lots of middle blocks
 
@@ -98,7 +122,11 @@ include at least one entry from the middle block's previous connection check in
 the middle block's next connection check. This allows the block to be followed
 by more of itself.
 
-<Image alt="statement blocks that allow lots of middle blocks" src="/images/connection-checks/statements-multiple-middle-blocks.png" width={350} />
+<Image
+  alt="statement blocks that allow lots of middle blocks"
+  src="/images/connection-checks/statements-multiple-middle-blocks.png"
+  width={350}
+/>
 
 ### Allow no middle blocks
 
@@ -108,7 +136,11 @@ check, and the last block's previous connection check in the first block's next
 connection check. This allows the first block to be followed by either a middle
 block, or a last block.
 
-<Image alt="statement blocks that allow no middle blocks" src="/images/connection-checks/statements-no-middle-blocks.png" width={350} />
+<Image
+  alt="statement blocks that allow no middle blocks"
+  src="/images/connection-checks/statements-no-middle-blocks.png"
+  width={350}
+/>
 
 ### Either-or stacks
 
@@ -122,7 +154,11 @@ from another (and not both), you need to do two things:
     which are in their previous connection checks (so they can only be followed
     by blocks of the same group).
 
-<Image alt="statement blocks that can be followed by multiple of one type of block, or multiple of another, but not both" src="/images/connection-checks/statements-either-or.png" width={550} />
+<Image
+  alt="statement blocks that can be followed by multiple of one type of block, or multiple of another, but not both"
+  src="/images/connection-checks/statements-either-or.png"
+  width={550}
+/>
 
 [values-single-image]: /images/connection-checks/values-single.jpg
 [values-multiple-image]: /images/connection-checks/values-multiple.jpg

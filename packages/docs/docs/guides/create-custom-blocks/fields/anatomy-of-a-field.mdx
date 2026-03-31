@@ -31,17 +31,17 @@ Editable fields may show a rich editor when clicked.
 
 Editable fields include:
 
-+ [Checkbox](/guides/create-custom-blocks/fields/built-in-fields/checkbox)
-+ [Colour](https://www.npmjs.com/package/@blockly/field-colour)
-+ [Dropdown](/guides/create-custom-blocks/fields/built-in-fields/dropdown)
-+ [Number](/guides/create-custom-blocks/fields/built-in-fields/number)
-+ [Text Input](/guides/create-custom-blocks/fields/built-in-fields/text-input)
+- [Checkbox](/guides/create-custom-blocks/fields/built-in-fields/checkbox)
+- [Colour](https://www.npmjs.com/package/@blockly/field-colour)
+- [Dropdown](/guides/create-custom-blocks/fields/built-in-fields/dropdown)
+- [Number](/guides/create-custom-blocks/fields/built-in-fields/number)
+- [Text Input](/guides/create-custom-blocks/fields/built-in-fields/text-input)
 
 Non-editable fields include:
 
-+ [Label](/guides/create-custom-blocks/fields/built-in-fields/label)
-+ [Label Serializable](/guides/create-custom-blocks/fields/built-in-fields/label-serializable)
-+ [Image](/guides/create-custom-blocks/fields/built-in-fields/image)
+- [Label](/guides/create-custom-blocks/fields/built-in-fields/label)
+- [Label Serializable](/guides/create-custom-blocks/fields/built-in-fields/label-serializable)
+- [Image](/guides/create-custom-blocks/fields/built-in-fields/image)
 
 ## Serialization
 
@@ -51,17 +51,17 @@ fields' values are usually not dynamic, so they are usually not serialized.
 
 Serialized fields include:
 
-+ [Checkbox](/guides/create-custom-blocks/fields/built-in-fields/checkbox)
-+ [Colour](/guides/create-custom-blocks/fields/built-in-fields/colour)
-+ [Dropdown](/guides/create-custom-blocks/fields/built-in-fields/dropdown)
-+ [Number](/guides/create-custom-blocks/fields/built-in-fields/number)
-+ [Text Input](/guides/create-custom-blocks/fields/built-in-fields/text-input)
-+ [Label Serializable](/guides/create-custom-blocks/fields/built-in-fields/label-serializable)
+- [Checkbox](/guides/create-custom-blocks/fields/built-in-fields/checkbox)
+- [Colour](/guides/create-custom-blocks/fields/built-in-fields/colour)
+- [Dropdown](/guides/create-custom-blocks/fields/built-in-fields/dropdown)
+- [Number](/guides/create-custom-blocks/fields/built-in-fields/number)
+- [Text Input](/guides/create-custom-blocks/fields/built-in-fields/text-input)
+- [Label Serializable](/guides/create-custom-blocks/fields/built-in-fields/label-serializable)
 
 Non-serialized fields include:
 
-+ [Label](/guides/create-custom-blocks/fields/built-in-fields/label)
-+ [Image](/guides/create-custom-blocks/fields/built-in-fields/image)
+- [Label](/guides/create-custom-blocks/fields/built-in-fields/label)
+- [Image](/guides/create-custom-blocks/fields/built-in-fields/image)
 
 Note how the Label Serializable field is not editable, but is serializable. This
 means that it can only be edited programmatically, rather than through a
@@ -87,11 +87,11 @@ complex, depending on its needs.
 These are some examples of different on-block displays, in order of increasing
 complexity.
 
-|  Field type  |  Description  |
-| --------------- | ----------------------------------------------------------------------------------------------------- |
-| Label           | Contains only a text element.                                                                         |
-| Angle           | Contains a background rect, text element, and a degree symbol.                                        |
-| Turtle          | Contains a background rect, text element, and many SVG elements used to construct the turtle graphic. |
+| Field type | Description                                                                                           |
+| ---------- | ----------------------------------------------------------------------------------------------------- |
+| Label      | Contains only a text element.                                                                         |
+| Angle      | Contains a background rect, text element, and a degree symbol.                                        |
+| Turtle     | Contains a background rect, text element, and many SVG elements used to construct the turtle graphic. |
 
 ## Editor display
 
@@ -101,11 +101,11 @@ arbitrarily complex editor.
 These are some examples of different editors, in order of increasing
 complexity.
 
-|  Field type  |  Description  |
-| --------------- | -------------------------------------------------------------------------------------------------------------------- |
-| Checkbox        | No editor when clicked. The on-block display updates.                                                                |
-| Number input    | Text editor overlaid above the on-block display. Users can type; the editor may change color to indicate bad values. |
-| Angle picker    | The angle picker has both a text editor for typing numbers and a draggable editor for selecting angles visually.     |
+| Field type   | Description                                                                                                          |
+| ------------ | -------------------------------------------------------------------------------------------------------------------- |
+| Checkbox     | No editor when clicked. The on-block display updates.                                                                |
+| Number input | Text editor overlaid above the on-block display. Users can type; the editor may change color to indicate bad values. |
+| Angle picker | The angle picker has both a text editor for typing numbers and a draggable editor for selecting angles visually.     |
 
 ## Other display modes
 
@@ -116,6 +116,6 @@ fields.
 ![Turtle field block collapsing](/images/fields/yertle_collapsing.gif)
 
 Accessibility mode: users may be using a screenreader or similar technology to
-interact with Blockly.  The text of the field may be read out to the user.
+interact with Blockly. The text of the field may be read out to the user.
 
 [field-generator]: /guides/create-custom-blocks/code-generation/block-code#get-field-values

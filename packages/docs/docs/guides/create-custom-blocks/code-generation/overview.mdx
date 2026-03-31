@@ -10,7 +10,7 @@ Code generation is the process of turning the blocks on a workspace into a
 string of code that can be executed.
 
 Code generation is extremely important, because it is what allows your blocks to
-actually *do* things, like evaluate arithmetic expressions, move a character
+actually _do_ things, like evaluate arithmetic expressions, move a character
 through a maze, or configure an online shop!
 
 You can't "run" blocks directly. Instead you generate code strings, and then
@@ -28,11 +28,11 @@ things like formatting comments, indenting statements, and quoting strings.
 
 Blockly provides 5 built-in code generators:
 
-*   JavaScript ES5
-*   Python 3
-*   Lua 5.1
-*   Dart 2
-*   PHP 7
+- JavaScript ES5
+- Python 3
+- Lua 5.1
+- Dart 2
+- PHP 7
 
 If this list doesn't include the language you want to generate code for, you can
 create a custom language code generator. For a simple example, see the [Build a
@@ -53,12 +53,16 @@ form `'a < b'` and a block that represents an if statement returns a string of
 the form `'if (...) {\n...\n};\n'`.
 
 ```js
-import {javascriptGenerator} from 'blockly/javascript';
-import {pythonGenerator} from 'blockly/python';
+import { javascriptGenerator } from 'blockly/javascript';
+import { pythonGenerator } from 'blockly/python';
 
 // Write block-code generators for JavaScript and Python.
-javascriptGenerator.forBlock['my_custom_block'] = function(block, generator) { /* ... */ };
-pythonGenerator.forBlock['my_custom_block'] = function(block, generator) { /* ... */ };
+javascriptGenerator.forBlock['my_custom_block'] = function (block, generator) {
+  /* ... */
+};
+pythonGenerator.forBlock['my_custom_block'] = function (block, generator) {
+  /* ... */
+};
 ```
 
 Block-code generators are called by language code generators.

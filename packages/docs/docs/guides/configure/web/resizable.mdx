@@ -7,11 +7,11 @@ image: images/blockly_banner.png
 # Resizable workspace
 
 A good web application will resize Blockly to fill the available space on
-screen rather than being a fixed size.  There are several ways to do this,
+screen rather than being a fixed size. There are several ways to do this,
 including using an iframe, CSS, and JavaScript positioning.
 This page demonstrates an overlay approach which is robust and flexible.
 
-This is a three-step process.  The first step is to define the area.
+This is a three-step process. The first step is to define the area.
 The second step is to inject Blockly.
 The third step is to position Blockly over this area.
 
@@ -37,7 +37,7 @@ Blockly should now be running on the page, just not located where it should be
 ## 3. Position the workspace
 
 The final step is to position the `blocklyDiv` element over the `blocklyArea`
-element.  To do this, remove any `height` and `width` styles from `blocklyDiv`
+element. To do this, remove any `height` and `width` styles from `blocklyDiv`
 and add absolute positioning:
 
 ```html
@@ -50,9 +50,10 @@ Then replace the injection script with one that also positions `blocklyDiv` over
 ```js
 const blocklyArea = document.getElementById('blocklyArea');
 const blocklyDiv = document.getElementById('blocklyDiv');
-const workspace = Blockly.inject(blocklyDiv,
-    {toolbox: document.getElementById('toolbox')});
-const onresize = function(e) {
+const workspace = Blockly.inject(blocklyDiv, {
+  toolbox: document.getElementById('toolbox'),
+});
+const onresize = function (e) {
   // Compute the absolute coordinates and dimensions of blocklyArea.
   const element = blocklyArea;
   let x = 0;

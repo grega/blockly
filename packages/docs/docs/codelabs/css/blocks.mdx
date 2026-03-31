@@ -46,6 +46,7 @@ Note that different renderers use different numbers of `<path>` elements to
 draw a block: Thrasos uses a single `<path>` element, Geras uses three `<path>`
 elements, and Zelos uses one `<path>` for the outside of the block and one
 `<path>` for each inline input.
+
 #### Choose colours
 
 The last step before writing your colour rules is to decide what colours to use. The Halloween theme in the themes codelab sets three colours:
@@ -62,6 +63,7 @@ How these colours are used depends on the renderer. The Thrasos renderer uses
 the primary colour as the `fill` of the block, the tertiary colour as the
 `stroke`, and the secondary colour as the `fill` when the block is a
 [shadow block](/guides/configure/web/toolboxes/preset#shadow-blocks).
+
 #### Add your rules
 
 You're now ready to add your rules to set the `fill` and `stroke` of the logic blocks:
@@ -204,7 +206,7 @@ Your last step is to add similar rules for the loop, text, and list blocks:
 }
 
 .list_blocks:not(.blocklyDisabledPattern).blocklyShadow > .blocklyPath {
-  fill: #ad7Be9;
+  fill: #ad7be9;
   stroke: none;
 }
 

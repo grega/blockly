@@ -130,7 +130,7 @@ Blockly.Blocks['my_procedure_call'] = {
 
 Serialization for procedure blocks must do two separate things.
 
-1.  When loading from JSON your blocks will need to grab a *reference* to their
+1.  When loading from JSON your blocks will need to grab a _reference_ to their
     backing data model, because the blocks and models are serialized separately.
 2.  When copying and pasting a procedure block, the block will need to serialize
     the entire state of its procedure model, so that it can be replicated.
@@ -244,19 +244,18 @@ category](/guides/configure/web/toolboxes/dynamic), and [add it
 to your toolbox](/guides/configure/web/toolboxes/dynamic).
 
 ```js
-const proceduresFlyoutCallback = function(workspace) {
+const proceduresFlyoutCallback = function (workspace) {
   const blockList = [];
   blockList.push({
-    'kind': 'block',
-    'type': 'my_procedure_def',
+    kind: 'block',
+    type: 'my_procedure_def',
   });
-  for (const model of
-        workspace.getProcedureMap().getProcedures()) {
+  for (const model of workspace.getProcedureMap().getProcedures()) {
     blockList.push({
-      'kind': 'block',
-      'type': 'my_procedure_call',
-      'extraState': {
-        'procedureId': model.getId(),
+      kind: 'block',
+      type: 'my_procedure_call',
+      extraState: {
+        procedureId: model.getId(),
       },
     });
   }
@@ -264,7 +263,9 @@ const proceduresFlyoutCallback = function(workspace) {
 };
 
 myWorkspace.registerToolboxCategoryCallback(
-    'MY_PROCEDURES', proceduresFlyoutCallback);
+  'MY_PROCEDURES',
+  proceduresFlyoutCallback,
+);
 ```
 
 [shareable-procedures]: https://www.npmjs.com/package/@blockly/block-shareable-procedures

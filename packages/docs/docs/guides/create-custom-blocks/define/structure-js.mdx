@@ -58,18 +58,19 @@ be passed directly to your custom input's constructor.
 
 <Tabs groupId="javascript">
   <TabItem value="javascript" label="JavaScript" default>
-  ```js
-  init: function() {
-    // ...
-    this.appendInput(new MyCustomInput('INPUT_NAME'))
-        .appendField('an example label')
-  }
-  ```
+    ```js init: function(){' '}
+    {
+      // ...
+      this.appendInput(new MyCustomInput('INPUT_NAME')).appendField(
+        'an example label',
+      )
+    }
+    ```
   </TabItem>
 </Tabs>
-All of the `appendInput` methods (both generic and non-generic) return the
-input object so that they can be further configured using method chaining. There
-are three built-in methods used for configuring inputs.
+All of the `appendInput` methods (both generic and non-generic) return the input
+object so that they can be further configured using method chaining. There are
+three built-in methods used for configuring inputs.
 
 ## Append fields
 
@@ -95,7 +96,7 @@ are often used as labels to describe what each input is for.
 The simplest field is a label. Blockly's convention is to use all
 lowercase text, with the exception of proper names (e.g. Google, SQL).
 
-An input row can contain any number of fields.  Multiple `appendField`
+An input row can contain any number of fields. Multiple `appendField`
 calls may be chained together to efficiently add several fields to the same
 input row.
 

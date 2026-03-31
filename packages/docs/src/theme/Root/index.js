@@ -4,7 +4,12 @@
  */
 
 import React, { useEffect } from 'react';
-import { trackSiteSearch, trackCTAClick, trackCopyCode, extractFunctionName } from '../../utils/tracking';
+import {
+  trackSiteSearch,
+  trackCTAClick,
+  trackCopyCode,
+  extractFunctionName,
+} from '../../utils/tracking';
 
 export default function Root({ children }) {
   useEffect(() => {
@@ -79,7 +84,7 @@ export default function Root({ children }) {
 
     observer.observe(document.body, {
       childList: true,
-      subtree: true
+      subtree: true,
     });
 
     const initialSearchInput = document.querySelector('.DocSearch-Input');
@@ -112,11 +117,11 @@ export default function Root({ children }) {
       // Traverse up to find the actual button/link element
       while (target && target !== document.body) {
         // Check if it's a button or link with CTA classes
-        const ctaSelector = 'a.getStarted, a.button, button.button, .button, a.cardButton, .cardButton, .downloadAsset, a.downloadAsset, .assetDownloadLink, a.assetDownloadLink';
-        const isCTA = target.matches && (
-          target.matches(ctaSelector) ||
-          target.closest(ctaSelector)
-        );
+        const ctaSelector =
+          'a.getStarted, a.button, button.button, .button, a.cardButton, .cardButton, .downloadAsset, a.downloadAsset, .assetDownloadLink, a.assetDownloadLink';
+        const isCTA =
+          target.matches &&
+          (target.matches(ctaSelector) || target.closest(ctaSelector));
 
         if (isCTA) {
           const ctaElement = target.matches(ctaSelector)
@@ -129,17 +134,22 @@ export default function Root({ children }) {
               clickUrl = ctaElement.href;
             } else if (ctaElement.getAttribute('href')) {
               const href = ctaElement.getAttribute('href');
-              clickUrl = href.startsWith('http') ? href : window.location.origin + href;
+              clickUrl = href.startsWith('http')
+                ? href
+                : window.location.origin + href;
             } else if (ctaElement.getAttribute('to')) {
               // Docusaurus Link component uses 'to' attribute
               const to = ctaElement.getAttribute('to');
-              clickUrl = to.startsWith('http') ? to : window.location.origin + to;
+              clickUrl = to.startsWith('http')
+                ? to
+                : window.location.origin + to;
             } else {
               clickUrl = window.location.href;
             }
 
             // Get the text content
-            let clickText = ctaElement.textContent?.trim() ||
+            let clickText =
+              ctaElement.textContent?.trim() ||
               ctaElement.innerText?.trim() ||
               ctaElement.getAttribute('aria-label') ||
               ctaElement.getAttribute('title') ||
@@ -164,16 +174,22 @@ export default function Root({ children }) {
     // Code Copy Tracking
     const handleCodeCopyClick = (e) => {
       // Find the copy button (Docusaurus uses a button with aria-label containing "copy")
-      const copyButton = e.target.closest('button[aria-label*="copy" i], button[aria-label*="copier" i]');
+      const copyButton = e.target.closest(
+        'button[aria-label*="copy" i], button[aria-label*="copier" i]',
+      );
 
       if (copyButton) {
-        const codeBlock = copyButton.closest('div[class*="codeBlock"], .theme-code-block, .prism-code, pre');
+        const codeBlock = copyButton.closest(
+          'div[class*="codeBlock"], .theme-code-block, .prism-code, pre',
+        );
 
         if (codeBlock) {
           let codeElement = codeBlock.querySelector('code');
 
           if (!codeElement) {
-            const preElement = codeBlock.querySelector('pre code') || codeBlock.closest('pre')?.querySelector('code');
+            const preElement =
+              codeBlock.querySelector('pre code') ||
+              codeBlock.closest('pre')?.querySelector('code');
             if (preElement) {
               codeElement = preElement;
             }
@@ -185,7 +201,9 @@ export default function Root({ children }) {
               if (!element || element === document.body) return 'unknown';
 
               const classList = Array.from(element.classList);
-              const langClass = classList.find(cls => cls.startsWith('language-'));
+              const langClass = classList.find((cls) =>
+                cls.startsWith('language-'),
+              );
 
               if (langClass) {
                 return langClass.replace('language-', '');
@@ -206,7 +224,8 @@ export default function Root({ children }) {
               languageName = findLanguage(codeBlock);
             }
 
-            const codeContent = codeElement.textContent || codeElement.innerText || '';
+            const codeContent =
+              codeElement.textContent || codeElement.innerText || '';
 
             const functionName = extractFunctionName(codeContent, languageName);
 
@@ -234,8 +253,8 @@ export default function Root({ children }) {
       // Extract language
       const findLanguage = (element) => {
         const classList = Array.from(element.classList);
-        const langClass = classList.find(cls => cls.startsWith('language-'));
-        console.log("hello", langClass);
+        const langClass = classList.find((cls) => cls.startsWith('language-'));
+        console.log('hello', langClass);
 
         if (langClass) return langClass.replace('language-', '');
 
@@ -272,4 +291,3 @@ export default function Root({ children }) {
 
   return <>{children}</>;
 }
-

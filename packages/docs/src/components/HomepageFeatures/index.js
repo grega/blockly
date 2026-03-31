@@ -2,14 +2,15 @@ import clsx from 'clsx';
 import Heading from '@theme/Heading';
 import styles from './styles.module.css';
 
-
 const FeatureList = [
   {
     title: 'Accessible by design',
-    Svg: require('@site/static/images/HomePage/Accessibility-tier-4.svg').default,
+    Svg: require('@site/static/images/HomePage/Accessibility-tier-4.svg')
+      .default,
     description: (
       <>
-        Built so everyone can engage with visual code — helping developers create experiences that are inclusive by default.
+        Built so everyone can engage with visual code — helping developers
+        create experiences that are inclusive by default.
       </>
     ),
   },
@@ -18,7 +19,8 @@ const FeatureList = [
     Svg: require('@site/static/images/HomePage/Explore-tier-4.svg').default,
     description: (
       <>
-       An open-source library that adapts to your needs. With APIs, generators, and integrations, Blockly fits into most platforms, and environments.
+        An open-source library that adapts to your needs. With APIs, generators,
+        and integrations, Blockly fits into most platforms, and environments.
       </>
     ),
   },
@@ -27,13 +29,14 @@ const FeatureList = [
     Svg: require('@site/static/images/HomePage/Connect-tier-4.svg').default,
     description: (
       <>
-        A global community of passionate developers and educators helps Blockly stay open, innovative, and ready for what’s next.
+        A global community of passionate developers and educators helps Blockly
+        stay open, innovative, and ready for what’s next.
       </>
     ),
   },
 ];
 
-function Feature({Svg, title, description}) {
+function Feature({ Svg, title, description }) {
   return (
     <div className={clsx('col col--4')}>
       <div className="text--center">

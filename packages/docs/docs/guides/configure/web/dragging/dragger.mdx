@@ -20,10 +20,10 @@ coordinates.
 
 The dragger has several responsibilities when executing drags:
 
-*   Calling drag methods on the draggable.
-*   Calculating the position the draggable should move to in workspace
-    coordinates.
-*   Calling [drag target][drag-target] methods on any hovered drag targets.
+- Calling drag methods on the draggable.
+- Calculating the position the draggable should move to in workspace
+  coordinates.
+- Calling [drag target][drag-target] methods on any hovered drag targets.
 
 ## Implementation
 
@@ -69,13 +69,13 @@ coordinates.
 
 It should also update any drag targets that are being hovered over.
 
-*   `wouldDelete` should always be called before calling other hooks on the drag
-    target.
-*   `onDragExit` should always be called on the old drag target before calling
-    `onDragEnter` on the new drag target.
-*   `onDragOver` should be called after `onDragEnter` the first time the drag
-    target is hovered, and on each additional call to `onDrag` where the drag
-    target is still hovered.
+- `wouldDelete` should always be called before calling other hooks on the drag
+  target.
+- `onDragExit` should always be called on the old drag target before calling
+  `onDragEnter` on the new drag target.
+- `onDragOver` should be called after `onDragEnter` the first time the drag
+  target is hovered, and on each additional call to `onDrag` where the drag
+  target is still hovered.
 
 ```js
 onDrag(e, totalDelta) {
@@ -111,10 +111,10 @@ The `onEndDrag` method ends a drag. It should notify the draggable that the drag
 has ended and any hovered drag target that the draggable has been dropped. It
 should also dispose of the draggable if the drag target is a delete area.
 
-*   `onDrop` should always be called before other methods.
-*   `revertDrag` should be called if the drag target prevents drags.
-*   `endDrag` should be called after reverting the drag, but before disposing.
-*   `dispose` should be called if the drag target is a delete area.
+- `onDrop` should always be called before other methods.
+- `revertDrag` should be called if the drag target prevents drags.
+- `endDrag` should be called after reverting the drag, but before disposing.
+- `dispose` should be called if the drag target is a delete area.
 
 ```js
 onDragEnd(e) {
@@ -166,7 +166,6 @@ const myWorkspace = Blockly.inject('blocklyDiv', {
     blockDragger: MyDragger,
   },
 });
-
 ```
 
 [draggable]: /guides/configure/web/dragging/draggable

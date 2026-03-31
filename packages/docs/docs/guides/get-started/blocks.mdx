@@ -44,20 +44,24 @@ const definitions = Blockly.common.createBlockDefinitionsFromJsonArray([
         type: 'field_number',
         // The name allows you to reference the field and get its value.
         name: 'FIELD_NAME',
-      }
+      },
     ],
     // Adds an untyped previous connection to the top of the block.
     previousStatement: null,
     // Adds an untyped next connection to the bottom of the block.
     nextStatement: null,
-  }
+  },
 ]);
 
 // Register the definition.
 Blockly.common.defineBlocks(definitions);
 ```
 
-<Image alt="A block for moving forward" src="/images/example-blocks/move-forward.png" width={150} />
+<Image
+  alt="A block for moving forward"
+  src="/images/example-blocks/move-forward.png"
+  width={150}
+/>
 
 For more information about how to define your blocks and add them to your
 toolbox, see [Custom blocks overview][define-blocks].

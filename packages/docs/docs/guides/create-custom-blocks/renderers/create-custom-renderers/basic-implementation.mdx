@@ -28,7 +28,11 @@ class CustomRenderer extends Blockly.blockRendering.Renderer {
 
 Without any customization, the default renderer looks like this:
 
-<Image alt="base renderer" src="/images/rendering/renderers/base-renderer.png" width={300} />
+<Image
+  alt="base renderer"
+  src="/images/rendering/renderers/base-renderer.png"
+  width={300}
+/>
 
 You can also subclass one of the other [built-in renderers][built-in-renderers]
 and then override parts of it.
@@ -66,10 +70,10 @@ together.
 
 There is a method for each kind of component:
 
-  * [`makeConstants_`][makeConstants]
-  * [`makeRenderInfo_`][makeRenderInfo]
-  * [`makePathObject`][makePathObject] (note there is no underscore)
-  * [`makeDrawer_`][makeDrawer]
+- [`makeConstants_`][makeConstants]
+- [`makeRenderInfo_`][makeRenderInfo]
+- [`makePathObject`][makePathObject] (note there is no underscore)
+- [`makeDrawer_`][makeDrawer]
 
 ## Register the renderer
 

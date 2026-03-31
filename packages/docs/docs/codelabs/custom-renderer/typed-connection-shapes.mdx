@@ -14,6 +14,7 @@ This step will create a renderer that sets connection shapes at runtime based on
 Override the `shapeFor(connection)` function in the `CustomConstantProvider` class definition to return a different connection shape based on the `checks` returned from `connection.getCheck()`. Note the previous definition of `shapeFor(connection)` created in previous steps will need to be deleted.
 
 The new definition of `shapeFor(connection)` will:
+
 - Return a rectangular tab for inputs and outputs that accept `Number`s and `String`s.
 - Return the default puzzle tab for all other inputs and outputs.
 - Return the normal notch for all previous and next connections.
@@ -45,6 +46,7 @@ shapeFor(connection) {
 ### The result
 
 Take these steps to fully test this change in the browser:
+
 1. Click on the `Loops` entry and drag out a repeat block.
 1. Click on the `Logic` entry and drag the conditional `if` block into the repeat block that was placed on the workspace in the previous step.
 

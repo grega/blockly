@@ -50,19 +50,21 @@ is inside `init`, there is no way to replace it without replacing the entire
 It is possible to overwrite a function in an existing definition:
 
 ```js
-Blockly.Blocks['existing_block'].init = function() {/*new function*/};
+Blockly.Blocks['existing_block'].init = function () {
+  /*new function*/
+};
 ```
 
 This works, but you have to copy and modify the existing function -- you can't
 magically replace just one line. There are several problems with this:
 
-*   It isn't much different from copying and modifying the entire definition.
-*   You can't use it to modify the `init` function of blocks that are defined in
-    JSON, such as Blockly's built-in blocks. This is because there is no `init`
-    function to copy -- it's generated at run time.
-*   It requires you to define your block using JavaScript, which may [cause
-    problems with
-    localization](/guides/configure/web/translations#json-message-interpolation).
+- It isn't much different from copying and modifying the entire definition.
+- You can't use it to modify the `init` function of blocks that are defined in
+  JSON, such as Blockly's built-in blocks. This is because there is no `init`
+  function to copy -- it's generated at run time.
+- It requires you to define your block using JavaScript, which may [cause
+  problems with
+  localization](/guides/configure/web/translations#json-message-interpolation).
 
 ### Overwrite the results of init
 
@@ -73,24 +75,24 @@ color of the `logic_null` block:
 
 ```js
 const originalInit = Blockly.Blocks['logic_null'].init;
-Blockly.Blocks['logic_null'].init = function() {
+Blockly.Blocks['logic_null'].init = function () {
   originalInit.call(this);
   this.setColour(300);
-}
+};
 ```
 
 Unfortunately, this is less useful that it seems. For example:
 
-*   Broadening [connection
-    checks](/guides/create-custom-blocks/inputs/connection-checks) or
-    applying a less-restrictive field validator may invalidate assumptions made
-    by block-code generators and event handlers.
+- Broadening [connection
+  checks](/guides/create-custom-blocks/inputs/connection-checks) or
+  applying a less-restrictive field validator may invalidate assumptions made
+  by block-code generators and event handlers.
 
-*   Replacing a field with a value input will break block-code generators and
-    field validators and may break event handlers. It may also be extremely
-    difficult to do for localized blocks because different locales may result in
-    blocks with [different types and orders of inputs and
-    fields](/guides/configure/web/translations#json-message-interpolation).
+- Replacing a field with a value input will break block-code generators and
+  field validators and may break event handlers. It may also be extremely
+  difficult to do for localized blocks because different locales may result in
+  blocks with [different types and orders of inputs and
+  fields](/guides/configure/web/translations#json-message-interpolation).
 
 ### Overwrite a key-value pair in a JSON definition
 
@@ -147,16 +149,16 @@ const parentJson = {
 };
 
 Blockly.Blocks['child_block_1'] = {
-  init: function() {
-    initJson({...parentJson, colour: 100})
-  }
-}
+  init: function () {
+    initJson({ ...parentJson, colour: 100 });
+  },
+};
 
 Blockly.Blocks['child_block_2'] = {
-  init: function() {
-    initJson({...parentJson, colour: 200})
-  }
-}
+  init: function () {
+    initJson({ ...parentJson, colour: 200 });
+  },
+};
 ```
 
 Another alternative is to define your JSON in a publicly available object and
@@ -182,10 +184,10 @@ If you have a set of blocks that are substantially the same except for an
 operator, you may be able to design a single block that has a dropdown field for
 the operator. For example:
 
-*   The built-in `logic_operation` block uses a dropdown with the operators
-    `and` and `or`.
-*   The built-in `math_arithmetic` block uses a dropdown with the operators `+`,
-    `-`, `×`, `÷`, and `^`.
+- The built-in `logic_operation` block uses a dropdown with the operators
+  `and` and `or`.
+- The built-in `math_arithmetic` block uses a dropdown with the operators `+`,
+  `-`, `×`, `÷`, and `^`.
 
 Writing code generators for such blocks is usually a bit more complex, but still
 easier than writing and maintaining multiple blocks.

@@ -17,13 +17,13 @@ need blocks to move an arm and manipulate a claw.
 
 To define and use a new type of block, you need three things:
 
-*   **Block definition**: Defines the look and feel of a block type as well as
-    certain behaviors.
-*   **Block-code generator**: Generates the code string for blocks of this type.
-    It is always written in JavaScript, even if the target language is not
-    JavaScript.
-*   **Toolbox reference**: A reference to the block type in the toolbox, so
-    users can add it to the workspace.
+- **Block definition**: Defines the look and feel of a block type as well as
+  certain behaviors.
+- **Block-code generator**: Generates the code string for blocks of this type.
+  It is always written in JavaScript, even if the target language is not
+  JavaScript.
+- **Toolbox reference**: A reference to the block type in the toolbox, so
+  users can add it to the workspace.
 
 ## Block definition
 
@@ -82,10 +82,11 @@ language you want to generate. For example, here is a generator that generates
 JavaScript:
 
 ```js
-javascriptGenerator.forBlock['string_length'] = function(block, generator) {
-   // String or array length.
-   var argument0 = generator.valueToCode(block, 'VALUE', Order.FUNCTION_CALL) || '\'\'';
-   return [argument0 + '.length', Order.MEMBER];
+javascriptGenerator.forBlock['string_length'] = function (block, generator) {
+  // String or array length.
+  var argument0 =
+    generator.valueToCode(block, 'VALUE', Order.FUNCTION_CALL) || "''";
+  return [argument0 + '.length', Order.MEMBER];
 };
 ```
 
