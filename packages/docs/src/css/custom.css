@@ -1,0 +1,442 @@
+/**
+ * Any CSS included here will be global. The classic template
+ * bundles Infima by default. Infima is a CSS framework designed to
+ * work well for content-centric websites.
+ */
+
+@import url('https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700|Google+Sans:400,500|Google+Sans+Text:400,500,700,400i,500i,700i|Product+Sans:400&lang=en&display=swap');
+
+/* You can override the default Infima variables here. */
+:root {
+  --ifm-color-primary: #4285F4;
+  --ifm-color-primary-dark: #29784c;
+  --ifm-color-primary-darker: #277148;
+  --ifm-color-primary-darkest: #205d3b;
+  --ifm-color-primary-light: #33925d;
+  --ifm-color-primary-lighter: #359962;
+  --ifm-color-primary-lightest: #3cad6e;
+  --ifm-code-font-size: 95%;
+  --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.1);
+
+  /* --docusaurus-font-family-base is the variable for the main font */
+  --ifm-font-family-base: 'Google Sans Text', sans-serif;
+
+  /*--ifm-font-family-heading: 'Google Sans', sans-serif;*/
+  --ifm-heading-font-family: 'Google Sans', sans-serif;
+
+  --background-color-footer: #E8F0FE;
+  --font-color-footer: #202124;
+  --font-color-hover-footer: #1a73e8;
+  --border-divider-footer: #dadce0;
+  --tabs-border: #dadce0;
+  --codeblock-background-color: #f1f3f4;
+}
+
+/* For readability concerns, you should choose a lighter palette in dark mode. */
+[data-theme='dark'] {
+  --ifm-color-primary: #25c2a0;
+  --ifm-color-primary-dark: #21af90;
+  --ifm-color-primary-darker: #1fa588;
+  --ifm-color-primary-darkest: #1a8870;
+  --ifm-color-primary-light: #29d5b0;
+  --ifm-color-primary-lighter: #32d8b4;
+  --ifm-color-primary-lightest: #4fddbf;
+  --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.3);
+
+  --background-color-footer: #1c1e21;
+  --font-color-footer: #dadde1;
+  --font-color-hover-footer: #25c2a0;
+  --border-divider-footer: #dadce042;
+  --tabs-border: #3c4043;
+  --codeblock-background-color: #282a36;
+}
+
+/* Hide the previous/next pagination links */
+/*.pagination-nav {
+  display: none;
+}*/
+[class*="docs-doc-id-guides/"] .pagination-nav,
+[class*="docs-doc-id-reference/"] .pagination-nav {
+  display: none;
+}
+
+/*.theme-doc-sidebar-item-link-level-3 {
+  display: none;
+}*/
+
+.menu__caret {
+  display: none;
+}
+
+/* Hides the main h1 title on doc pages */
+/* .theme-doc-markdown h1:first-child {
+  display: none;
+} */
+
+/* Override Infima's default H1 font size for first-child H1 in markdown */
+/* The default 3rem comes from Infima theme's .markdown h1:first-child rule */
+.markdown h1:first-child,
+.theme-doc-markdown h1:first-child {
+  /* --ifm-h1-font-size: 2rem; */
+  --ifm-h1-font-size: 32px;
+  --ifm-h2-font-size: 24px;
+  --ifm-h3-font-size: 20px;
+}
+
+.blockly-maze-img {
+  text-align: center;
+}
+
+.blockly-maze-img img {
+  max-width: 75%;
+}
+
+/*.blockly-workspace-img {
+  text-align: center;
+}*/
+
+/*.blockly-workspace-img {
+  max-width: 70%;
+}*/
+
+/* .screenshot img {
+  border: 1px solid #000;
+} */
+
+.screenshotImg{
+  width: 200px;
+}
+
+.displayTableHeader{
+  text-align: left;
+  margin-bottom: 0px;
+}
+
+/* --- Added to make 'note' admonitions blue 50 #E8F0FE' --- */
+
+[data-theme]:not([data-theme='dark']) .alert--secondary {
+  --ifm-alert-background-color: #E8F0FE;
+  --ifm-alert-background-color-highlight: #54c7ec26;
+  --ifm-alert-foreground-color: var(--ifm-color-info-contrast-foreground);
+  --ifm-alert-border-color: #4285F4;
+}
+
+.expandButton_TmdG{
+  align-items: end !important;
+}
+
+.expandButtonIcon_i1dp{
+  margin-bottom: 10px;
+}
+
+.collapseSidebarButton_PEFL{
+      text-align: right !important
+}
+
+.DocSearch-Button-Keys{
+  min-width: 0px !important;
+}
+
+/* Navbar title styling */
+.navbar__title {
+  font-family: 'Google Sans', sans-serif;
+  font-weight: 500;
+  font-size: 19px;
+}
+
+/* footer CSS */
+.footer{
+  background-color: var(--background-color-footer);
+}
+
+.footer__links{
+  border-block-end: 1px solid var(--border-divider-footer);
+}
+
+.footer__title{
+  font-weight: bold;
+  font-family: 'Google Sans', sans-serif;
+  font-size: 16px;
+  text-align: center;
+}
+
+.footer__link-item{
+  font-size: 14px;
+  color: var(--font-color-footer);
+}
+
+.footer__link-item:hover{
+  text-decoration: none;
+  color: var(--font-color-hover-footer);
+}
+
+.footer__copyright{
+  font-size: 16px;
+}
+
+.footer_linkboxes_list {
+  display: grid;
+  grid-gap: 24px;
+  grid-template-columns: repeat(auto-fit, minmax(85.4px, 1fr));
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.footer__col {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  text-align: left;
+}
+
+.footer__items,
+.footer__item {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+.footer__items {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  text-align: left;
+}
+
+/* Responsive footer styles */
+@media (max-width: 768px) {
+  .footer_linkboxes_list {
+    grid-template-columns: 1fr;
+    grid-gap: 32px;
+    padding: 24px 0;
+  }
+
+  .footer__col,
+  .footer__title,
+  .footer__link-item {
+    text-align: center;
+  }
+
+  .footer__col,
+  .footer__items {
+    align-items: center;
+  }
+
+  .footer__col {
+    width: 100%;
+  }
+
+  .footer__title {
+    margin-bottom: 12px;
+  }
+
+  .footer__copyright {
+    padding: 16px 0;
+  }
+
+  .footer__bottom {
+    padding: 16px 0;
+  }
+
+  .footer .container {
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+
+  .footer_linkboxes_list > .footer__col:last-child {
+    margin-bottom: 32px;
+  }
+}
+
+@media (min-width: 769px) and (max-width: 996px) {
+  .footer_linkboxes_list {
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 40px;
+    padding: 32px 0;
+  }
+
+  .footer__col,
+  .footer__title,
+  .footer__link-item {
+    text-align: center;
+  }
+
+  .footer__col,
+  .footer__items {
+    align-items: center;
+  }
+
+  .footer__col {
+    width: 100%;
+  }
+
+  .footer__title {
+    margin-bottom: 16px;
+  }
+
+  .footer_linkboxes_list > .footer__col:last-child {
+    margin-bottom: 32px;
+  }
+}
+
+@media (min-width: 997px) {
+  .footer_linkboxes_list {
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  }
+}
+
+/** Added changes for hide level 3 menus **/
+.theme-doc-sidebar-menu .hide-level-3 .theme-doc-sidebar-item-link-level-3 {
+  display: none !important;
+}
+
+.Last_Updated_Date{
+ color: #70757A;
+ font-size: 0.875rem;
+ font-weight: 400;
+ font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+ margin: 0;
+ text-align: right;
+}
+
+.DocSearch-Button-Keys .DocSearch-Button-Key {
+  display: none !important;
+}
+
+.DocSearch-Button-Keys::before {
+  content: '/';
+  align-items: center;
+  justify-content: center;
+  font-size: 0.75rem !important;
+  background-color: var(--ifm-color-emphasis-100);
+  line-height: 1.5rem !important;
+  border: 0;
+  border-radius: 3px;
+  box-shadow: var(--docsearch-key-shadow);
+  color: var(--docsearch-muted-color);
+  display: flex;
+  height: 18px;
+  margin-right: .4em;
+  padding: 0 0 2px;
+  position: relative;
+  top: -1px;
+  transition-duration: .1s;
+  transition-property: all;
+  transition-timing-function: cubic-bezier(.4, 0, .2, 1);
+  width: 20px;
+}
+
+.DocSearch-Container {
+  z-index: calc(var(--ifm-z-index-fixed) + 1);
+}
+
+/* --- Hide Duplicate Breadcrumb on Reference Pages --- */
+[class*="docs-doc-id-reference/"] .theme-doc-breadcrumbs {
+  display: none;
+}
+
+.downloadAsset{
+  border: 1px solid #4285f4;
+  background-color: #4285f4;
+  color: #fff;
+  text-align: center;
+  border-radius: 4px;
+  padding: .5rem 1.25rem;
+  font-weight: 500;
+  text-decoration: none;
+  transition: background-color .2s cubic-bezier(.55, .085, .68, .53), border-color .2s cubic-bezier(.55, .055, .675, .19), color .2s cubic-bezier(.55, .085, .68, .53), transform .3s;
+}
+
+.downloadAsset:hover{
+  border-color: #1a73e8;
+  background-color: #1a73e8;
+  transform: scale(1.05);
+}
+
+.compare-better:before {
+  content: "thumb_up";
+  color: #1e8e3e;
+  font-family: 'Material Icons' !important;
+  font-weight: normal;
+  font-style: normal;
+  font-size: 24px;
+  margin-inline: 0 4px;
+  vertical-align: middle;
+  width: 24px;
+}
+
+.compare-worse:before {
+  content: "thumb_down";
+  color: #d50000;
+  font-family: 'Material Icons' !important;
+  font-weight: normal;
+  font-style: normal;
+  font-size: 24px;
+  margin-inline: 0 4px;
+  vertical-align: middle;
+  width: 24px;
+}
+
+.compare-better, .compare-worse{
+ font-weight: 700;
+}
+
+.compare-better p, .compare-worse p{
+  margin-top:0px;
+}
+
+.appendInputImg{
+  width: 145px !important;
+}
+
+h2{
+  font-size: 24px;
+}
+
+h3{
+  font-size: 20px;
+}
+
+.codelabImages{
+  text-align: center;
+}
+
+.tabs-container{
+  border: 1px solid var(--tabs-border);
+  border-radius: 8px;
+}
+
+.tabs-container p{
+  padding: 0px 0px 16px 16px;
+}
+
+.tabs{
+  border-bottom: 1px solid var(--tabs-border);
+}
+
+.prism-code{
+  background-color: var(--codeblock-background-color) !important;
+}
+
+/* Hide dark badge by default */
+.blockly-badge-dark {
+  display: none;
+}
+
+/* When theme is dark, swap visibility */
+[data-theme='dark'] .blockly-badge-light {
+  display: none;
+}
+
+[data-theme='dark'] .blockly-badge-dark {
+  display: block;
+}
+
+td{
+  vertical-align: top;
+}
+
+th{
+  text-align: left;
+}
