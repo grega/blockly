@@ -1,8 +1,10 @@
-# Docs
-# TODO: Format handwritten docs but not api reference docs
-docs/*
-docs/reference
+# Generated API reference docs
+docs/reference/
 
-# misc
-node_modules/*
+# Build artifacts
+build/
+.docusaurus/
+node_modules/
+
+# Auto-generated
 CHANGELOG.md
