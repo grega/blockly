@@ -46,7 +46,7 @@ jobs:
         with:
           node-version: 20.x
           cache: 'npm'
-          cache-dependency-path: packages/docs/package-lock.json
+          cache-dependency-path: 'package-lock.json' # root level, since we're using npm workspaces
       
       - name: Install dependencies
         working-directory: ./packages/docs
