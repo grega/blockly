@@ -60,6 +60,11 @@ jobs:
       - name: Build the Docusaurus site
         working-directory: ./packages/docs
         run: npm run build
+        env:
+          # when deploying to a subdirectory of the <org>.github.io domain,
+          # we need to set the BASE_URL to the name of the repo, for a custom
+          # domain this could be /docs/
+          BASE_URL: /blockly/
       
       - name: Setup GitHub Pages
         uses: actions/configure-pages@v5

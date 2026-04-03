@@ -14,7 +14,7 @@ const config = {
   },
 
   url: 'https://raspberrypifoundation.github.io',
-  baseUrl: '/docs/',
+  baseUrl: process.env.BASE_URL || '/docs/',
 
   // GitHub pages deployment config
   organizationName: 'RaspberryPiFoundation',
