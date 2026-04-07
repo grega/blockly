@@ -3,7 +3,7 @@ slug: /codelabs/getting-started/create-a-custom-block/index.html
 description: How to create a custom block.
 ---
 
-import CodelabImage from '@site/src/components/CodelabImage';
+import Image from '@site/src/components/Image';
 
 # Getting started with Blockly
 
@@ -11,10 +11,11 @@ import CodelabImage from '@site/src/components/CodelabImage';
 
 Since this is a music maker app, we want a block that plays sounds. We could create one block per sound, but instead we will create a single block with a dropdown to select which note to play:
 
-<CodelabImage>
-  {' '}
-  ![image](../../../static/images/codelabs/getting-started/play_sound_block.png){' '}
-</CodelabImage>
+<Image
+  src="/images/codelabs/getting-started/play_sound_block.png"
+  alt="image"
+  className="codelabImage"
+/>
 
 In Blockly, a _block definition_ describes how a block looks and behaves. This includes its text, colour, and shape. It may also include which other blocks it can connect to.
 
@@ -101,10 +102,11 @@ const toolbox = {
 
 Run the app one more time, and play around with the new `Play (sound)` block. It should look like this:
 
-<CodelabImage>
-  {' '}
-  ![image](../../../static/images/codelabs/getting-started/workspace_with_toolbox.png){' '}
-</CodelabImage>
+<Image
+  src="/images/codelabs/getting-started/workspace_with_toolbox.png"
+  alt="image"
+  className="codelabImage"
+/>
 
 ### The block factory
 

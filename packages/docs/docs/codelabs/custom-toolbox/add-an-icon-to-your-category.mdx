@@ -3,7 +3,7 @@ slug: /codelabs/custom-toolbox/add-an-icon-to-your-category/index.html
 description: How to add an icon to your category.
 ---
 
-import CodelabImage from '@site/src/components/CodelabImage';
+import Image from '@site/src/components/Image';
 
 # Customizing a Blockly toolbox
 
@@ -113,14 +113,14 @@ Your `setSelected` method should look similar to below:
 If you open your `index.html` file, you should see a white gear above your "Logic"
 label, and it should change to blue when the category has been selected.
 
-<CodelabImage>
-  {' '}
-  ![A white gear above the word "Logic" on a blue
-  background.](../../../static/images/codelabs/custom-toolbox/category_gear.png){' '}
-</CodelabImage>
+<Image
+  src="/images/codelabs/custom-toolbox/category_gear.png"
+  alt='A white gear above the word "Logic" on a blue background.'
+  className="codelabImage"
+/>
 
-<CodelabImage>
-  {' '}
-  ![A blue gear above the word "Logic" on a white
-  background.](../../../static/images/codelabs/custom-toolbox/category_gear_selected.png){' '}
-</CodelabImage>
+<Image
+  src="/images/codelabs/custom-toolbox/category_gear_selected.png"
+  alt='A blue gear above the word "Logic" on a white background.'
+  className="codelabImage"
+/>

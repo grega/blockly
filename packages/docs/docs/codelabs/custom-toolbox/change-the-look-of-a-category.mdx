@@ -3,7 +3,7 @@ slug: /codelabs/custom-toolbox/change-the-look-of-a-category/index.html
 description: How to change the look of a category.
 ---
 
-import CodelabImage from '@site/src/components/CodelabImage';
+import Image from '@site/src/components/Image';
 
 # Customizing a Blockly toolbox
 
@@ -49,11 +49,11 @@ For more information on Blockly styles please visit the [themes documentation](/
 Open `index.html` to see your updated toolbox. Your toolbox should look
 similar to the below toolbox.
 
-<CodelabImage>
-  {' '}
-  ![A toolbox with colors that expand the across the entire
-  category.](../../../static/images/codelabs/custom-toolbox/colored_toolbox.png){' '}
-</CodelabImage>
+<Image
+  src="/images/codelabs/custom-toolbox/colored_toolbox.png"
+  alt="A toolbox with colors that expand the across the entire category."
+  className="codelabImage"
+/>
 
 We are going to add some CSS to make it easier to read, and to space out our categories.
 
@@ -87,8 +87,8 @@ Copy and paste the following CSS into your `toolbox_style.css` file.
 
 Open `index.html` to see your toolbox.
 
-<CodelabImage>
-  {' '}
-  ![Toolbox with category corners that are rounded and white
-  text.](../../../static/images/codelabs/custom-toolbox/styled_toolbox.png){' '}
-</CodelabImage>
+<Image
+  src="/images/codelabs/custom-toolbox/styled_toolbox.png"
+  alt="Toolbox with category corners that are rounded and white text."
+  className="codelabImage"
+/>

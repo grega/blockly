@@ -316,8 +316,9 @@ h3 {
   font-size: 20px;
 }
 
-.codelabImages {
-  text-align: center;
+.codelabImage {
+  display: block;
+  margin: 0 auto;
 }
 
 .tabs-container {

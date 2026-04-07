@@ -3,7 +3,7 @@ slug: /codelabs/custom-generator/value-block-generators/index.html
 description: How to write a block code generator for a simple value block.
 ---
 
-import CodelabImage from '@site/src/components/CodelabImage';
+import Image from '@site/src/components/Image';
 
 # Build a custom generator
 
@@ -17,10 +17,11 @@ It will use `getFieldValue` on several types of fields.
 
 The simplest block in this example is the `logic_null` block.
 
-<CodelabImage>
-  ![The null block simply returns
-  "null".](../../../static/images/codelabs/custom-generator/null_block.png)
-</CodelabImage>
+<Image
+  src="/images/codelabs/custom-generator/null_block.png"
+  alt='The null block simply returns "null".'
+  className="codelabImage"
+/>
 
 No matter what, it generates the code `'null'`. Notice that this is a string, because all generated code is a string.
 Add the following code to `src/generators/json.js`:
@@ -35,10 +36,11 @@ jsonGenerator.forBlock['logic_null'] = function (block) {
 
 Next is the `text` block.
 
-<CodelabImage>
-  ![The text block has an input for the user to type text
-  into.](../../../static/images/codelabs/custom-generator/text_block.png)
-</CodelabImage>
+<Image
+  src="/images/codelabs/custom-generator/text_block.png"
+  alt="The text block has an input for the user to type text into."
+  className="codelabImage"
+/>
 
 Unlike `logic_null`, there is a single text input field on this block. Use `getFieldValue`:
 
@@ -60,10 +62,11 @@ jsonGenerator.forBlock['text'] = function (block) {
 
 The `math_number` block has a number field.
 
-<CodelabImage>
-  ![The number block has an input for a user to type a
-  number](../../../static/images/codelabs/custom-generator/number_block.png)
-</CodelabImage>
+<Image
+  src="/images/codelabs/custom-generator/number_block.png"
+  alt="The number block has an input for a user to type a number"
+  className="codelabImage"
+/>
 
 Like the `text` block, the `math_number` block can use `getFieldValue`. Unlike the text block, the function doesn't need to wrap it in additional quotation marks, because in the JSON code, it won't be a string.
 
@@ -80,10 +83,11 @@ jsonGenerator.forBlock['math_number'] = function (block) {
 
 The `logic_boolean` block has a dropdown field named `BOOL`.
 
-<CodelabImage>
-  ![The boolean block lets the user select 'true' or 'false' from a dropdown
-  menu.](../../../static/images/codelabs/custom-generator/boolean_block.png)
-</CodelabImage>
+<Image
+  src="/images/codelabs/custom-generator/boolean_block.png"
+  alt="The boolean block lets the user select 'true' or 'false' from a dropdown menu."
+  className="codelabImage"
+/>
 
 Calling `getFieldValue` on a dropdown field returns the value of the selected option, which may not be the same as the display text. In this case the dropdown has two possible values: `TRUE` and `FALSE`.
 

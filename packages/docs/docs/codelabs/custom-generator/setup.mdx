@@ -3,7 +3,7 @@ slug: /codelabs/custom-generator/setup/index.html
 description: Setting up the "Build a custom generator" codelab.
 ---
 
-import CodelabImage from '@site/src/components/CodelabImage';
+import Image from '@site/src/components/Image';
 
 # Build a custom generator
 
@@ -162,10 +162,10 @@ Our `index.js` file already handles importing the toolbox and using it in Blockl
 
 If the server is already running, refresh the page to see changes. Otherwise, run `npm start` to start the server. New blocks should now exist in the toolbox, like this:
 
-<CodelabImage>
-  ![Screenshot of toolbox showing the added blocks, including the new member and
-  object blocks, plus the built-in number, text, boolean, null, and list
-  blocks.](../../../static/images/codelabs/custom-generator/toolbox_blocks.png)
-</CodelabImage>
+<Image
+  src="/images/codelabs/custom-generator/toolbox_blocks.png"
+  alt="Screenshot of toolbox showing the added blocks, including the new member and object blocks, plus the built-in number, text, boolean, null, and list blocks."
+  className="codelabImage"
+/>
 
 The app is still trying to generate and run JavaScript for the workspace, instead of JSON. We will change that soon.

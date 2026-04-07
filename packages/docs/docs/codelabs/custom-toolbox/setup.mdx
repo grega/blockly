@@ -3,7 +3,7 @@ slug: /codelabs/custom-toolbox/setup/index.html
 description: Setting up the "Customizing a Blockly toolbox" codelab.
 ---
 
-import CodelabImage from '@site/src/components/CodelabImage';
+import Image from '@site/src/components/Image';
 
 # Customizing a Blockly toolbox
 
@@ -85,11 +85,11 @@ an error because we are overriding an existing class.
 To test, open `index.html` in a browser. Your toolbox should look the same as it
 did before.
 
-<CodelabImage>
-  {' '}
-  ![The default toolbox. A list of categories with a strip of colour to the
-  left.](../../../static/images/codelabs/custom-toolbox/base_toolbox.png){' '}
-</CodelabImage>
+<Image
+  src="/images/codelabs/custom-toolbox/base_toolbox.png"
+  alt="The default toolbox. A list of categories with a strip of colour to the left."
+  className="codelabImage"
+/>
 
 However, if you run the below commands in your console you will see that
 your toolbox is now using the `CustomCategory` class.

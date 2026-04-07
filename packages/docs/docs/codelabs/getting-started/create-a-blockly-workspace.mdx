@@ -3,7 +3,7 @@ slug: /codelabs/getting-started/create-a-blockly-workspace/index.html
 description: How to add a workspace to your app.
 ---
 
-import CodelabImage from '@site/src/components/CodelabImage';
+import Image from '@site/src/components/Image';
 
 # Getting started with Blockly
 
@@ -18,10 +18,11 @@ A Blockly workspace has two main components:
 - The area where the user assembles their blocks (the white area).
 - A toolbox that contains all blocks that are available to the user (the grey area).
 
-<CodelabImage>
-  {' '}
-  ![image](../../../static/images/codelabs/getting-started/d4_three_times.png){' '}
-</CodelabImage>
+<Image
+  src="/images/codelabs/getting-started/d4_three_times.png"
+  alt="image"
+  className="codelabImage"
+/>
 
 The toolbox may be organized into categories, and may contain both single blocks and groups of blocks. A well-organized toolbox helps the user to explore the available blocks and understand the capabilities of the underlying system.
 
@@ -98,9 +99,10 @@ The `options` struct gives you significant control over your Blockly instance. Y
 
 Now refresh the page. Select the EDIT mode, then tap on one of the buttons. You should see a Blockly editor:
 
-<CodelabImage>
-  {' '}
-  ![image](../../../static/images/codelabs/getting-started/workspace_with_loop.png){' '}
-</CodelabImage>
+<Image
+  src="/images/codelabs/getting-started/workspace_with_loop.png"
+  alt="image"
+  className="codelabImage"
+/>
 
 Drag and drop the available loop block to the workspace to test it out.
